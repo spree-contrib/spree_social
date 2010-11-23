@@ -1,4 +1,9 @@
 class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  include Spree::CurrentOrder
+  include SpreeBase
+  helper :users, 'spree/base'
+  
+  after_filter :check_for_order
   
   def facebook
     social_setups("Facebook")
@@ -9,38 +14,36 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
   
   def github
-    social_setups("Twitter")
+    social_setups("Github")
   end
   
   private
   
   def social_setups(provider)
+    #store_location
     omniauth = request.env["omniauth.auth"]
-    @user_auth = UserAuth.find_by_provider_and_uid(omniauth['provider'], omniauth['uid'])
-
-    # Prior login with this OAuth source
-    if @user_auth
-      flash[:notice] = t("devise.omniauth_callbacks.success", :kind => provider)
-      sign_in_and_redirect(@user_auth.user, :event => :authentication)
-    # Attaching an(other) OAuthable account
-    elsif current_user
-      current_user.user_auths.create!(:provider => omniauth['provider'], :uid => omniauth['uid'], :nickname => omniauth["user_info"]['nickname'])
-      flash[:notice] = t("devise.omniauth_callbacks.success", :kind => provider)
-      redirect_to(account_path)
-    else
-    # Never been here before
-      user = User.new
-      user.new_from_session(omniauth)
-
-      if user.save! #we have all the data we need
-        flash.now[:notice] = t("devise.omniauth_callbacks.success", :kind => provider)
-        sign_in_and_redirect(user, :event => :authentication)
-      else # We need more info
-        session[:omniauth] = omniauth.except('extra')
-        flash.now[:error] = t("login_failed")
-        redirect_to signup_path
-      end #else
-    end #else
+    
+    if request.env["omniauth.error"].present?
+      flash[:error] = t("devise.omniauth_callbacks.failure", :kind => provider, :reason => "user was not valid")
+      redirect_back_or_default(root_url) 
+      return
+    end
+    
+    user = current_user
+    unless user
+      user = User.anonymous!
+      user.populate_from_omniauth(omniauth)
+    end
+    
+    user.associate_auth(omniauth)
+    
+    if current_order
+      current_order.associate_user!(user)
+      session[:guest_token] = nil
+    end
+    
+    sign_in_and_redirect(user, :event => :authentication)
+    
   end
 
 end

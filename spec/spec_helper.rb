@@ -1,7 +1,7 @@
 # This file is copied to ~/spec when you run 'ruby script/generate rspec'
 # from the project root directory.
 ENV["RAILS_ENV"] ||= 'test'
-require File.expand_path("../../../config/environment", __FILE__)
+require File.expand_path("../test_app/config/environment", __FILE__)
 require 'rspec/rails'
 
 # Requires supporting files with custom matchers and macros, etc,
@@ -25,6 +25,8 @@ RSpec.configure do |config|
   # examples within a transaction, comment the following line or assign false
   # instead of true.
   config.use_transactional_fixtures = true
+  
+  Devise::OmniAuth.test_mode!
 end
 
 @configuration ||= AppConfiguration.find_or_create_by_name("Default configuration")

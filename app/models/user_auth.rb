@@ -4,4 +4,6 @@ class UserAuth < ActiveRecord::Base
   # Lockdown outhentications to a non-destructive account and login via association
   devise :omniauthable
   
+
+  
 end

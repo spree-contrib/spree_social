@@ -7,3 +7,5 @@
 tmp
 nbproject
 *.swp
+.rvmrc
+spec/test_app
