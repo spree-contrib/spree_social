@@ -1,0 +1,29 @@
+<% @body_id = 'signup' %>
+
+<%= render "shared/error_messages", :target => @user %>
+
+<div id="new-customer">
+  <h2><%= t("new_customer") %></h2>
+
+  <%= hook :signup do %>
+
+    <%= form_for(:user, :url => registration_path(@user)) do |f| %>
+
+      <%= hook :signup_inside_form do %>
+        <% if session[:omniauth] %>
+          <p>
+            <%= f.label :email, t("email") %><br />
+            <%= f.text_field :email, :class => 'title'  %>
+          </p>
+          <p><%= submit_tag t("create"), :class => 'button primary' %></p>
+        <% else %>
+          <%= render 'shared/user_form', :f => f %>
+          <p><%= submit_tag t("create"), :class => 'button primary' %></p>
+        <% end %>
+      <% end %>
+
+    <% end %>
+    <%= t("or") %> <%= session[:omniauth] ? link_to( t("login_as_existing"), user_registration_path, :method => :delete) : link_to( t("login_as_existing"), login_path) %>
+  <% end %>
+
+</div>
