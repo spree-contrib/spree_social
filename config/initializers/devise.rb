@@ -1,9 +1,5 @@
 Devise.setup do |config|
-  # The below facebook app is created by me (John Brien Dilts) and only works to redirect you back to jbdmacbook.local:3000
-  # If you need something different please create another for yourself @ http://www.facebook.com/developers/createapp.php
-  
-  # Remember to restart your server after adding or editing any information here
-  
+
   # Format here is :provider, API_KEY, SECRET
   config.omniauth :facebook, "a8dd410a248298ee0e8008eec88b6d0d", "94ca0145eff74da8b79cf3692e2a67fc"
   

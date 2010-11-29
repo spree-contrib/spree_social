@@ -3,7 +3,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   include SpreeBase
   helper :users, 'spree/base'
   
-  after_filter :check_for_order
+  #after_filter :check_for_order
   
   def facebook
     social_setups("Facebook")
@@ -30,12 +30,12 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
     
     user = current_user
-    unless user
+    if user
+      user.associate_auth(omniauth)
+    else
       user = User.anonymous!
       user.populate_from_omniauth(omniauth)
     end
-    
-    user.associate_auth(omniauth)
     
     if current_order
       current_order.associate_user!(user)
