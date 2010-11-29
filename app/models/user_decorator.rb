@@ -2,6 +2,7 @@ User.class_eval do
   has_many :user_auths
 
   def populate_from_omniauth(source)
+    return if user_auths.where(:provider => source['provider'], :uid => source['uid']).count > 0
     user_auths.build(:provider => source['provider'], :uid => source['uid'], :nickname => source["user_info"]['nickname'])
 
     unless (source['provider'] == 'twitter')
