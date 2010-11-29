@@ -25,14 +25,14 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     
     if request.env["omniauth.error"].present?
       flash[:error] = t("devise.omniauth_callbacks.failure", :kind => provider, :reason => "user was not valid")
-      redirect_back_or_default(root_url) 
+      redirect_back_or_default(login_url) 
       return
     end
     
-    user = current_user
-    if user
-      user.associate_auth(omniauth)
-    else
+    user = UserAuth.find_by_uid_and_provider(omniauth['uid'], omniauth['provider'])
+    if current_user
+      current_user.associate_auth(omniauth)
+    elsif user.nil?
       user = User.anonymous!
       user.populate_from_omniauth(omniauth)
     end
