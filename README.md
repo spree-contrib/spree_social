@@ -44,9 +44,8 @@ OAuth Applications @ Facebook, Twitter and / or Github are supported out of the 
 5. Site domain: your-computer.local / your-site.com respectively
 
 Copy the Application ID / Application Secret to the config/initializers/devise.rb line for facebook
-`config.omniauth :facebook, "[App_ID]", "[App_Secret]"`
 
-Facebook should now work as an auth source
+`config.omniauth :facebook, "[App_ID]", "[App_Secret]"`
 
 ### Twitter
 
@@ -60,6 +59,7 @@ Facebook should now work as an auth source
 6. Save Application
 
 Copy the Consumer Key and Consumer Secret to the config/initializers/devise.rb line for twitter
+
 `config.omniauth :twitter, "[Consumer Key]", "[Consumer Secret]"`
 
 ### Github
@@ -72,6 +72,7 @@ Copy the Consumer Key and Consumer Secret to the config/initializers/devise.rb l
 4. Click Create
 
 Copy the Client ID and Secret to the config/initializers/devise.rb line for github
+
 `config.omniauth :github, "[Client ID]", "Secret"`
 
 > This is not a listed Github item. To View and / or edit your applications goto [http://github.com/account/applications/]([http://github.com/account/applications/])
@@ -94,4 +95,4 @@ Adding your own Auth Source
 > Coming Soon
 
 
-Copyright (c) 2010 [name of extension creator], released under the New BSD License
+Copyright (c) 2010 John Brien Dilts, released under the New BSD License
