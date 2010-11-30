@@ -43,7 +43,7 @@ OAuth Applications @ Facebook, Twitter and / or Github are supported out of the 
 4. Site URL: http://your_computer.local:3000 for development / http://your-site.com for production
 5. Site domain: your-computer.local / your-site.com respectively
 
-Copy the Application ID / Application Secret to the config/initializers/devise.rb line for facebook
+Copy the Application ID and Application Secret to the config/initializers/devise.rb line for facebook
 
 `config.omniauth :facebook, "[App_ID]", "[App_Secret]"`
 
@@ -73,7 +73,7 @@ Copy the Consumer Key and Consumer Secret to the config/initializers/devise.rb l
 
 Copy the Client ID and Secret to the config/initializers/devise.rb line for github
 
-`config.omniauth :github, "[Client ID]", "Secret"`
+`config.omniauth :github, "[Client ID]", "[Secret]"`
 
 > This is not a listed Github item. To View and / or edit your applications goto [http://github.com/account/applications/]([http://github.com/account/applications/])
 
