@@ -47,12 +47,12 @@ describe OmniauthCallbacksController do
     end
   end
 
-  shared_examples_for "check_existing_user_auth" do
-    context "when existing user_auth" do
-      let(:user_auth) { mock("user_auth", :user => user) }
-      before { UserAuth.stub_chain :where, :first => user_auth }
+  shared_examples_for "check_existing_user_authentication" do
+    context "when existing user_authentication" do
+      let(:user_authentication) { mock("user_authentication", :user => user) }
+      before { UserAuthentication.stub_chain :where, :first => user_authentication }
 
-      it "should not not need to associate the UserAuth" do
+      it "should not not need to associate the UserAuthentication" do
         user.should_not_receive(:associate_auth)
         controller.facebook
       end
@@ -69,7 +69,7 @@ describe OmniauthCallbacksController do
     end
 
     context "when no existing user auth" do
-      before { UserAuth.stub_chain :where, :first => nil }
+      before { UserAuthentication.stub_chain :where, :first => nil }
 
       it "should asso. user with the source" do
         user.should_receive(:associate_auth).with(omni_params)
@@ -102,7 +102,7 @@ describe OmniauthCallbacksController do
       before { controller.stub :current_user => user }
 
       it_should_behave_like "denied_permissions"
-      it_should_behave_like "check_existing_user_auth"
+      it_should_behave_like "check_existing_user_authentication"
       it_should_behave_like "associate_order"
       it_should_behave_like "populate_from_omniauth"
       it_should_behave_like "authenticate_as_user"
@@ -112,7 +112,7 @@ describe OmniauthCallbacksController do
       before { controller.stub :current_user => nil }
 
       it_should_behave_like "denied_permissions"
-      it_should_behave_like "check_existing_user_auth"
+      it_should_behave_like "check_existing_user_authentication"
       it_should_behave_like "associate_order"
       it_should_behave_like "populate_from_omniauth"
       it_should_behave_like "authenticate_as_user"

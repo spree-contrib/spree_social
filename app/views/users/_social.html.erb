@@ -18,16 +18,16 @@
     </tr>
   </table>
 
-<% if @user.user_auths %>
-  <% unless @user.user_auths.empty? %>
+<% if @user.user_authentications %>
+  <% unless @user.user_authentications.empty? %>
     <p><strong>You have signed in with these services:</strong></p>
     <div class="authentications">
-      <% for user_auth in @user.user_auths %>
+      <% for user_authentication in @user.user_authentications %>
         <div class="authentication">
-          <%= image_tag "social/#{user_auth.provider}_32.png", :size => "32x32" %>
-          <div class="provider"><%= user_auth.provider %></div>
-          <div class="uid"><%= user_auth.nickname %></div>
-          <%= link_to( "X", user_auth, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete, :class => "remove") if @user.user_auths.size > 1 %>
+          <%= image_tag "social/#{user_authentication.provider}_32.png", :size => "32x32" %>
+          <div class="provider"><%= user_authentication.provider %></div>
+          <div class="uid"><%= user_authentication.nickname %></div>
+          <%= link_to( "X", user_authentication, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete, :class => "remove") if @user.user_authentications.size > 1 %>
         </div>
       <% end %>
       <div class="clear"></div>

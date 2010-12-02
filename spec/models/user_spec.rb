@@ -6,7 +6,7 @@ describe User do
 
   context "#associate_auth" do
     let(:auths) { mock "auths" }
-    before { user.stub :user_auths => auths }
+    before { user.stub :user_authentications => auths }
 
     context "when no such association currently exists" do
       before { auths.stub_chain :where, :count => 0 }

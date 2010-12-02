@@ -1,6 +1,6 @@
-class CreateUserAuths < ActiveRecord::Migration
+class CreateUserAuthentications < ActiveRecord::Migration
   def self.up
-    create_table :user_auths do |t|
+    create_table :user_authentications do |t|
       t.integer :user_id
       t.string :provider
       t.string :uid
