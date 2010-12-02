@@ -3,7 +3,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   include SpreeBase
   helper :users, 'spree/base'
 
-
   def facebook
     social_setups("Facebook")
   end
@@ -19,9 +18,8 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   private
 
   def social_setups(provider)
-    #store_location
     omniauth = request.env["omniauth.auth"]
-#logger.debug(omniauth.to_yaml)
+    
     if request.env["omniauth.error"].present?
       flash[:error] = t("devise.omniauth_callbacks.failure", :kind => provider, :reason => "user was not valid")
       redirect_back_or_default(root_url)
