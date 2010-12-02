@@ -46,7 +46,6 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
 
     sign_in_and_redirect(user, :event => :authentication)
-
   end
 
 end
