@@ -16,8 +16,6 @@ git clone https://github.com/spree/spree_social --depth 1
 
 add this to sandbox/Gemfile
 
-gem 'devise', :git => 'git://github.com/plataformatec/devise.git'
-
 gem "spree_social", :path => "../spree_social"
 
 bundle update

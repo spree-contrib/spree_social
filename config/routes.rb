@@ -4,5 +4,6 @@ Rails.application.routes.draw do
              :controllers => { :omniauth_callbacks => "omniauth_callbacks" },
              :skip => [:sessions, :registrations, :passwords, :unlocks]
   resources :user_authentications
-  
+
+  match 'account' => 'users#show', :as => 'user_root'
 end
