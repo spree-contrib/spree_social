@@ -1,6 +1,13 @@
 en:
   linked_accounts: Linked Accounts
   social_servers: Social Network Providers
+  social_methods: Social Network Providers
+  new_social_method: New Provider
+  edit_social_method: Edit Provider
+  social_provider: Authentication Source
+  social_enable_provider: Enable Authentication Source
+  social_api_key: Authentication API Key
+  social_api_secret: Authentication Secret
   devise:
     omniauth_callbacks:
       success: 'Successfully authorized from %{kind} account.'

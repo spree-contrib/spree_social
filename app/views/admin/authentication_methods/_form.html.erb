@@ -1,0 +1,49 @@
+<div class="yui-g">
+  <div class="yui-u first">
+      <p>
+        <label><%=t("environment")%></label>
+        <br/>
+        <%= f.collection_select(:environment,
+                                Configuration.configurations.keys.sort,
+                                :to_s, :titleize,
+                                {}, {:id => "gtwy-env"}) %>
+      </p>
+
+      <p>
+        <%= f.check_box :preferred_enable_authentication_method, {:style => "vertical-align:middle;"} %>
+        <label>
+          <%= t('social_enable_provider') %>
+        </label>
+      </p>
+
+      <p>
+        <label><%= t('social_provider') %></label><br />
+        <%= f.select :preferred_provider, AuthenticationMethod::PROVIDERS, {:include_blank => true} %>
+        <br/>
+        <span class="info">
+          <%= t("social_provider") %>
+        </span>
+      </p>
+
+      <p>
+        <label><%= t('social_api_key') %></label><br />
+        <%= f.text_field :preferred_api_key, :size => 40, :maxlength => 256 %>
+        <br/>
+        <span class="info">
+          <%= t("social_api_key") %>
+        </span>
+      </p>
+
+      <p>
+        <label><%= t('social_api_secret') %></label><br />
+        <%= f.text_field :preferred_api_secret, :size => 40, :maxlength => 256 %>
+        <br/>
+        <span class="info">
+          <%= t("social_api_secret") %>
+        </span>
+      </p>
+
+    </fieldset>
+
+  </div>
+</div>

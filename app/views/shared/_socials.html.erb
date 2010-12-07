@@ -1,9 +1,6 @@
 <% if !current_user || !current_user.user_authentications %>
   <h2>Sign in through one of these services:</h2>
 <% end %>
-<%= link_to(image_tag("social/twitter_64.png", :size => "64x64", :alt => "Twitter"), user_authentication_omniauth_authorize_path(:twitter)) %>
-<%= link_to(image_tag("social/facebook_64.png", :size => "64x64", :alt => "Facebook"), user_authentication_omniauth_authorize_path(:facebook)) %>
-<%= link_to(image_tag("social/linkedin_64.png", :size => "64x64", :alt => "LinkedIn"), "#", :onclick => "javascript:alert('Not just yet.')") %>
-<%= link_to(image_tag("social/github_64.png", :size => "64x64", :alt => "Github"), user_authentication_omniauth_authorize_path(:github)) %>
-<%= link_to(image_tag("social/google_64.png", :size => "64x64", :alt => "Google"), "#", :onclick => "javascript:alert('Not just yet.')") %>
-<%= link_to(image_tag("social/yahoo_64.png", :size => "64x64", :alt => "Yahoo!"), "#", :onclick => "javascript:alert('Not just yet.')") %>
+<% AuthenticationMethod.where(:environment => RAILS_ENV).each do |user| %>
+  <%= link_to(image_tag("social/#{user.preferred_provider}_64.png", :size => "64x64", :alt => "#{user.preferred_provider}"), user_authentication_omniauth_authorize_path(user.preferred_provider.to_sym)) %>
+<% end %>
