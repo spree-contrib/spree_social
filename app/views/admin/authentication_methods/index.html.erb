@@ -1,0 +1,42 @@
+<%= render :partial => 'admin/shared/configuration_menu' %>
+
+<div class='toolbar'>
+  <ul class='actions'>
+    <li>
+      <%= button_link_to t("new_social_method"), new_object_url, :icon => 'add'  %>
+    </li>
+  </ul>
+  <br class='clear' />
+</div>
+
+<h1><%= t("social_methods") %></h1>
+
+<table class="index">
+  <thead>
+    <%= hook :admin_social_methods_index_headers do %>
+      <th><%= t("environment") %></th>
+      <th><%= t("active") %></th>
+    <% end %>
+    <th>
+      <%= hook :admin_social_methods_index_header_actions %>
+    </th>
+  </thead>
+  <tbody>
+    <% @user_authentications.each do |method|%>
+      <tr id="<%= dom_id method %>">     
+        <%- locals = {:method => method} %>
+        <%= hook :admin_trackers_index_rows, locals do %>        
+          <td><%= method.provider %></td>
+          <td><%= method.api_key %></td>
+          <td><%= method.api_secret %></td>
+          <td><%= method.environment.to_s.titleize %></td>
+          <td><%= method.active ? t(:yes) : t(:no) %></td>
+        <% end %>
+        <td>
+        	<%= link_to_edit tracker %> &nbsp;
+        	<%= link_to_delete tracker %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

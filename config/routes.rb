@@ -6,4 +6,9 @@ Rails.application.routes.draw do
   resources :user_authentications
 
   match 'account' => 'users#show', :as => 'user_root'
+  
+  namespace :admin do
+    resources :authentication_methods
+  end
+  
 end

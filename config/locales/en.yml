@@ -1,5 +1,6 @@
 en:
   linked_accounts: Linked Accounts
+  social_servers: Social Network Providers
   devise:
     omniauth_callbacks:
       success: 'Successfully authorized from %{kind} account.'
