@@ -24,6 +24,18 @@ rake spree_social:install
 
 rake db:migrate
 
+Spree Setup to Utilize OAuth Sources
+------------------------------------
+
+Login as an admin user and navigate to Configuration > Social Network Providers
+
+Click on the New Provider button to enter the key obtained from their respective source
+(See below for instructions on setting up the various providers)
+
+Multiple key entries can now be entered based on the rails environment. This allows for portability and the lack of need to check in your key to your repository. You also have the ability to enable and disable sources. These setting will be reflected on the client UI as well.
+
+Please note that you will still need to restart you server after entering you keys. THis is required otherwise Devise and OmniAuth will not have the key pair available to them for use.
+
 Setup the Applications at the Respective Sources
 ------------------------------------------------
 
