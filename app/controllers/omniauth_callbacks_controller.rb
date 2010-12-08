@@ -26,23 +26,22 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       return
     end
 
-    if existing_auth = UserAuthentication.where(:provider => omniauth['provider'], :uid => omniauth['uid']).first
+    if existing_auth = UserAuthentication.where(:provider => omniauth['provider'], :uid => omniauth['uid'].to_s).first
       user = existing_auth.user
     else
       user = current_user
     end
 
     user ||= User.anonymous!
-    #user.populate_from_omniauth(omniauth)
 
-    user.associate_auth(omniauth) unless UserAuthentication.where(:provider => omniauth['provider'], :uid => omniauth['uid']).first
+    user.associate_auth(omniauth) unless UserAuthentication.where(:provider => omniauth['provider'], :uid => omniauth['uid'].to_s).first
 
     if current_order
       current_order.associate_user!(user)
       session[:guest_token] = nil
     end
 
-    sign_in_and_redirect(user, :event => :authentication)
+    current_user ? redirect_back_or_default(account_url) : sign_in_and_redirect(user, :event => :authentication)
   end
 
 end
