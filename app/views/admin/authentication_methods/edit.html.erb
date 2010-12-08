@@ -1,6 +1,7 @@
 <%= render :partial => 'admin/shared/configuration_menu' %>
 
-<h1><%= t("new_social_method") %></h1>
+<h1><%= t("edit_social_method") %></h1>
+<h4><%= t("edit_social_method_warning") %></h4>
 <%= render 'shared/error_messages', :target => @authentication_method %>
 
 <%= form_for(:authentication_method, :url => collection_url) do |f| %>
