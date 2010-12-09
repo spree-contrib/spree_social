@@ -34,7 +34,7 @@ task :test_app do
 <<-gems
         gem 'spree_core', :path => \'#{File.join(File.dirname(__FILE__), "../spree/", "core")}\'
         gem 'spree_auth', :path => \'#{File.join(File.dirname(__FILE__), "../spree/", "auth")}\'
-        gem 'devise', :git => 'git://github.com/plataformatec/devise.git'
+        gem 'devise', "1.2.rc"
         gem 'spree_social', :path => \'#{File.dirname(__FILE__)}\'
 gems
       end

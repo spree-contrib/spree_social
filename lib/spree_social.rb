@@ -24,12 +24,12 @@ module SpreeSocial
   # This way we can update them when and where necessary
   def self.init_provider(provider)
     key, secret = nil
-    AuthenticationMethod.where(:environment => RAILS_ENV).each do |user|
+    AuthenticationMethod.where(:environment => ::Rails.env).each do |user|
       if user.preferred_provider == provider
         key = user.preferred_api_key
         secret = user.preferred_api_secret
       end
-    end
+    end if self.table_exists?("authentication_method") # See Below for explanation
     self.setup_key_for(provider.to_sym, key, secret)
   end
   
@@ -37,7 +37,6 @@ module SpreeSocial
     Devise.setup do |oa|
       oa.omniauth provider.to_sym, key, secret
     end
-    #puts "Provider: #{provider}\nKey: #{key}\nSecret: #{secret}"
   end
   
   # Coming soon to a server near you: no restart to get new keys setup
@@ -49,5 +48,10 @@ module SpreeSocial
   #  puts "OmniAuth #{provider}: #{Devise.omniauth_configs[provider.to_sym].inspect}"
   #end
   
+  private
   
+  # Have to test for this cause Rails migrations and initial setups will fail
+  def self.table_exists?(name)
+    ActiveRecord::Base.connection.tables.include?(name)
+  end
 end
