@@ -29,7 +29,7 @@ module SpreeSocial
         key = user.preferred_api_key
         secret = user.preferred_api_secret
       end
-    end if self.table_exists?("authentication_method") # See Below for explanation
+    end if self.table_exists?("authentication_methods") # See Below for explanation
     self.setup_key_for(provider.to_sym, key, secret)
   end
   
