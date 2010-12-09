@@ -1,7 +1,11 @@
 UserRegistrationsController.class_eval do
   
   def create
-    session[:omniauth] = nil #unless @user.new_record?
+    super.tap do |u|
+      if @user && @user.new_record?
+        u.session[:omniauth] = nil unless @user.new_record?
+      end
+    end
   end
   
   def delete

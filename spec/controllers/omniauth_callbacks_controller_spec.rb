@@ -47,45 +47,9 @@ describe OmniauthCallbacksController do
     end
   end
 
-  shared_examples_for "check_existing_user_authentication" do
-    context "when existing user_authentication" do
-      let(:user_authentication) { mock("user_authentication", :user => user) }
-      before { UserAuthentication.stub_chain :where, :first => user_authentication }
-
-      it "should not not need to associate the UserAuthentication" do
-        user.should_not_receive(:associate_auth)
-        controller.facebook
-      end
-
-      it "should not create a new User account" do
-        User.should_not_receive :anonymous!
-        controller.facebook
-      end
-
-      it "should authenticate as that user" do
-        controller.should_receive(:sign_in_and_redirect).with(user, :event => :authentication)
-        controller.facebook
-      end
-    end
-
-    context "when no existing user auth" do
-      before { UserAuthentication.stub_chain :where, :first => nil }
-
-      it "should asso. user with the source" do
-        user.should_receive(:associate_auth).with(omni_params)
-        controller.facebook
-      end
-
-      it "should authenticate as that user" do
-        controller.should_receive(:sign_in_and_redirect).with(user, :event => :authentication)
-        controller.facebook
-      end
-    end
-  end
-
   shared_examples_for "populate_from_omniauth" do
     it "should populate from omniauth" do
-      user.should_receive(:populate_from_omniauth).with(omni_params)
+      user.should_receive(:associate_auth).with(omni_params)
       controller.facebook
     end
   end
@@ -96,23 +60,98 @@ describe OmniauthCallbacksController do
       controller.facebook
     end
   end
-
+  
+  shared_examples_for "do_not_authenticate_as_user" do
+    it "should not authenticate as that user" do
+      controller.should_receive(:redirect_back_or_default)
+      controller.facebook
+    end
+  end
+  
   context "#callback" do
     context "when user is authenticated" do
       before { controller.stub :current_user => user }
 
       it_should_behave_like "denied_permissions"
-      it_should_behave_like "check_existing_user_authentication"
+      
+      context "when existing user_authentication" do
+        let(:user_authentication) { mock("user_authentication", :user => user) }
+        before { UserAuthentication.stub_chain :where, :first => user_authentication }
+
+        it "should not not need to associate the UserAuthentication" do
+          user.should_not_receive(:associate_auth)
+          controller.facebook
+        end
+
+        it "should not create a new User account" do
+          User.should_not_receive :anonymous!
+          controller.facebook
+        end
+
+        it "should authenticate as that user" do
+          controller.should_receive(:redirect_back_or_default)
+          controller.facebook
+        end
+      end
+
+      context "when no existing user auth" do
+        before { UserAuthentication.stub_chain :where, :first => nil }
+
+        it "should asso. user with the source" do
+          user.should_receive(:associate_auth).with(omni_params)
+          controller.facebook
+        end
+
+        it "should not authenticate as that user" do
+          controller.should_receive(:redirect_back_or_default)
+          controller.facebook
+        end
+      end
+      
       it_should_behave_like "associate_order"
       it_should_behave_like "populate_from_omniauth"
-      it_should_behave_like "authenticate_as_user"
+      it_should_behave_like "do_not_authenticate_as_user"
     end
 
     context "when user is not authenticated" do
       before { controller.stub :current_user => nil }
 
       it_should_behave_like "denied_permissions"
-      it_should_behave_like "check_existing_user_authentication"
+      
+      context "when existing user_authentication" do
+        let(:user_authentication) { mock("user_authentication", :user => user) }
+        before { UserAuthentication.stub_chain :where, :first => user_authentication }
+
+        it "should not not need to associate the UserAuthentication" do
+          user.should_not_receive(:associate_auth)
+          controller.facebook
+        end
+
+        it "should not create a new User account" do
+          User.should_not_receive :anonymous!
+          controller.facebook
+        end
+
+        it "should authenticate as that user" do
+          controller.should_receive(:sign_in_and_redirect).with(user, :event => :authentication)
+          controller.facebook
+        end
+      end
+
+      context "when no existing user auth" do
+        before { UserAuthentication.stub_chain :where, :first => nil }
+
+        it "should asso. user with the source" do
+          user.should_receive(:associate_auth).with(omni_params)
+          controller.facebook
+        end
+
+        it "should not authenticate as that user" do
+          controller.should_receive(:sign_in_and_redirect).with(user, :event => :authentication)
+          controller.facebook
+        end
+      end
+      
       it_should_behave_like "associate_order"
       it_should_behave_like "populate_from_omniauth"
       it_should_behave_like "authenticate_as_user"
