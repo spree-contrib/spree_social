@@ -3,11 +3,7 @@
   <table>
     <tr>
       <% if @user.email.match(/\b([a-zA-Z0-9._%+-]+)@(example.net)/) %>
-        <%= form_for(:user, :url => object_url, :html => { :method => :put }) do |f| %>
-          <td><%= f.label :email, t("email") %></td>
-          <td><%= f.text_field :email, :value => "", :class => 'title'  %></td>
-          <td><%=submit_tag t("update") %></td>
-        <% end %>
+        <%= render :partial => 'users/email_form' %>
       <% else %>
       <td><%= t("email") %>:</td>
       <td>

@@ -1,0 +1,5 @@
+<%= form_for(:user, :url => user_path(user), :html => { :method => :put }) do |f| %>
+  <td><%= f.label :email, t("email") %></td>
+  <td><%= f.text_field :email, :value => omniauth["extra"]["user_hash"]["email"], :class => 'title'  %></td>
+  <td><%=submit_tag t("update") %></td>
+<% end %>
