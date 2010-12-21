@@ -1,0 +1,26 @@
+<% if flash[:error] %>
+  <div class="flash errors"><%= flash[:error] %></div>
+<% end %>
+
+<% @body_id = 'login' %>
+<div id="existing-customer">
+  <h2><%= t("login_as_existing") %></h2>
+  <%= hook :login do %>
+    <%= form_for(:user, :url => merge_user_path) do |f| %>
+      <%= hidden_field_tag(:user_authentication, current_user.user_authentications.first.id) %>
+      <%= f.hidden_field(:id) %>
+      <div id='password-credentials'>
+        <p>
+          <%= f.label(:email, t("email")) %><br />
+          <%= f.text_field('email', :class => 'title') %>
+        </p>
+        <p>
+          <%= f.label :password, t("password") %><br />
+          <%= f.password_field 'password', :class => 'title' %>
+        </p>
+      </div>
+    <p><%= submit_tag t("log_in"), :class => 'button primary'%></p>
+    <%= link_to t("forgot_password"), new_user_password_path %>
+    <% end %>
+  <% end %>
+</div>

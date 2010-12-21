@@ -14,6 +14,7 @@ module NavigationHelpers
       '/login'
     when /the products page/
       '/products'
+    #when /the user edit page/
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

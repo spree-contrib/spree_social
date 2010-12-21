@@ -1,10 +1,15 @@
 Rails.application.routes.draw do
   # We need to be tricky here or Devise loads up the defaults again.
-  devise_for :user_authentications,
-             :controllers => { :omniauth_callbacks => "omniauth_callbacks" },
-             :skip => [:sessions, :registrations, :passwords, :unlocks]
+  devise_for :user_authentications, 
+             :skip => [:registrations, :passwords, :unlocks],
+             :controllers => {:omniauth_callbacks => "omniauth_callbacks" }
+             
   resources :user_authentications
-
+  
+  devise_for :users, :controllers => { :sessions => 'user_sessions' } do
+    post "merge", :to => "user_sessions#merge", :as => "merge_user"
+  end
+  
   match 'account' => 'users#show', :as => 'user_root'
   
   namespace :admin do

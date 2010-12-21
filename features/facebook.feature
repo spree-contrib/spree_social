@@ -24,5 +24,5 @@ Feature: Facebook Account
     And I follow "Sign in with facebook"
     When I fill in "Email" with "username@example.com"
     And I press "Update"
-    Then I should be on the login page
+    Then I should be on the update user page
     And I should be asked to login with my password

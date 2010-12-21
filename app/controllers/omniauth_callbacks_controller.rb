@@ -45,7 +45,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if current_user 
       redirect_back_or_default(account_url)
     else
-      if user.is_anonymous?
+      if user.anonymous?
         sign_in(user, :event => :authentication)
         render(:template => "user_registrations/social_edit", :locals => {:user => user, :omniauth => omniauth})
       else
