@@ -75,9 +75,10 @@ Before do
       [
         200, {},
         {
-          :id         => '1111111111',
-          :link       => 'http://facebook.com/username',
-          :email      => 'username@example.com',
+          :id         => '111xxx222yyy333zzz',
+          :provider   => 'facebook',
+          :link       => 'http://facebook.com/bubbleboy',
+          :email      => 'boy@bubble.com',
           :first_name => 'User',
           :last_name  => 'Name'
         }.to_json

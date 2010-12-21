@@ -1,0 +1,18 @@
+<div id="existing-customer">
+  <table>
+    <tr>
+      <% if user.email.match(/\b([a-zA-Z0-9._%+-]+)@(example.net)/) %>
+        <%= form_for(:user, :url => user_path(user), :html => { :method => :put }) do |f| %>
+          <td><%= f.label :email, t("email") %></td>
+          <td><%= f.text_field :email, :value => omniauth["extra"]["user_hash"]["email"], :class => 'title'  %></td>
+          <td><%=submit_tag t("update") %></td>
+        <% end %>
+      <% else %>
+      <td><%= t("email") %>:</td>
+      <td>
+        <%= user.email %>
+      </td>
+      <td><p><%= link_to t('edit'), edit_account_path %></p></td>
+      <% end %>
+    </tr>
+  </table>

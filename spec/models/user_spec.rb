@@ -28,23 +28,4 @@ describe User do
 
   end
 
-  context "#populate_from_omniauth" do
-
-    context "when no email exists" do
-      it "should populate email from source" do
-        user.populate_from_omniauth omni_params
-        user.email.should == "bar@foo.com"
-      end
-    end
-
-    context "when email does exist" do
-      it "should not change email" do
-        user.email = "previous@example.com"
-        user.populate_from_omniauth omni_params
-        user.email.should_not == "bar@foo.com"
-      end
-    end
-
-  end
-
 end

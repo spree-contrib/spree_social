@@ -26,9 +26,10 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       return
     end
 
+    #signing back in from a social source
     if existing_auth = UserAuthentication.where(:provider => omniauth['provider'], :uid => omniauth['uid'].to_s).first
       user = existing_auth.user
-    else
+    else # adding a social source
       user = current_user
     end
 
@@ -44,10 +45,12 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if current_user 
       redirect_back_or_default(account_url)
     else
-      session[:user_return_to] == registration_path(user)
-      sign_in_and_redirect(user, :event => :authentication)
-      #sign_in(user, :event => :authentication)
-      #render(:template => "user_registrations/social_registrations", :locals => {:user => user, :omniauth => omniauth})
+      if user.is_anonymous?
+        sign_in(user, :event => :authentication)
+        render(:template => "user_registrations/social_edit", :locals => {:user => user, :omniauth => omniauth})
+      else
+        sign_in_and_redirect(user, :event => :authentication)
+      end
     end
   end
 
