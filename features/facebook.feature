@@ -24,5 +24,9 @@ Feature: Facebook Account
     And I follow "Sign in with facebook"
     When I fill in "Email" with "username@example.com"
     And I press "Update"
-    Then I should be on the update user page
-    And I should be asked to login with my password
+    Then I should see "There is already an account with that email"
+    When I fill in "Email" with "username@example.com"
+    And I fill in "Password" with "secret"
+    And I press "Log In"
+    Then I should be logged in
+    And I should be on the account page

@@ -21,8 +21,3 @@ Given /^I have an account with facebook$/ do
       )
   @user.save!
 end
-
-Then /^I should be asked to login with my password$/ do
-  pending # express the regexp above with the code you wish you had
-end
-
