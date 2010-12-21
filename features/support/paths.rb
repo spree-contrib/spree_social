@@ -12,6 +12,8 @@ module NavigationHelpers
       '/'
     when /the login page/
       '/login'
+    when /the products page/
+      '/products'
 
     # Add more mappings here.
     # Here is an example that pulls values out of the Regexp:

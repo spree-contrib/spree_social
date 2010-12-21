@@ -9,6 +9,19 @@ Given /^I am already signed up as "(.+)\/(.+)"$/ do |email, password|
     :password_confirmation => password)
 end
 
+Given /^I have an account with facebook$/ do
+  @user = User.create!(
+     :email                 => 'boy@bubble.com',
+     :password              => 'tinybubbles',
+     :password_confirmation => 'tinybubbles')
+  @user.user_authentications << UserAuthentication.create!(
+      :provider => 'facebook',
+      :uid => '111xxx222yyy333zzz',
+      :nickname => 'bubbleboy'
+      )
+  @user.save!
+end
+
 Then /^I should be asked to login with my password$/ do
   pending # express the regexp above with the code you wish you had
 end

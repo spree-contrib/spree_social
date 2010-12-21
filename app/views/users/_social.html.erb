@@ -3,7 +3,7 @@
   <table>
     <tr>
       <% if @user.email.match(/\b([a-zA-Z0-9._%+-]+)@(example.net)/) %>
-        <%= render :partial => 'users/email_form' %>
+        <%= render :partial => 'shared/social_registrations', :locals => {:user => @user, :omniauth => @omniauth} %>
       <% else %>
       <td><%= t("email") %>:</td>
       <td>

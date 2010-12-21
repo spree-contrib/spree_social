@@ -44,9 +44,10 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     if current_user 
       redirect_back_or_default(account_url)
     else
-      #sign_in_and_redirect(user, :event => :authentication)
-      sign_in(user, :event => :authentication)
-      render(:template => "user_registrations/social_registrations", :locals => {:user => user, :omniauth => omniauth})
+      session[:user_return_to] == registration_path(user)
+      sign_in_and_redirect(user, :event => :authentication)
+      #sign_in(user, :event => :authentication)
+      #render(:template => "user_registrations/social_registrations", :locals => {:user => user, :omniauth => omniauth})
     end
   end
 
