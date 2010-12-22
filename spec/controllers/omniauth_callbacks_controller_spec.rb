@@ -2,7 +2,7 @@ require 'spec_helper'
 
 describe OmniauthCallbacksController do
 
-  let(:user) {mock_model(User, :associate_auth => nil, :valid? => true, :populate_from_omniauth => nil)}
+  let(:user) {mock_model(User, :associate_auth => nil, :valid? => true, :populate_from_omniauth => nil, :anonymous? => false)}
   let(:omni_params) { mock("omni", :[] => nil) }
   let(:order) { mock_model(Order, :associate_user! => nil ) }
 
@@ -60,20 +60,20 @@ describe OmniauthCallbacksController do
       controller.facebook
     end
   end
-  
+
   shared_examples_for "do_not_authenticate_as_user" do
     it "should not authenticate as that user" do
       controller.should_receive(:redirect_back_or_default)
       controller.facebook
     end
   end
-  
+
   context "#callback" do
     context "when user is authenticated" do
       before { controller.stub :current_user => user }
 
       it_should_behave_like "denied_permissions"
-      
+
       context "when existing user_authentication" do
         let(:user_authentication) { mock("user_authentication", :user => user) }
         before { UserAuthentication.stub_chain :where, :first => user_authentication }
@@ -107,7 +107,7 @@ describe OmniauthCallbacksController do
           controller.facebook
         end
       end
-      
+
       it_should_behave_like "associate_order"
       it_should_behave_like "populate_from_omniauth"
       it_should_behave_like "do_not_authenticate_as_user"
@@ -117,7 +117,7 @@ describe OmniauthCallbacksController do
       before { controller.stub :current_user => nil }
 
       it_should_behave_like "denied_permissions"
-      
+
       context "when existing user_authentication" do
         let(:user_authentication) { mock("user_authentication", :user => user) }
         before { UserAuthentication.stub_chain :where, :first => user_authentication }
@@ -151,7 +151,7 @@ describe OmniauthCallbacksController do
           controller.facebook
         end
       end
-      
+
       it_should_behave_like "associate_order"
       it_should_behave_like "populate_from_omniauth"
       it_should_behave_like "authenticate_as_user"
