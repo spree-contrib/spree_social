@@ -11,6 +11,7 @@ en:
   social_enable_provider: Enable Authentication Source
   social_api_key: Authentication API Key
   social_api_secret: Authentication Secret
+  social_link: Please provide your email address to continue
   devise:
     omniauth_callbacks:
       success: 'Successfully authorized from %{kind} account.'

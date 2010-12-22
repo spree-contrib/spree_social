@@ -41,16 +41,14 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       current_order.associate_user!(user)
       session[:guest_token] = nil
     end
-
-    if current_user 
+    
+    if user.anonymous?
+      sign_in(user, :event => :authentication) unless current_user
+      render(:template => "user_registrations/social_edit", :locals => {:user => user, :omniauth => omniauth})
+    elsif current_user
       redirect_back_or_default(account_url)
     else
-      if user.anonymous?
-        sign_in(user, :event => :authentication)
-        render(:template => "user_registrations/social_edit", :locals => {:user => user, :omniauth => omniauth})
-      else
-        sign_in_and_redirect(user, :event => :authentication)
-      end
+      sign_in_and_redirect(user, :event => :authentication)
     end
   end
 

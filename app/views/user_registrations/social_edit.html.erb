@@ -1,1 +1,18 @@
-<%= render(:partial => "shared/social_registrations", :locals => {:user => user, :omniauth => omniauth}) %>
+<div id="existing-customer">
+  <table>
+    <tr>
+      <% if user.anonymous? %>
+        <%= form_for(:user, :url => user_path(user), :html => { :method => :put }) do |f| %>
+          <td><%= f.label :email, t("email") %></td>
+          <td><%= f.text_field :email, :class => 'title', :value => (omniauth["extra"]["user_hash"]["email"] unless omniauth.nil? ) %></td>
+          <td><%=submit_tag t("update") %></td>
+        <% end %>
+      <% else %>
+      <td><%= t("email") %>:</td>
+      <td>
+        <%= user.email %>
+      </td>
+      <td><p><%= link_to t('edit'), edit_account_path %></p></td>
+      <% end %>
+    </tr>
+  </table>

@@ -11,6 +11,10 @@ UserSessionsController.class_eval do
     user.user_authentications << UserAuthentication.find(params[:user_authentication])
     user.save!
     
+    if current_order
+      current_order.associate_user!(user)
+      session[:guest_token] = nil
+    end
     # trash the old anonymous that was created
     User.destroy(params[:user][:id])
     
