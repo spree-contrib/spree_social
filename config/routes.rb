@@ -2,7 +2,7 @@ Rails.application.routes.draw do
   # We need to be tricky here or Devise loads up the defaults again.
   devise_for :user_authentications, 
              :skip => [:registrations, :passwords, :unlocks],
-             :controllers => {:omniauth_callbacks => "omniauth_callbacks" }
+             :controllers => {:sessions => "user_sessions", :omniauth_callbacks => "omniauth_callbacks" }
              
   resources :user_authentications
   
