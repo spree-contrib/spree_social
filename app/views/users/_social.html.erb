@@ -23,7 +23,7 @@
           <%= image_tag "social/#{user_authentication.provider}_32.png", :size => "32x32" %>
           <div class="provider"><%= user_authentication.provider %></div>
           <div class="uid"><%= user_authentication.nickname %></div>
-          <%= link_to( "X", user_authentication, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete, :class => "remove") if @user.user_authentications.size > 1 %>
+          <%= link_to( "X", user_authentication, :confirm => 'Are you sure you want to remove this authentication option?', :method => :delete, :class => "remove") %>
         </div>
       <% end %>
       <div class="clear"></div>
