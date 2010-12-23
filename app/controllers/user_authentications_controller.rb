@@ -4,9 +4,9 @@ class UserAuthenticationsController < Spree::BaseController
     @user = User.find(params[:id])
     @user.email = params[:user][:email]
     if @user.save
-      redirect_back_or_default(product_path)
+      redirect_back_or_default(products_path)
     else
-      flash[:alert] = "There is already an account with that email. Please sign in to associate these accounts."
+      flash.now[:error] = "There is already an account with that email. Please sign in to associate these accounts."
       render(:template => 'users/merge')
     end
   end
