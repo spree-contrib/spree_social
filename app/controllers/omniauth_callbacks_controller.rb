@@ -25,9 +25,11 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       redirect_back_or_default(root_url)
       return
     end
-
+    
+    existing_auth = UserAuthentication.where(:provider => omniauth['provider'], :uid => omniauth['uid'].to_s).first
+    
     #signing back in from a social source
-    if existing_auth = UserAuthentication.where(:provider => omniauth['provider'], :uid => omniauth['uid'].to_s).first
+    if existing_auth 
       user = existing_auth.user
     else # adding a social source
       user = current_user
@@ -35,7 +37,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
     user ||= User.anonymous!
 
-    user.associate_auth(omniauth) unless UserAuthentication.where(:provider => omniauth['provider'], :uid => omniauth['uid'].to_s).first
+    user.associate_auth(omniauth) unless existing_auth
 
     if current_order
       current_order.associate_user!(user)
@@ -46,6 +48,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       sign_in(user, :event => :authentication) unless current_user
       render(:template => "user_registrations/social_edit", :locals => {:user => user, :omniauth => omniauth})
     elsif current_user
+      flash[:error] = "That #{omniauth['provider'].capitalize} account is attached to a another user." if existing_auth && (existing_auth.user != current_user)
       redirect_back_or_default(account_url)
     else
       sign_in_and_redirect(user, :event => :authentication)
