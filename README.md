@@ -6,13 +6,13 @@ Core for all Social media related functionality for Spree. The Spree Social gem 
 Setup
 -----
 
-git clone https://github.com/railsdog/spree --depth 1
+git clone git://github.com/railsdog/spree --depth 1
 
 cd spree
 
 rake sandbox (and get a sandwich)
 
-git clone https://github.com/spree/spree_social --depth 1
+git clone git://github.com/spree/spree_social --depth 1
 
 add this to sandbox/Gemfile
 
@@ -34,7 +34,7 @@ Click on the New Provider button to enter the key obtained from their respective
 
 Multiple key entries can now be entered based on the rails environment. This allows for portability and the lack of need to check in your key to your repository. You also have the ability to enable and disable sources. These setting will be reflected on the client UI as well.
 
-Please note that you will still need to restart you server after entering you keys. THis is required otherwise Devise and OmniAuth will not have the key pair available to them for use.
+Please note that you will still need to restart you server after entering you keys. This is required otherwise Devise and OmniAuth will not have the key pair available to them for use.
 
 Setup the Applications at the Respective Sources
 ------------------------------------------------
@@ -53,10 +53,6 @@ OAuth Applications @ Facebook, Twitter and / or Github are supported out of the 
 4. Site URL: http://your_computer.local:3000 for development / http://your-site.com for production
 5. Site domain: your-computer.local / your-site.com respectively
 
-Copy the Application ID and Application Secret to the config/initializers/devise.rb line for facebook
-
-`config.omniauth :facebook, "[App_ID]", "[App_Secret]"`
-
 ### Twitter
 
 [Twitter](http://dev.twitter.com/apps/new): [http://dev.twitter.com/apps/new](http://dev.twitter.com/apps/new)
@@ -68,10 +64,6 @@ Copy the Application ID and Application Secret to the config/initializers/devise
 5. Default Access Type: Read & Write
 6. Save Application
 
-Copy the Consumer Key and Consumer Secret to the config/initializers/devise.rb line for twitter
-
-`config.omniauth :twitter, "[Consumer Key]", "[Consumer Secret]"`
-
 ### Github
 
 [Github](http://github.com/account/applications/new): [http://github.com/account/applications/new](http://github.com/account/applications/new)
@@ -80,10 +72,6 @@ Copy the Consumer Key and Consumer Secret to the config/initializers/devise.rb l
 2. Main URL: http://your_computer.local:3000 for development / http://your-site.com for production
 3. Callback URL: http://your_computer.local:3000 for development / http://your-site.com for production
 4. Click Create
-
-Copy the Client ID and Secret to the config/initializers/devise.rb line for github
-
-`config.omniauth :github, "[Client ID]", "[Secret]"`
 
 > This is not a listed Github item. To View and / or edit your applications goto [http://github.com/account/applications/]([http://github.com/account/applications/])
 
