@@ -4,8 +4,7 @@ class AuthenticationMethod < ActiveRecord::Base
   preference :api_key, :string
   preference :api_secret, :string
   preference :environment, :string
-  preference :enable_authentication_method
-  
+
   #after_save :reset_devise
   #
   #private
