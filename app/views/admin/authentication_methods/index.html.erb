@@ -33,7 +33,7 @@
           <td><%= method.preferred_api_key %></td>
           <td><%= method.preferred_api_secret %></td>
           <td><%= method.environment.to_s.titleize %></td>
-          <td><%= method.active ? t(:yes) : t(:no) %></td>
+          <td><%= method.preferred_enable_authentication_method ? t(:yes) : t(:no) %></td>
         <% end %>
         <td>
         	<%= link_to_edit method %> &nbsp;

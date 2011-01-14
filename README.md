@@ -3,18 +3,9 @@ SpreeSocial
 
 Core for all Social media related functionality for Spree. The Spree Social gem handles authorization, account creation and association through social media sources such as, Twitter and Facebook. This requires the edge source of [Spree](https://github.com/railsdog/spree). This gem is beta at best and should be treated as such. Features and code base will change rapidly as this is under active development. Use with caution.
 
-Setup
------
-
-git clone git://github.com/railsdog/spree --depth 1
-
-cd spree
-
-rake sandbox (and get a sandwich)
-
-git clone git://github.com/spree/spree_social --depth 1
-
-add this to sandbox/Gemfile
+Setup for Production
+--------------------
+Add this to your gem file Gemfile
 
 gem "spree_social", :path => "../spree_social"
 
@@ -23,6 +14,7 @@ bundle update
 rake spree_social:install
 
 rake db:migrate
+
 
 Spree Setup to Utilize OAuth Sources
 ------------------------------------
@@ -34,7 +26,7 @@ Click on the New Provider button to enter the key obtained from their respective
 
 Multiple key entries can now be entered based on the rails environment. This allows for portability and the lack of need to check in your key to your repository. You also have the ability to enable and disable sources. These setting will be reflected on the client UI as well.
 
-Please note that you will still need to restart you server after entering you keys. This is required otherwise Devise and OmniAuth will not have the key pair available to them for use.
+Please note that you will still need to restart you server after entering you keys. This is required otherwise Devise and OmniAuth will not have the key pair available to them for use. Also if you are running Spree with SSL, make sure you setup you applications at the social network of you choice EXACTLY as it in seen in the browser, OAuth will fail if it experiences a local redirect through the various handshakes (e.g. if you have https://www.example.com as your domain for SSL, that is the URL that need to be uses as the domain at the OAuth source of your choice).
 
 Setup the Applications at the Respective Sources
 ------------------------------------------------
@@ -73,7 +65,7 @@ OAuth Applications @ Facebook, Twitter and / or Github are supported out of the 
 3. Callback URL: http://your_computer.local:3000 for development / http://your-site.com for production
 4. Click Create
 
-> This is not a listed Github item. To View and / or edit your applications goto [http://github.com/account/applications/]([http://github.com/account/applications/])
+> This does not seem to be a listed Github item right now. To View and / or edit your applications goto [http://github.com/account/applications/]([http://github.com/account/applications/])
 
 ### LinkedIn
 
@@ -86,6 +78,37 @@ OAuth Applications @ Facebook, Twitter and / or Github are supported out of the 
 ### Yahoo!
 
 > Coming Soon
+
+Setup for Development
+---------------------
+
+git clone git://github.com/railsdog/spree --depth 1
+
+cd spree
+
+rake sandbox (and get a sandwich)
+
+git clone git://github.com/spree/spree_social --depth 1
+
+add this to sandbox/Gemfile
+
+gem "spree_social", :path => "../spree_social"
+
+bundle update
+
+rake spree_social:install
+
+rake db:migrate
+
+Testing
+-------
+
+rake testapp inside of cloned spree_social folder
+
+cucumber features
+
+rspec spec
+
 
 Adding your own Auth Source
 ---------------------------

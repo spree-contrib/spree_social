@@ -46,9 +46,10 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     
     if user.anonymous?
       sign_in(user, :event => :authentication) unless current_user
+      flash[:notice] = t("one_more_step", :kind => omniauth['provider'].capitalize)
       render(:template => "user_registrations/social_edit", :locals => {:user => user, :omniauth => omniauth})
     elsif current_user
-      flash[:error] = "That #{omniauth['provider'].capitalize} account is attached to a another user." if existing_auth && (existing_auth.user != current_user)
+      flash[:error] = t("attach_error", :kind => omniauth['provider'].capitalize) if existing_auth && (existing_auth.user != current_user)
       redirect_back_or_default(account_url)
     else
       sign_in_and_redirect(user, :event => :authentication)
