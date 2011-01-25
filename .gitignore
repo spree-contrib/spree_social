@@ -5,6 +5,7 @@
 .idea
 .project
 Gemfile.lock
+pkg
 tmp
 nbproject
 *.swp
