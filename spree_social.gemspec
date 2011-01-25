@@ -10,7 +10,7 @@ Gem::Specification.new do |s|
   s.email             = 'jdilts@railsdog.com'
   s.homepage          = 'http://spreecommerce.com'
 
-  s.files        = Dir['CHANGELOG', 'README.md', 'LICENSE', 'lib/**/*', 'app/**/*']
+  s.files        = Dir['CHANGELOG', 'README.md', 'LICENSE', 'lib/**/*', 'app/**/*', 'db/**/*', 'public/**/*']
   s.require_path = 'lib'
   s.requirements << 'none'
 
