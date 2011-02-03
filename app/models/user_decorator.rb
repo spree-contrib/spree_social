@@ -1,4 +1,6 @@
 User.class_eval do
+  token_resource
+
   has_many :user_authentications
 
   # Associates user to auth source

@@ -12,8 +12,8 @@ en:
   social_api_key: Authentication API Key
   social_api_secret: Authentication Secret
   social_link: Please provide your email address to continue
-  attach_error: 'One more step to complete your registration from %{kind}'
-  one_more_step: 'That %{kind} account is attached to a another user.'
+  attach_error: 'That %{kind} account is attached to a another user.'
+  one_more_step: 'One more step to complete your registration from %{kind}'
   devise:
     omniauth_callbacks:
       success: 'Successfully authorized from %{kind} account.'

@@ -2,7 +2,7 @@
 <div id="existing-customer">
   <h2><%= t("login_as_existing") %></h2>
   <%= form_for(:user, :url => merge_user_path) do |f| %>
-    <%= hidden_field_tag(:user_authentication, current_user.user_authentications.first.id) %>
+    <%= hidden_field_tag(:user_authentication, @user.user_authentications.first.id) %>
     <%= f.hidden_field(:id) %>
     <div id='password-credentials'>
       <p>
