@@ -18,6 +18,5 @@ Gem::Specification.new do |s|
 
   s.add_dependency('spree_core', '>= 0.40.0')
   s.add_dependency('spree_auth', '>= 0.40.0')
-  s.add_dependency('devise', '1.2.rc')
   s.add_dependency('oa-oauth', '>= 0.1.6')
 end
