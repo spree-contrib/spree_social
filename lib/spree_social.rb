@@ -5,10 +5,11 @@ require "spree_social_hooks"
 
 module SpreeSocial
 
-  PROVIDERS = [
-    "facebook",
-    "twitter",
-    "github"
+  OAUTH_PROVIDERS = [
+    "bitly", "dailymile", "doit", "dopplr", "evernote", "facebook", "foursquare", "github", "goodreads",
+    "google", "gowalla", "hyves", "identica", "instagram", "instapaper", "linked_in", "meetup", "miso", "mixi",
+    "netflix","smug_mug", "sound_cloud", "thirty_seven_signals", "trade_me", "trip_it", "twitter", "type_pad",
+    "vimeo", "yahoo", "you_tube"
   ]
 
   class Engine < Rails::Engine

@@ -79,6 +79,16 @@ OAuth Applications @ Facebook, Twitter and / or Github are supported out of the 
 
 > Coming Soon
 
+### 37 Signals
+
+[37 Signals](https://integrate.37signals.com): [https://integrate.37signals.com](https://integrate.37signals.com)
+
+> This include Basecamp, HighRise, Campfire, and Backpack. It is referred to as Basecamp in the admin
+
+1. Name The Application, Your Company, and Your URL
+2. Check one or all of the 37 Signals apps you use
+3. Redirect URI (at the bottom of the page) http://your_computer.local:3000
+
 Setup for Development
 ---------------------
 

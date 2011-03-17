@@ -18,7 +18,7 @@
 
       <p>
         <label><%= t('social_provider') %></label><br />
-        <%= f.select :preferred_provider, SpreeSocial::PROVIDERS, {:include_blank => true} %>
+        <%= f.select :preferred_provider, SpreeSocial::OAUTH_PROVIDERS, {:include_blank => true} %>
         <br/>
         <span class="info">
           <%= t("social_provider") %>

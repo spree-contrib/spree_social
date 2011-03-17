@@ -3,17 +3,24 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   include SpreeBase
   helper :users, 'spree/base'
 
-  def facebook
-    social_setups("Facebook")
+  OAUTH_PROVIDERS.each do |provider|
+    method_name = (provider).to_sym
+    send :define_method, method_name do 
+      social_setup(provider.capitalize)
+    end
   end
-
-  def twitter
-    social_setups("Twitter")
-  end
-
-  def github
-    social_setups("Github")
-  end
+  
+  #def facebook
+  #  social_setups("Facebook")
+  #end
+  #
+  #def twitter
+  #  social_setups("Twitter")
+  #end
+  #
+  #def github
+  #  social_setups("Github")
+  #end
 
   private
 
