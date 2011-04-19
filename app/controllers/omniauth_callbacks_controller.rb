@@ -3,10 +3,10 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   include SpreeBase
   helper :users, 'spree/base'
 
-  OAUTH_PROVIDERS.each do |provider|
-    method_name = (provider).to_sym
+  SpreeSocial::OAUTH_PROVIDERS.each do |provider|
+    method_name = (provider[1]).to_sym
     send :define_method, method_name do 
-      social_setup(provider.capitalize)
+      social_setup(provider[1].capitalize)
     end
   end
   
@@ -24,7 +24,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   private
 
-  def social_setups(provider)
+  def social_setup(provider)
     omniauth = request.env["omniauth.auth"]
 
     if request.env["omniauth.error"].present?

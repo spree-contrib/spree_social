@@ -6,11 +6,13 @@ require "spree_social_hooks"
 module SpreeSocial
 
   OAUTH_PROVIDERS = [
-    "bitly", "dailymile", "doit", "dopplr", "evernote", "facebook", "foursquare", "github", "goodreads",
-    "google", "gowalla", "hyves", "identica", "instagram", "instapaper", "linked_in", "meetup", "miso", "mixi",
-    "netflix","smug_mug", "sound_cloud", "thirty_seven_signals", "trade_me", "trip_it", "twitter", "type_pad",
-    "vimeo", "yahoo", "you_tube"
+    ["Bit.ly", "bitly"], ["Evernote", "evernote"], ["Facebook", "facebook"], ["Foursquare", "foursquare"],
+    ["Github", "github"], ["Google", "google"] , ["Gowalla", "gowalla"], ["instagr.am", "instagram"],
+    ["Instapaper", "instapaper"], ["LinkedIn", "linked_in"], ["37Signals (Basecamp, Campfire, etc)", "thirty_seven_signals"],
+    ["Twitter", "twitter"], ["Vimeo", "vimeo"], ["Yahoo!", "yahoo"], ["YouTube", "you_tube"]
   ]
+
+
 
   class Engine < Rails::Engine
     def self.activate
@@ -27,12 +29,13 @@ module SpreeSocial
   def self.init_provider(provider)
     key, secret = nil
     AuthenticationMethod.where(:environment => ::Rails.env).each do |user|
-      if user.preferred_provider == provider
+      if user.preferred_provider == provider[1]
         key = user.preferred_api_key
         secret = user.preferred_api_secret
+        puts("Loaded #{user.preferred_provider.capitalize} as authentication source")
       end
     end if self.table_exists?("authentication_methods") # See Below for explanation
-    self.setup_key_for(provider.to_sym, key, secret)
+    self.setup_key_for(provider[1].to_sym, key, secret)
   end
 
   def self.setup_key_for(provider, key, secret)
