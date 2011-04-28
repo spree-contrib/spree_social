@@ -32,7 +32,7 @@ module SpreeSocial
       if user.preferred_provider == provider[1]
         key = user.preferred_api_key
         secret = user.preferred_api_secret
-        puts("Loaded #{user.preferred_provider.capitalize} as authentication source")
+        puts("[Spree Social] Loading #{user.preferred_provider.capitalize} as authentication source")
       end
     end if self.table_exists?("authentication_methods") # See Below for explanation
     self.setup_key_for(provider[1].to_sym, key, secret)

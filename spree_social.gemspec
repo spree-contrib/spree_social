@@ -18,6 +18,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency('spree_core', '>= 0.40.0')
   s.add_dependency('spree_auth', '>= 0.40.0')
-  s.add_dependency('oa-oauth', '>= 0.2.2')
+  s.add_dependency('oa-oauth', '>= 0.2.4')
   s.add_dependency('evernote')
 end
