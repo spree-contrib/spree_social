@@ -20,7 +20,7 @@
     <div class="authentications">
       <% for user_authentication in @user.user_authentications %>
         <div class="authentication">
-          <%= image_tag "social/#{user_authentication.provider}_32.png", :size => "32x32" %>
+          <%= image_tag File.exist?(::Rails.root+"public/images/social/#{user.preferred_provider}_32.png") ? "social/#{user.preferred_provider}_32.png" : "social/spree_32.png", :size => "32x32" %>
           <div class="provider"><%= user_authentication.provider %></div>
           <div class="uid"><%= user_authentication.nickname %></div>
           <%= link_to( "X", user_authentication, :confirm => t(:remove_authentication_option_confirmation), :method => :delete, :class => "remove") %>

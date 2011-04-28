@@ -4,23 +4,17 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   helper :users, 'spree/base'
 
 
+  SpreeSocial::OAUTH_PROVIDERS.each do |provider|
+    method_name = (provider[1]).to_sym
+    send :define_method, method_name do
+      social_setup(provider[1].capitalize)
+    end
+  end
+
   def failure
     set_flash_message :alert, :failure, :kind => failed_strategy.name.to_s.humanize, :reason => failure_message
     redirect_to after_omniauth_failure_path_for(:user)
   end
-
-
-  SpreeSocial::OAUTH_PROVIDERS.each do |provider|
-    method_name = (provider[1]).to_sym
-    send :define_method, method_name do
-      begin
-        social_setup(provider[1].capitalize)
-      rescue
-        redirect_back_or_default(login_url)
-      end
-    end
-  end
-
  
   private
 
