@@ -7,7 +7,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   SpreeSocial::OAUTH_PROVIDERS.each do |provider|
     method_name = (provider[1]).to_sym
     send :define_method, method_name do
-      social_setup(provider[1].capitalize)
+      social_setup(provider[0])
     end
   end
 
