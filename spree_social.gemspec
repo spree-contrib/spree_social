@@ -1,7 +1,7 @@
 Gem::Specification.new do |s|
   s.platform    = Gem::Platform::RUBY
   s.name        = 'spree_social'
-  s.version     = '1.1.2'
+  s.version     = '1.2'
   s.summary     = 'Adds social network login services (OAuth) to Spree'
   #s.description = 'Add (optional) gem description here'
   s.required_ruby_version = '>= 1.8.7'

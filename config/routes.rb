@@ -3,14 +3,12 @@ Rails.application.routes.draw do
   devise_for :user_authentications, 
              :skip => [:registrations, :unlocks],
              :controllers => {:passwords => "user_passwords",
-                              :sessions => "user_sessions", 
-                              :omniauth_callbacks => "omniauth_callbacks" }
-             
-  resources :user_authentications
-  
-  devise_for :user_authentications, :controllers => { :sessions => 'user_sessions' } do
+                              :sessions => "user_sessions",
+                              :omniauth_callbacks => "omniauth_callbacks" } do
     post "merge", :to => "user_sessions#merge", :as => "merge_user"
   end
+
+  resources :user_authentications
   
   match 'account' => 'users#show', :as => 'user_root'
   
