@@ -15,7 +15,7 @@ en:
   remove_authentication_option_confirmation: 'Are you sure you want to remove this authentication option?'
   sign_in_through_one_of_these_services: Sign in through one of these services
   sign_in_to_associate_with_existing_email: 'There is already an account with that email. Please sign in to associate these accounts.'
-  sign_in_with: Sign in with
+  sign_in_with_provider: 'Sign in with %{provider}'
   social_api_key: Authentication API Key
   social_api_secret: Authentication Secret
   social_enable_provider: Enable Authentication Source
