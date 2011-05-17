@@ -17,7 +17,7 @@ UserSessionsController.class_eval do
     User.destroy(params[:user][:id])
 
     # tell the truth now
-    flash[:alert] = "Succesfully linked your accounts"
+    flash[:alert] = I18n.t(:successfully_linked_your_accounts)
     sign_in_and_redirect(user, :event => :authentication)
   end
 
