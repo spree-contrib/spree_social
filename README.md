@@ -67,18 +67,6 @@ OAuth Applications @ Facebook, Twitter and / or Github are supported out of the 
 
 > This does not seem to be a listed Github item right now. To View and / or edit your applications goto [http://github.com/account/applications/]([http://github.com/account/applications/])
 
-### LinkedIn
-
-> Coming Soon
-
-### Google / GMail
-
-> Coming Soon
-
-### Yahoo!
-
-> Coming Soon
-
 ### 37 Signals
 
 [37 Signals](https://integrate.37signals.com): [https://integrate.37signals.com](https://integrate.37signals.com)
@@ -88,6 +76,20 @@ OAuth Applications @ Facebook, Twitter and / or Github are supported out of the 
 1. Name The Application, Your Company, and Your URL
 2. Check one or all of the 37 Signals apps you use
 3. Redirect URI (at the bottom of the page) http://your_computer.local:3000
+
+### Other OAuth sources that a currently supported
+
+* Bit.ly
+* Evernote
+* Foursquare
+* Google (OAuth)
+* Gowalla
+* instagr.am
+* Instapaper
+* LinkedIn
+* Vimeo
+* Yahoo!
+* YouTube
 
 Setup for Development
 ---------------------
@@ -123,7 +125,7 @@ rspec spec
 Adding your own Auth Source
 ---------------------------
 
-> Coming Soon
+> Most auth sources supported by the Omniauth gem can be added. I attempt to keep the popular ones included and tested.
 
 
 Copyright (c) 2010 John Brien Dilts, released under the New BSD License
