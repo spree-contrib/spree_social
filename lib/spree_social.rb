@@ -1,7 +1,6 @@
 require 'spree_core'
 require 'spree_auth'
 require 'omniauth/oauth'
-require "spree_social_hooks"
 
 module SpreeSocial
 

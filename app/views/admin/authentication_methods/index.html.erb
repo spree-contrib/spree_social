@@ -12,29 +12,22 @@
 <h1><%= t("social_methods") %></h1>
 
 <table class="index">
-  <thead>
-    <%= hook :admin_social_methods_index_headers do %>
-      <th><%= t("provider") %></th>
-      <th><%= t("social_api_key") %></th>
-      <th><%= t("social_api_secret") %></th>
-      <th><%= t("environment") %></th>
-      <th><%= t("active") %></th>
-    <% end %>
-    <th>
-      <%= hook :admin_social_methods_index_header_actions %>
-    </th>
+  <thead data-hook="admin_social_methods_index_headers">
+    <th><%= t("provider") %></th>
+    <th><%= t("social_api_key") %></th>
+    <th><%= t("social_api_secret") %></th>
+    <th><%= t("environment") %></th>
+    <th><%= t("active") %></th>
+    <th data-hook="admin_social_methods_index_header_actions">&nbsp;</th>
   </thead>
   <tbody>
     <% @authentication_methods.each do |method|%>
-      <tr id="<%= dom_id method %>">     
-        <%- locals = {:method => method} %>
-        <%= hook :admin_trackers_index_rows, locals do %>        
-          <td><%= method.preferred_provider %></td>
-          <td><%= method.preferred_api_key %></td>
-          <td><%= method.preferred_api_secret %></td>
-          <td><%= method.environment.to_s.titleize %></td>
-          <td><%= method.active ? t(:yes) : t(:no) %></td>
-        <% end %>
+      <tr id="<%= dom_id method %>" data-hook="admin_trackers_index_rows">
+        <td><%= method.preferred_provider %></td>
+        <td><%= method.preferred_api_key %></td>
+        <td><%= method.preferred_api_secret %></td>
+        <td><%= method.environment.to_s.titleize %></td>
+        <td><%= method.active ? t(:yes) : t(:no) %></td>
         <td>
         	<%= link_to_edit method %> &nbsp;
         	<%= link_to_delete method %>
