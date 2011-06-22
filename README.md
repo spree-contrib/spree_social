@@ -115,7 +115,7 @@ rake db:migrate
 Testing
 -------
 
-rake testapp inside of cloned spree_social folder
+rake test_app inside of cloned spree_social folder
 
 cucumber features
 

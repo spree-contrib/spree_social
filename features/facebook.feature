@@ -30,3 +30,16 @@ Feature: Facebook Account
     And I press "Log In"
     Then I should be logged in
     And I should be on the account page
+
+  Scenario: User enters an existing account's email
+    Given I am already signed up as "username@example.com/secret"
+    Given I go to to the login page
+    And I follow "Sign in with facebook"
+    When I fill in "Email" with "username@example.com"
+    And I press "Update"
+    Then I should see "There is already an account with that email"
+    When I fill in "Email" with "username@example.com"
+    And I fill in "Password" with "sinterklaas"
+    And I press "Log In"
+    Then I should see "Invalid email or password."
+    And I should be on the merge page
