@@ -1,5 +1,9 @@
 <% if !current_user || !current_user.user_authentications %>
+<<<<<<< HEAD
   <h2>Sign in through one of these services:</h2>
+=======
+  <h2><%= t(:sign_in_through_one_of_these_services) %>:</h2>
+>>>>>>> Merge branch 'master' of github.com:spree/spree_social
 <% end %>
 <% AuthenticationMethod.where(:environment => ::Rails.env).each do |user| %>
   <%- img = File.exist?(::Rails.root+"public/images/social/#{user.preferred_provider}_32.png") ? "social/#{user.preferred_provider}_32.png" : "social/spree_32.png" -%>

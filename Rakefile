@@ -34,7 +34,10 @@ task :test_app do
 <<-gems
         gem 'spree_core', :path => \'#{File.join(File.dirname(__FILE__), "../spree/", "core")}\'
         gem 'spree_auth', :path => \'#{File.join(File.dirname(__FILE__), "../spree/", "auth")}\'
+<<<<<<< HEAD
         gem 'devise', "1.2.rc2"
+=======
+>>>>>>> Merge branch 'master' of github.com:spree/spree_social
         gem 'spree_social', :path => \'#{File.dirname(__FILE__)}\'
 gems
       end

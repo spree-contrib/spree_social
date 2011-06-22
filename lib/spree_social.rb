@@ -1,7 +1,10 @@
 require 'spree_core'
 require 'spree_auth'
 require 'omniauth/oauth'
+<<<<<<< HEAD
 require "spree_social_hooks"
+=======
+>>>>>>> Merge branch 'master' of github.com:spree/spree_social
 
 module SpreeSocial
 
@@ -9,7 +12,11 @@ module SpreeSocial
     ["Bit.ly", "bitly"], ["Evernote", "evernote"], ["Facebook", "facebook"], ["Foursquare", "foursquare"],
     ["Github", "github"], ["Google", "google"] , ["Gowalla", "gowalla"], ["instagr.am", "instagram"],
     ["Instapaper", "instapaper"], ["LinkedIn", "linked_in"], ["37Signals (Basecamp, Campfire, etc)", "thirty_seven_signals"],
+<<<<<<< HEAD
     ["Twitter", "twitter"], ["Vimeo", "vimeo"], ["Yahoo!", "yahoo"], ["YouTube", "you_tube"]
+=======
+    ["Twitter", "twitter"], ["Vimeo", "vimeo"], ["Yahoo!", "yahoo"], ["YouTube", "you_tube"], ["Vkontakte", "vkontakte"]
+>>>>>>> Merge branch 'master' of github.com:spree/spree_social
   ]
 
 

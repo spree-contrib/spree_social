@@ -1,4 +1,5 @@
 en:
+<<<<<<< HEAD
   linked_accounts: Linked Accounts
   social_servers: Social Network Providers
   social_servers_description: Configure Social Networks for login authorizations.
@@ -14,8 +15,37 @@ en:
   social_link: Please provide your email address to continue
   attach_error: 'That %{kind} account is attached to a another user.'
   one_more_step: 'One more step to complete your registration from %{kind}'
+=======
+  add_another_service_to_sign_in_with: Add another service to sign in with
+  attach_error: 'That %{kind} account is attached to a another user.'
+>>>>>>> Merge branch 'master' of github.com:spree/spree_social
   devise:
     omniauth_callbacks:
       success: 'Successfully authorized from %{kind} account.'
       failure: 'Could not authorize you from %{kind} because "%{reason}".'
+<<<<<<< HEAD
       
+=======
+  edit_social_method: Edit Provider
+  edit_social_method_warning: You must restart Spree if you change your key and / or secert for the change to take effect
+  linked_accounts: Linked Accounts
+  new_social_method: New Provider
+  new_social_method_warning: You must restart Spree for these changes to take effect
+  one_more_step: 'One more step to complete your registration from %{kind}'
+  reason_user_was_not_valid: user was not valid
+  remove_authentication_option_confirmation: 'Are you sure you want to remove this authentication option?'
+  sign_in_through_one_of_these_services: Sign in through one of these services
+  sign_in_to_associate_with_existing_email: 'There is already an account with that email. Please sign in to associate these accounts.'
+  sign_in_with_provider: 'Sign in with %{provider}'
+  social_api_key: Authentication API Key
+  social_api_secret: Authentication Secret
+  social_enable_provider: Enable Authentication Source
+  social_link: Please provide your email address to continue
+  social_methods: Social Network Providers
+  social_provider: Authentication Source
+  social_servers: Social Network Providers
+  social_servers_description: Configure Social Networks for login authorizations.
+  successfully_linked_your_accounts: Succesfully linked your accounts
+  successfully_deleted_authentication_source: Successfully deleted authentication source
+  you_have_signed_in_with_these_services: You have signed in with these services
+>>>>>>> Merge branch 'master' of github.com:spree/spree_social
