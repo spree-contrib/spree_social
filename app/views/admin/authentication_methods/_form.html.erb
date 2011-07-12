@@ -11,13 +11,11 @@
 
       <p>
         <%= f.check_box :active, {:style => "vertical-align:middle;"} %>
-        <label>
-          <%= t('social_enable_provider') %>
-        </label>
+        <%= f.label :active, t('social_enable_provider') %>
       </p>
 
       <p>
-        <label><%= t('social_provider') %></label><br />
+        <%= f.label :preferred_provider, t('social_provider') %><br />
         <%= f.select :preferred_provider, SpreeSocial::OAUTH_PROVIDERS, {:include_blank => true} %>
         <br/>
         <span class="info">
@@ -26,7 +24,7 @@
       </p>
 
       <p>
-        <label><%= t('social_api_key') %></label><br />
+        <%= f.label :preferred_api_key, t('social_api_key') %><br />
         <%= f.text_field :preferred_api_key, :size => 40, :maxlength => 256 %>
         <br/>
         <span class="info">
@@ -35,7 +33,7 @@
       </p>
 
       <p>
-        <label><%= t('social_api_secret') %></label><br />
+        <%= f.label :preferred_api_secret, t('social_api_secret') %><br />
         <%= f.text_field :preferred_api_secret, :size => 40, :maxlength => 256 %>
         <br/>
         <span class="info">
