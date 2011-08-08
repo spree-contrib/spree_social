@@ -5,9 +5,8 @@ require 'omniauth/oauth'
 module SpreeSocial
 
   OAUTH_PROVIDERS = [
-    ["Bit.ly", "bitly"], 
-    ["Evernote", "evernote"], 
-    ["Facebook", "facebook"], 
+    ["Bit.ly", "bitly"],
+    ["Facebook", "facebook"],
     ["Foursquare", "foursquare"],
     ["Github", "github"], 
     ["Google", "google"] , 
@@ -25,8 +24,6 @@ module SpreeSocial
     ["Blogger", "blogger"],
     ["Dropbox", "dropbox"]
   ]
-
-
 
   class Engine < Rails::Engine
     def self.activate
