@@ -16,6 +16,6 @@ Gem::Specification.new do |s|
 
   s.add_dependency('spree_core', '>= 0.60.0.RC1')
   s.add_dependency('spree_auth', '>= 0.60.0.RC1')
-  s.add_dependency('omniauth', '>= 0.2.6')
+  s.add_dependency('oa-oauth', '>= 0.2.2') # we don't need all of the omniauth family just the oAuth stuff'
 
 end
