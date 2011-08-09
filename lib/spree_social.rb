@@ -43,7 +43,7 @@ module SpreeSocial
       if user.preferred_provider == provider
         key = user.preferred_api_key
         secret = user.preferred_api_secret
-        ::Rails.logger.info("[Spree Social] Loading #{user.preferred_provider.capitalize} as authentication source")
+        puts("[Spree Social] Loading #{user.preferred_provider.capitalize} as authentication source")
       end
     end if self.table_exists?("authentication_methods") # See Below for explanation
     self.setup_key_for(provider.to_sym, key, secret)
