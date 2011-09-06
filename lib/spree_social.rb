@@ -26,6 +26,8 @@ module SpreeSocial
   ]
 
   class Engine < Rails::Engine
+    engine_name 'spree_social'
+
     def self.activate
       Dir.glob(File.join(File.dirname(__FILE__), "../app/**/*_decorator*.rb")) do |c|
         Rails.env.production? ? require(c) : load(c)
