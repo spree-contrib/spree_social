@@ -14,29 +14,25 @@
     </tr>
   </table>
 
-<% if @user.user_authentications %>
-  <% unless @user.user_authentications.empty? %>
-    <p><strong><%= t(:you_have_signed_in_with_these_services) %>:</strong></p>
-    <div class="authentications">
-      <% for user_authentication in @user.user_authentications %>
-        <div class="authentication">
-          <%= image_tag File.exist?(::Rails.root+"public/images/social/#{user_authentication.provider}_32.png") ? "social/#{user_authentication.provider}_32.png" : "social/spree_32.png", :size => "32x32" %>
-          <div class="provider"><%= user_authentication.provider %></div>
-          <div class="uid"><%= user_authentication.nickname %></div>
-          <%= link_to( "X", user_authentication, :confirm => t(:remove_authentication_option_confirmation), :method => :delete, :class => "remove") %>
-        </div>
-      <% end %>
-      <div class="clear"></div>
-    </div>
-  <% end %>
-</div>
-  <p><strong><%= t(:add_another_service_to_sign_in_with) %>:</strong></p>
-<% end %>
+  <% if @user.user_authentications %>
+    <% unless @user.user_authentications.empty? %>
+      <p><strong><%= t(:you_have_signed_in_with_these_services) %>:</strong></p>
+      <div class="authentications">
+        <% for user_authentication in @user.user_authentications %>
+          <div class="authentication">
+            <%= image_tag File.exist?(::Rails.root+"public/images/social/#{user_authentication.provider}_32.png") ? "social/#{user_authentication.provider}_32.png" : "social/spree_32.png", :size => "32x32" %>
+            <div class="provider"><%= user_authentication.provider %></div>
+            <div class="uid"><%= user_authentication.nickname %></div>
+            <%= link_to( "X", user_authentication, :confirm => t(:remove_authentication_option_confirmation), :method => :delete, :class => "remove") %>
+          </div>
+        <% end %>
+        <div class="clear"></div>
+      </div>
+    <% end %>
 
-<%= render :partial => "shared/socials" %>
+    <p><strong><%= t(:add_another_service_to_sign_in_with) %>:</strong></p>
+  <% end %>
+  <%= render :partial => "shared/socials" %>
+</div>
 
 <div class="clear"></div>
-
-<% content_for :head do %>
-  <%= stylesheet_link_tag 'social.css' %>  
-<% end %>
