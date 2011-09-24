@@ -3,7 +3,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
   include SpreeBase
   helper :users, 'spree/base'
 
-
+  
   SpreeSocial::OAUTH_PROVIDERS.each do |provider|
     method_name = (provider[1]).to_sym
     send :define_method, method_name do

@@ -9,7 +9,7 @@ module SpreeSocial
     ["Bit.ly", "bitly"], ["Evernote", "evernote"], ["Facebook", "facebook"], ["Foursquare", "foursquare"],
     ["Github", "github"], ["Google", "google"] , ["Gowalla", "gowalla"], ["instagr.am", "instagram"],
     ["Instapaper", "instapaper"], ["LinkedIn", "linked_in"], ["37Signals (Basecamp, Campfire, etc)", "thirty_seven_signals"],
-    ["Twitter", "twitter"], ["Vimeo", "vimeo"], ["Yahoo!", "yahoo"], ["YouTube", "you_tube"]
+    ["Twitter", "twitter"], ["Vimeo", "vimeo"], ["Yahoo!", "yahoo"], ["YouTube", "you_tube"], ["Vkontakte","vkontakte"], ["Mailru", 'mailru']
   ]
 
 
@@ -27,20 +27,22 @@ module SpreeSocial
   # We are setting these providers up regardless
   # This way we can update them when and where necessary
   def self.init_provider(provider)
-    key, secret = nil
+    key, secret, options = nil
     AuthenticationMethod.where(:environment => ::Rails.env).each do |user|
       if user.preferred_provider == provider
         key = user.preferred_api_key
         secret = user.preferred_api_secret
+        options = YAML.load(user.preferred_options || '')
         puts("[Spree Social] Loading #{user.preferred_provider.capitalize} as authentication source")
       end
     end if self.table_exists?("authentication_methods") # See Below for explanation
-    self.setup_key_for(provider.to_sym, key, secret)
+    self.setup_key_for(provider.to_sym, key, secret, options)
   end
 
-  def self.setup_key_for(provider, key, secret)
+  def self.setup_key_for(provider, key, secret, options = {})
+    options ||= {}
     Devise.setup do |oa|
-      oa.omniauth provider.to_sym, key, secret
+      oa.omniauth provider.to_sym, key, secret, options
     end
   end
 
