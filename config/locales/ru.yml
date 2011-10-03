@@ -1,0 +1,29 @@
+ru:
+  add_another_service_to_sign_in_with: Добавить ещё один сервис для входа в систему
+  attach_error: 'Этот %{kind} аккаунт прикреплён к другому пользователю.'
+  devise:
+    omniauth_callbacks:
+      success: 'Успешно авторизован через  %{kind} аккаунт.'
+      failure: 'Невозможно авторизовать через %{kind} потому, что "%{reason}".'
+  edit_social_method: Изменить провайдера
+  edit_social_method_warning: После изменения ключа и секрета необходимо перезапустить сервер
+  linked_accounts: Связанные аккаунты
+  new_social_method: Новый провайдер
+  new_social_method_warning: Вы должны перезагрузить сервер, чтобы эти изменения вступили в силу
+  one_more_step: 'Еще один шаг, чтобы завершить регистрацию через %{kind}'
+  reason_user_was_not_valid: пользователь недействителен
+  remove_authentication_option_confirmation: 'Вы действительно хотите удалить этот вариант аутентификации?'
+  sign_in_through_one_of_these_services: Вход через один из этих сервисов
+  sign_in_to_associate_with_existing_email: 'Уже существует аккаунт с этим email-ом. Пожалуйста, войдите, чтобы связать эти аккаунты.'
+  sign_in_with_provider: 'Войти с помощью %{provider}'
+  social_api_key: API Key аутентификации
+  social_api_secret: Секрет
+  social_enable_provider: Включить источник аутентификации
+  social_link: Пожалуйста, предоставьте свой email для продолжения
+  social_methods: Провайдеры
+  social_provider: Источники аутентификации
+  social_servers: Провайдеры
+  social_servers_description: Настройка провайдеров
+  successfully_linked_your_accounts: Аккаунты успешно связаны
+  successfully_deleted_authentication_source: Источник аутентификации успешно удалён
+  you_have_signed_in_with_these_services: Вы можете войти с помощью следующих сервисов
