@@ -3,5 +3,5 @@
 <% end %>
 <% AuthenticationMethod.where(:environment => ::Rails.env).each do |user| %>
   <%- img = Rails.application.assets.find_asset("store/social/#{user.preferred_provider}_32.png").present? ? "store/social/#{user.preferred_provider}_32.png" : "store/social/spree_32.png" -%>
-  <%= link_to(image_tag(img, :size => "32x32", :alt => "#{user.preferred_provider}"), user_authentication_omniauth_authorize_path(user.preferred_provider.to_sym), :title => "Sign in with #{user.preferred_provider}") if user.active %>
+  <%= link_to(image_tag(img, :size => "32x32", :alt => "#{user.preferred_provider}"), user_authentication_omniauth_authorize_path(user.preferred_provider.to_sym), :title => "#{t(:sign_in_with)} #{user.preferred_provider}") if user.active %>
 <% end %>
