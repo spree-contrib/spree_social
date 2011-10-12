@@ -11,7 +11,7 @@ gem "spree_social", :path => "../spree_social"
 
 bundle update
 
-bundle exec rails g spree_social:install
+bundle exec rake spree_social:install
 
 rake db:migrate
 
@@ -108,9 +108,9 @@ gem "spree_social", :path => "../spree_social"
 
 bundle update
 
-rake spree_social:install
+bundle exec rake spree_social:install
 
-rake db:migrate
+bundle exec rake db:migrate
 
 Testing
 -------
