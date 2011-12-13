@@ -29,7 +29,7 @@ module SpreeSocial
         Rails.application.config.cache_classes ? require(c) : load(c)
       end
 
-      Ability.register_ability(SocialAbility)
+      Ability.register_ability(Spree::SocialAbility)
     end
     config.to_prepare &method(:activate).to_proc
   end
@@ -38,13 +38,13 @@ module SpreeSocial
   # This way we can update them when and where necessary
   def self.init_provider(provider)
     key, secret = nil
-    AuthenticationMethod.where(:environment => ::Rails.env).each do |user|
+    Spree::AuthenticationMethod.where(:environment => ::Rails.env).each do |user|
       if user.preferred_provider == provider
         key = user.preferred_api_key
         secret = user.preferred_api_secret
         puts("[Spree Social] Loading #{user.preferred_provider.capitalize} as authentication source")
       end
-    end if self.table_exists?("authentication_methods") # See Below for explanation
+    end if self.table_exists?("spree_authentication_methods") # See Below for explanation
     self.setup_key_for(provider.to_sym, key, secret)
   end
 

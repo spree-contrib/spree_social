@@ -1,6 +1,6 @@
-Rails.application.routes.draw do
+Spree::Core::Engine.routes.append do
   # We need to be tricky here or Devise loads up the defaults again.
-  devise_for :user_authentications, 
+  devise_for :user_authentications,
              :skip => [:registrations, :unlocks],
              :controllers => {:passwords => "user_passwords",
                               :sessions => "user_sessions",
@@ -9,11 +9,11 @@ Rails.application.routes.draw do
   end
 
   resources :user_authentications
-  
+
   match 'account' => 'users#show', :as => 'user_root'
-  
+
   namespace :admin do
     resources :authentication_methods
   end
-  
+
 end
