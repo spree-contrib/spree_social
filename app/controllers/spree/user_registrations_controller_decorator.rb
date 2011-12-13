@@ -1,4 +1,4 @@
-UserRegistrationsController.class_eval do
+Spree::UserRegistrationsController.class_eval do
 
   def create
     super.tap do |resp|

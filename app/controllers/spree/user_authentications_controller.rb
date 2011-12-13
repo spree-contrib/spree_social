@@ -1,7 +1,7 @@
-class UserAuthenticationsController < Spree::BaseController
+class Spree::UserAuthenticationsController < Spree::BaseController
 
   def update
-    @user = User.find(params[:id])
+    @user = Spree::User.find(params[:id])
 
     authorize! :edit, @user, session[:user_access_token]
 
@@ -13,7 +13,7 @@ class UserAuthenticationsController < Spree::BaseController
       redirect_back_or_default(products_path)
     else
       flash.now[:error] = I18n.t(:sign_in_to_associate_with_existing_email)
-      render(:template => 'users/merge')
+      render(:template => 'spree/users/merge')
     end
   end
 

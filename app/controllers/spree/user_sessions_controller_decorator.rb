@@ -1,12 +1,12 @@
-UserSessionsController.class_eval do
+Spree::UserSessionsController.class_eval do
 
   def merge
     # now sign in from the login form
     authenticate_user!
 
     # prep for all the shifting and do it
-    user = User.find(current_user.id)
-    user.user_authentications << UserAuthentication.find(params[:user_authentication])
+    user = Spree::User.find(current_user.id)
+    user.user_authentications << Spree::UserAuthentication.find(params[:user_authentication])
     user.save!
 
     if current_order
@@ -14,7 +14,7 @@ UserSessionsController.class_eval do
       session[:guest_token] = nil
     end
     # trash the old anonymous that was created
-    User.destroy(params[:user][:id])
+    Spree::User.destroy(params[:user][:id])
 
     # tell the truth now
     flash[:alert] = I18n.t(:successfully_linked_your_accounts)

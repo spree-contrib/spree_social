@@ -1,4 +1,4 @@
-class OmniauthCallbacksController < Devise::OmniauthCallbacksController
+class Spree::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   include Spree::CurrentOrder
   include SpreeBase
   helper :users, 'spree/base'
@@ -15,7 +15,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
     set_flash_message :alert, :failure, :kind => failed_strategy.name.to_s.humanize, :reason => failure_message
     redirect_to after_omniauth_failure_path_for(:user)
   end
- 
+
   private
 
   def social_setup(provider)
@@ -27,7 +27,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       return
     end
 
-    existing_auth = UserAuthentication.where(:provider => omniauth['provider'], :uid => omniauth['uid'].to_s).first
+    existing_auth = Spree::UserAuthentication.where(:provider => omniauth['provider'], :uid => omniauth['uid'].to_s).first
 
     #signing back in from a social source
     if existing_auth
@@ -36,7 +36,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       user = current_user
     end
 
-    user ||= User.anonymous!
+    user ||= Spree::User.anonymous!
 
     user.associate_auth(omniauth) unless existing_auth
 
@@ -49,7 +49,7 @@ class OmniauthCallbacksController < Devise::OmniauthCallbacksController
       session[:user_access_token] = user.token #set user access token so we can edit this user again later
 
       flash.now[:notice] = t("one_more_step", :kind => omniauth['provider'].capitalize)
-      render(:template => "user_registrations/social_edit", :locals => {:user => user, :omniauth => omniauth})
+      render(:template => "spree/user_registrations/social_edit", :locals => {:user => user, :omniauth => omniauth})
     elsif current_user
       flash[:error] = t("attach_error", :kind => omniauth['provider'].capitalize) if existing_auth && (existing_auth.user != current_user)
       redirect_back_or_default(account_url)

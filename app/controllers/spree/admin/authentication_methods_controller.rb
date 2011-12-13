@@ -1,4 +1,4 @@
-class Admin::AuthenticationMethodsController < Admin::BaseController
+class Spree::Admin::AuthenticationMethodsController < Spree::Admin::BaseController
   resource_controller
 
   update.wants.html { redirect_to collection_url }
