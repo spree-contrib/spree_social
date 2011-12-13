@@ -3,7 +3,7 @@
   <table>
     <tr>
       <% if @user.anonymous? %>
-        <%= render :partial => 'shared/social_registrations', :locals => {:user => @user, :omniauth => @omniauth} %>
+        <%= render :partial => 'spree/shared/social_registrations', :locals => {:user => @user, :omniauth => @omniauth} %>
       <% else %>
       <td><%= t("email") %>:</td>
       <td>
@@ -32,7 +32,7 @@
 
     <p><strong><%= t(:add_another_service_to_sign_in_with) %>:</strong></p>
   <% end %>
-  <%= render :partial => "shared/socials" %>
+  <%= render :partial => "spree/shared/socials" %>
 </div>
 
 <div class="clear"></div>
