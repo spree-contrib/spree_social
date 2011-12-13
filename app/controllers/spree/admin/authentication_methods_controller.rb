@@ -1,7 +1,2 @@
-class Spree::Admin::AuthenticationMethodsController < Spree::Admin::BaseController
-  resource_controller
-
-  update.wants.html { redirect_to collection_url }
-  create.wants.html { redirect_to collection_url }
-
+class Spree::Admin::AuthenticationMethodsController < Spree::Admin::ResourceController
 end
