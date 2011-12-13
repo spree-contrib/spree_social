@@ -29,7 +29,7 @@ module SpreeSocial
         Rails.application.config.cache_classes ? require(c) : load(c)
       end
 
-      Ability.register_ability(Spree::SocialAbility)
+      Spree::Ability.register_ability(Spree::SocialAbility)
     end
     config.to_prepare &method(:activate).to_proc
   end
