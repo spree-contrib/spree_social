@@ -1,4 +1,4 @@
-User.class_eval do
+Spree::User.class_eval do
   token_resource
 
   has_many :user_authentications

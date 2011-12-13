@@ -1,7 +1,7 @@
-class UserAuthentication < ActiveRecord::Base
-  
+class Spree::UserAuthentication < ActiveRecord::Base
+
   belongs_to :user
-  
+
   # Lock down authentications to a non-destructive account and login via association
   devise :omniauthable
 

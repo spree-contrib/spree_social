@@ -1,5 +1,5 @@
-class AuthenticationMethod < ActiveRecord::Base
-  
+class Spree::AuthenticationMethod < ActiveRecord::Base
+
   preference :provider, :string
   preference :api_key, :string
   preference :api_secret, :string
@@ -15,5 +15,5 @@ class AuthenticationMethod < ActiveRecord::Base
   #    SpreeSocial.reset_key_for(self.preferred_provider,self.preferred_api_key, self.preferred_api_secret)
   #  end
   #end
-  
+
 end
