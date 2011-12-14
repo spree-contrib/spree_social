@@ -1,7 +1,7 @@
 class Spree::OmniauthCallbacksController < Devise::OmniauthCallbacksController
-  include Spree::CurrentOrder
-  include SpreeBase
-  helper :users, 'spree/base'
+  include Spree::Core::CurrentOrder
+  include Spree::Core::ControllerHelpers
+  helper 'spree/users', 'spree/base'
 
 
   SpreeSocial::OAUTH_PROVIDERS.each do |provider|
@@ -13,7 +13,7 @@ class Spree::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def failure
     set_flash_message :alert, :failure, :kind => failed_strategy.name.to_s.humanize, :reason => failure_message
-    redirect_to after_omniauth_failure_path_for(:user)
+    redirect_to spree.login_path
   end
 
   private
