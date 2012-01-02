@@ -1,60 +1,25 @@
-#require File.expand_path('../../config/application', __FILE__)
-
-require 'rubygems'
-require 'rake'
-require 'rake/testtask'
-require 'rake/packagetask'
-require 'rake/gempackagetask'
-
-spec = eval(File.read('spree_social.gemspec'))
-
-Rake::GemPackageTask.new(spec) do |p|
-  p.gem_spec = spec
-end
-
-desc "Release to gemcutter"
-task :release => :package do
-  require 'rake/gemcutter'
-  Rake::Gemcutter::Tasks.new(spec).define
-  Rake::Task['gem:push'].invoke
-end
-
-desc "Default Task"
-task :default => [ :spec ]
+# encoding: utf-8
+require 'bundler'
+Bundler::GemHelper.install_tasks
+Bundler.setup
 
 require 'rspec/core/rake_task'
 RSpec::Core::RakeTask.new
 
-desc "Regenerates a rails 3 app for testing"
-task :test_app do
-  require '../spree/lib/generators/spree/test_app_generator'
-  class AuthTestAppGenerator < Spree::Generators::TestAppGenerator
-    def tweak_gemfile
-      append_file 'Gemfile' do
-<<-gems
-        gem 'spree_core', :path => \'#{File.join(File.dirname(__FILE__), "../spree/", "core")}\'
-        gem 'spree_auth', :path => \'#{File.join(File.dirname(__FILE__), "../spree/", "auth")}\'
-        gem 'spree_social', :path => \'#{File.dirname(__FILE__)}\'
-gems
-      end
-    end
+require 'spree/core/testing_support/common_rake'
 
-    def install_gems
-      inside "test_app" do
-        run 'bundle install'
-        run 'rake spree_core:install'
-        run 'rake spree_auth:install'
-        run 'rake spree_social:install'
-      end
-    end
+desc "Default Task"
+task :default => [ :spec ]
 
-    def migrate_db
-      run_migrations
-    end
+namespace :test_app do
+  desc 'Rebuild test and cucumber databases'
+  task :rebuild_dbs do
+    system("cd spec/test_app && rake db:drop db:migrate RAILS_ENV=test && rake db:drop db:migrate RAILS_ENV=cucumber")
   end
-  AuthTestAppGenerator.start
 end
-# require 'cucumber/rake/task'
-# Cucumber::Rake::Task.new do |t|
-#   t.cucumber_opts = %w{--format pretty}
-# end
+
+desc "Generates a dummy app for testing"
+task :test_app do
+  ENV['LIB_NAME'] = 'spree_social'
+  Rake::Task['common:test_app'].invoke
+end
