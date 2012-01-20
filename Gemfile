@@ -1,5 +1,7 @@
 source 'http://rubygems.org'
 
+gem 'omniauth-twitter'
+
 group :test do
   gem 'ffaker'
 end
