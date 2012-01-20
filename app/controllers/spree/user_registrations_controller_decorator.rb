@@ -6,6 +6,7 @@ Spree::UserRegistrationsController.class_eval do
     if session[:omniauth]
       @user.apply_omniauth(session[:omniauth])
       @user.valid?
+      @user
     end
   end
 end
