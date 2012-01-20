@@ -7,6 +7,6 @@ class Spree::UserAuthenticationsController < ApplicationController
     @authentication = current_user.user_authentications.find(params[:id])
     @authentication.destroy
     flash[:notice] = "Successfully destroyed authentication method."
-    redirect_to user_authentications_url
+    redirect_to account_path
   end
 end
