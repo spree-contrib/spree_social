@@ -1,0 +1,18 @@
+<h2>Authentication Methods</h2>
+<% if current_user.user_authentications %>
+  <% current_user.user_authentications.each do |authentication| %>
+    <div class="authentication">
+        <%= image_tag "#{authentication.provider}_32.png", :size => "32x32" %>
+        <div class="provider"><%= authentication.provider.titleize %></div>
+        <div class="uid"><%= authentication.uid %></div>
+         <%= link_to "X", authentication, :confirm => 'Are you sure you want to remove this authentication
+        option?', :method => :delete, :class => "remove" %>
+       </div>
+       <div class="clear"></div>
+    </div>
+  <% end %>
+<% end %>
+
+<h3>Sign in with one of these services</h3>
+<a href="/users/auth/twitter" class="auth_provider">
+  <%= image_tag "twitter_64.png", :size => "64x64", :alt => "Twitter" %>Twitter</a>
