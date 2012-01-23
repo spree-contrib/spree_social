@@ -1,0 +1,38 @@
+<%= render :partial => 'spree/admin/shared/configuration_menu' %>
+
+<div class='toolbar'>
+  <ul class='actions'>
+    <li>
+      <%= button_link_to t("new_social_method"), new_object_url, :icon => 'add'  %>
+    </li>
+  </ul>
+  <br class='clear' />
+</div>
+
+<h1><%= t("social_authentication_methods") %></h1>
+
+<table class="index">
+  <thead data-hook="admin_social_methods_index_headers">
+    <th><%= t("social_provider") %></th>
+    <th><%= t("social_api_key") %></th>
+    <th><%= t("social_api_secret") %></th>
+    <th><%= t("environment") %></th>
+    <th><%= t("active") %></th>
+    <th data-hook="admin_social_methods_index_header_actions">&nbsp;</th>
+  </thead>
+  <tbody>
+    <% @authentication_methods.each do |method|%>
+      <tr id="<%= dom_id method %>" data-hook="admin_trackers_index_rows">
+        <td><%= method.provider %></td>
+        <td><%= method.api_key %></td>
+        <td><%= method.api_secret %></td>
+        <td><%= method.environment.to_s.titleize %></td>
+        <td><%= method.active ? t(:yes) : t(:no) %></td>
+        <td>
+        	<%= link_to_edit method %> &nbsp;
+        	<%= link_to_delete method %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>

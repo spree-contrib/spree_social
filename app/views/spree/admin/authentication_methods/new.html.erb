@@ -1,0 +1,10 @@
+<%= render :partial => 'spree/admin/shared/configuration_menu' %>
+
+<h1><%= t(:new_social_method) %></h1>
+
+<%= render :partial => 'spree/shared/error_messages', :locals => { :target => @zone } %>
+
+<%= form_for [:admin, @authentication_method] do |auth_form| %>
+  <%= render :partial => 'form', :locals => { :auth_form => auth_form } %>
+  <%= render :partial => 'spree/admin/shared/new_resource_links' %>
+<% end %>

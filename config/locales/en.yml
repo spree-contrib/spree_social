@@ -2,4 +2,10 @@
 # See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
 
 en:
-  hello: "Hello world"
+  edit_social_method: "Editing Social Authentication Method"
+  new_social_method: "New Authentication Method"
+  social_api_key: "API Key"
+  social_api_secret: "API Secret"
+  social_authentication_methods: "Social Authentication Methods"
+  social_authentication_methods_description: "Setup OAuth Authentication Methods"
+  social_provider: "Social Provider"

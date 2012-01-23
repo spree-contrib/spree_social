@@ -7,8 +7,8 @@ Spree::Core::Engine.routes.append do
 
   match 'account' => 'users#show', :as => 'user_root'
 
-  #namespace :admin do
-    #resources :authentication_methods
-  #end
+  namespace :admin do
+    resources :authentication_methods
+  end
 
 end

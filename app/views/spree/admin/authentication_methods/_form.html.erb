@@ -1,0 +1,27 @@
+<p data-hook="environment">
+  <td><%= label_tag nil, t(:environment) %></td>
+  <td>
+    <%= collection_select(:authentication_method, :environment, Spree::Configuration.configurations.keys, :to_s, :titleize, {}) %>
+  </td>
+</p>
+
+<%= auth_form.field_container :provider do %>
+  <%= auth_form.label :provider, t(:social_provider) %>
+  <%= auth_form.select :provider, SpreeSocial::OAUTH_PROVIDERS, { :include_blank => true } %>
+<% end %>
+
+<%= auth_form.field_container :api_key do %>
+  <%= auth_form.label :api_key, t(:social_api_key) %><br />
+  <%= auth_form.text_field :api_key %>
+<% end %>
+
+<%= auth_form.field_container :api_secret do %>
+  <%= auth_form.label :api_secret, t(:social_api_secret) %><br />
+  <%= auth_form.text_field :api_secret %>
+<% end %>
+
+<%= auth_form.field_container :active do %>
+  <%= auth_form.label :active, t(:active) %><br />
+  <%= auth_form.radio_button :active, :true %><%= t(:yes) %>
+  <%= auth_form.radio_button :active, :false %><%= t(:no) %>
+<% end %>
