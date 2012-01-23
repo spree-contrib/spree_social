@@ -28,7 +28,9 @@ class Spree::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
   end
 
-  provides_callback_for :twitter, :facebook
+  SpreeSocial::OAUTH_PROVIDERS.each do |provider|
+    provides_callback_for provider[1].to_sym
+  end
 
   def failure
     redirect_to spree.login_path
