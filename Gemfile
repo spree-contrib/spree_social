@@ -1,6 +1,7 @@
 source 'http://rubygems.org'
 
 gem 'omniauth-twitter'
+gem 'omniauth-facebook'
 
 group :test do
   gem 'ffaker'

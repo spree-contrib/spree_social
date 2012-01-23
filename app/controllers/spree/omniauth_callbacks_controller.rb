@@ -28,7 +28,7 @@ class Spree::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     end
   end
 
-  provides_callback_for :twitter
+  provides_callback_for :twitter, :facebook
 
   def failure
     redirect_to spree.login_path
