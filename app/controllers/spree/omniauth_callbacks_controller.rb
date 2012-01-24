@@ -1,8 +1,17 @@
 class Spree::OmniauthCallbacksController < Devise::OmniauthCallbacksController
+  include Spree::Core::CurrentOrder
+  include Spree::Core::ControllerHelpers
+
   def self.provides_callback_for(*providers)
     providers.each do |provider|
       class_eval %Q{
         def #{provider}
+          if request.env["omniauth.error"].present?
+            flash[:error] = t("devise.omniauth_callbacks.failure", :kind => provider, :reason => t(:user_was_not_valid))
+            redirect_back_or_default(root_url)
+            return
+          end
+
           authentication = Spree::UserAuthentication.find_by_provider_and_uid(auth_hash['provider'], auth_hash['uid'])
 
           if authentication
@@ -23,6 +32,11 @@ class Spree::OmniauthCallbacksController < Devise::OmniauthCallbacksController
               redirect_to spree.new_user_registration_url
             end
           end
+
+          if current_order
+            current_order.associate_user!(user)
+            session[:guest_token] = nil
+          end
         end
       }
     end
@@ -33,6 +47,7 @@ class Spree::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def failure
+    set_flash_message :alert, :failure, :kind => failed_strategy.name.to_s.humanize, :reason => failure_message
     redirect_to spree.login_path
   end
 
