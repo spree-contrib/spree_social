@@ -1,4 +1,9 @@
 Spree::UserRegistrationsController.class_eval do
+  def create
+    super
+    session[:omniauth] = nil unless @user.new_record?
+  end
+
   private
 
   def build_resource(*args)

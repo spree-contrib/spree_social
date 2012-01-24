@@ -1,0 +1,38 @@
+<% @body_id = 'login' %>
+<div id="existing-customer">
+  <table>
+    <tr>
+      <% if @user.anonymous? %>
+        <%= render :partial => 'spree/shared/social_registrations', :locals => {:user => @user, :omniauth => @omniauth} %>
+      <% else %>
+      <td><%= t("email") %>:</td>
+      <td>
+        <%= @user.email %>
+      </td>
+      <td><p><%= link_to t('edit'), edit_account_path %></p></td>
+      <% end %>
+    </tr>
+  </table>
+
+  <% if @user.user_authentications %>
+    <% unless @user.user_authentications.empty? %>
+      <p><strong><%= t(:you_have_signed_in_with_these_services) %>:</strong></p>
+      <div class="authentications">
+        <% for user_authentication in @user.user_authentications %>
+          <div class="authentication">
+            <%= image_tag "store/#{user_authentication.provider}_32.png", :size => "32x32" %>
+            <div class="provider"><%= user_authentication.provider %></div>
+            <div class="uid"><%= user_authentication.uid %></div>
+            <%= link_to "X", user_authentication, :confirm => "#{t(:remove_authentication_option_confirmation)}", :method => :delete, :class => "remove" %>
+          </div>
+        <% end %>
+        <div class="clear"></div>
+      </div>
+    <% end %>
+
+    <p><strong><%= t(:add_another_service_to_sign_in_with) %>:</strong></p>
+  <% end %>
+  <%= render :partial => "spree/shared/social" %>
+</div>
+
+<div class="clear"></div>

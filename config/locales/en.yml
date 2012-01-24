@@ -1,9 +1,7 @@
-# Sample localization file for English. Add more files in this directory for other locales.
-# See https://github.com/svenfuchs/rails-i18n/tree/master/rails%2Flocale for starting points.
-
 en:
   edit_social_method: "Editing Social Authentication Method"
   new_social_method: "New Authentication Method"
+  remove_authentication_option_confirmation: "Are you sure you would like to remove this authentication method?"
   social_api_key: "API Key"
   social_api_secret: "API Secret"
   social_authentication_methods: "Social Authentication Methods"
