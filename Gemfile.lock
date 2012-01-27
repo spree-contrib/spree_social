@@ -5,6 +5,7 @@ PATH
       oa-core
       omniauth
       omniauth-facebook
+      omniauth-github
       omniauth-twitter
       spree_auth (= 1.0.0.rc2)
       spree_core (= 1.0.0.rc2)
@@ -130,6 +131,9 @@ GEM
       rack
     omniauth-facebook (1.2.0)
       omniauth-oauth2 (~> 1.0.0)
+    omniauth-github (1.0.1)
+      omniauth (~> 1.0)
+      omniauth-oauth2 (~> 1.0)
     omniauth-oauth (1.0.0)
       oauth
       omniauth (~> 1.0)
@@ -246,8 +250,6 @@ DEPENDENCIES
   capybara (= 1.0.1)
   factory_girl
   ffaker
-  omniauth-facebook
-  omniauth-twitter
   rspec-rails (~> 2.7)
   ruby-debug19
   spree_social!
