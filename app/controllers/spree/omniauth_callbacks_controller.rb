@@ -28,7 +28,7 @@ class Spree::OmniauthCallbacksController < Devise::OmniauthCallbacksController
               flash[:notice] = "Signed in successfully."
               sign_in_and_redirect :user, user
             else
-              session[:omniauth] = auth_hash
+              session[:omniauth] = auth_hash.except('extra')
               redirect_to new_user_registration_url
             end
           end
