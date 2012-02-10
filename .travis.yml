@@ -3,7 +3,7 @@ before_script:
 script: "DISPLAY=:99.0 bundle exec rspec spec"
 notifications:
   email:
-    - jdyer@spreecommerce.com
+    - lbrapid@gmail.com
 branches:
   only:
     - master
