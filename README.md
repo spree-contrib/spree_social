@@ -10,7 +10,7 @@ Setup for Production
 --------------------
 Add this to your gem file Gemfile
 
-gem "spree_social", :path => "../spree_social"
+gem "spree_social", :git => "git://github.com/spree/spree_social.git"
 
 bundle update
 
