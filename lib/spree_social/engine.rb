@@ -40,7 +40,8 @@ module SpreeSocial
 
   def self.setup_key_for(provider, key, secret)
     Devise.setup do |config|
-      config.omniauth provider, key, secret
+      config.omniauth provider, key, secret,
+        {:client_options => {:ssl => {:ca_path => "/etc/ssl"}}}
     end
   end
 end
