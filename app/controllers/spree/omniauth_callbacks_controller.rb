@@ -58,6 +58,7 @@ class Spree::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   end
 
   def auth_hash
+    Rails.logger.error "Request Environment: #{request.env['omniauth.auth'].inspect}"
     request.env["omniauth.auth"]
   end
 end
