@@ -29,7 +29,8 @@ Click on the New Authentication Method button to enter the key obtained from the
 
 Multiple key entries can now be entered based on the rails environment. This allows for portability and the lack of need to check in your key to your repository. You also have the ability to enable and disable sources. These setting will be reflected on the client UI as well.
 
-**Please note that you will still need to restart you server after entering you keys.** This is required otherwise Devise and OmniAuth will not have the key pair available to them for use. Also if you are running Spree with SSL, make sure you setup you applications at the social network of you choice EXACTLY as it in seen in the browser, OAuth will fail if it experiences a local redirect through the various handshakes (e.g. if you have https://www.example.com as your domain for SSL, that is the URL that need to be uses as the domain at the OAuth source of your choice).
+**You do not need to restart your application after configuring or
+updating an authentication method.**
 
 Setup the Applications at the Respective Sources
 ------------------------------------------------
