@@ -4,5 +4,5 @@
 
 <% Spree::AuthenticationMethod.available_for(@user).each do |method| %>
   <% img = "store/#{method.provider}_32.png" %>
-  <%= link_to(image_tag(img, :size => "32x32", :alt => "#{method.provider}"), "/users/auth/#{method.provider}", :title => "#{t(:sign_in_with)} #{method.provider}") if method.active %>
+  <%= link_to(image_tag(img, :size => "32x32", :alt => "#{method.provider}"), "/users/auth/#{method.provider}", :title => t(:sign_in_with, :provider => method.provider)) if method.active %>
 <% end %>

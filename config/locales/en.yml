@@ -12,3 +12,4 @@ en:
   social_authentication_methods_description: "Setup OAuth Authentication Methods"
   social_provider: "Social Provider"
   please_confirm_your_email: "Please confirm your email address to continue"
+  sign_in_with: "Login with %{provider}"
