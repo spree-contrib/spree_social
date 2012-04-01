@@ -7,7 +7,6 @@ Spree::User.class_eval do
     if omniauth['provider'] == "facebook"
       self.email = omniauth['info']['email'] if email.blank?
     end
-
     user_authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
   end
 
