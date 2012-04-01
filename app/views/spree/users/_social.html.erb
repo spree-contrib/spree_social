@@ -5,12 +5,6 @@
     <tr>
       <% if @user.anonymous? %>
         <%= render :partial => 'spree/shared/social_registrations', :locals => {:user => @user, :omniauth => @omniauth} %>
-      <% else %>
-      <td><%= t("email") %>:</td>
-      <td>
-        <%= @user.email %>
-      </td>
-      <td><p><%= link_to t('edit'), edit_account_path %></p></td>
       <% end %>
     </tr>
   </table>
@@ -21,9 +15,9 @@
       <div class="authentications">
         <% for user_authentication in @user.user_authentications %>
           <div class="authentication">
-            <%= image_tag "store/#{user_authentication.provider}_32.png", :size => "32x32" %>
-            <div class="provider"><%= user_authentication.provider %></div>
-            <div class="uid"><%= user_authentication.uid %></div>
+            <%= image_tag "store/#{user_authentication.provider}_32.png", :size => "32x32", :class => "columns" %>
+            <div class="provider columns two"><%= user_authentication.provider %></div>
+            <div class="uid columns two"><%= user_authentication.uid %></div>
             <%= link_to "X", user_authentication, :confirm => "#{t(:remove_authentication_option_confirmation)}", :method => :delete, :class => "remove" %>
           </div>
         <% end %>
@@ -31,8 +25,8 @@
       </div>
     <% end %>
 
-    <p><strong><%= t(:add_another_service_to_sign_in_with) %>:</strong></p>
   <% end %>
+  <%= content_tag(:p, content_tag(:strong, t(:add_another_service_to_sign_in_with))) if Spree::AuthenticationMethod.available_for(@user).exists? %>
   <%= render :partial => "spree/shared/social" %>
 </div>
 
