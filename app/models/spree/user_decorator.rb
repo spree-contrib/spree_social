@@ -4,8 +4,6 @@ Spree::User.class_eval do
   devise :omniauthable
 
   def apply_omniauth(omniauth)
-#    self.password = Base64.encode64(Digest::SHA1.digest("#{rand(1<<64)}/#{Time.now.to_f}/#{Process.pid}/"))[0..7]
-
     if omniauth['provider'] == "facebook"
       self.email = omniauth['info']['email'] if email.blank?
     end
