@@ -2,16 +2,18 @@
   <%= f.label :email, t(:email) %><br />
   <%= f.email_field :email, :class => 'title' %>
 </p>
-<div id="password-credentials">
-  <p>
-    <%= f.label :password, t(:password) %><br />
-    <%= f.password_field :password, :class => 'title' %>
-  </p>
+<% if @user.password_required? %>
+  <div id="password-credentials">
+    <p>
+      <%= f.label :password, t(:password) %><br />
+      <%= f.password_field :password, :class => 'title' %>
+    </p>
 
-  <p>
-    <%= f.label :password_confirmation, t(:confirm_password) %><br />
-    <%= f.password_field :password_confirmation, :class => 'title' %>
-  </p>
-</div>
+    <p>
+      <%= f.label :password_confirmation, t(:confirm_password) %><br />
+      <%= f.password_field :password_confirmation, :class => 'title' %>
+    </p>
+  </div>
+<% end %>
 
 <div data-hook="signup_below_password_fields"></div>

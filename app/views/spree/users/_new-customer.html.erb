@@ -1,0 +1,7 @@
+<% if session[:omniauth] %>
+  <h6><%=t(:please_confirm_your_email) %></h6>  
+<% else %>
+  <h6><%= t(:new_customer) %></h6>
+<% end %>
+
+

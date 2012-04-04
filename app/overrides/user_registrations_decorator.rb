@@ -9,3 +9,9 @@ Deface::Override.new(:virtual_path => "spree/user_sessions/new",
                      :insert_after => "[data-hook='login_extras']",
                      :partial => "spree/shared/social",
                      :disabled => false)
+
+Deface::Override.new(:virtual_path => "spree/user_registrations/new",
+                     :name => "remove_new_customer_if_seesionomniauth",
+                     :replace => "div#new-customer h6",
+                     :partial => "spree/users/new-customer",
+                     :disabled => false)
