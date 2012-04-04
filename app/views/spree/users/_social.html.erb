@@ -1,3 +1,4 @@
+<% if Spree::AuthenticationMethod.activeAuthenticationMethods? %>
 <% @body_id = 'login' %>
 <div id="existing-customer">
   <table>
@@ -36,3 +37,4 @@
 </div>
 
 <div class="clear"></div>
+<% end %>
