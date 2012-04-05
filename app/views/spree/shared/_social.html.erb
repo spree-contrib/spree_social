@@ -1,4 +1,4 @@
-<% if !current_user || !current_user.user_authentications %>
+<% if (!current_user || !current_user.user_authentications) && Spree::AuthenticationMethod.active_authentication_methods? %>
   <h2><%= t(:sign_in_through_one_of_these_services) %>:</h2>
 <% end %>
 <% Spree::AuthenticationMethod.where(:environment => ::Rails.env).each do |method| %>
