@@ -8,16 +8,19 @@ Core for all Social media related functionality for Spree. The Spree Social gem 
 
 Setup for Production
 --------------------
-Add this to your gem file Gemfile
+Add this extension to your Gemfile:
 
+```ruby
 gem "spree_social", :git => "git://github.com/spree/spree_social.git"
+```
 
+Then run:
+
+```
 bundle update
-
 bundle exec rake spree_social:install
-
 rake db:migrate
-
+```
 
 Spree Setup to Utilize OAuth Sources
 ------------------------------------
@@ -78,36 +81,39 @@ OAuth Applications @ Facebook, Twitter and / or Github are supported out of the 
 Setup for Development
 ---------------------
 
-git clone git://github.com/railsdog/spree
-
-cd spree
-
-rake sandbox
-
+```
+git clone git://github.com/spree/spree
 git clone git://github.com/spree/spree_social
+cd spree
+bundle install
+bundle exec rake sandbox
+```
 
-add this to sandbox/Gemfile
+add this to sandbox/Gemfile:
 
-gem "spree_social", :path => "../spree_social"
+```ruby
+gem 'spree_social', :path => '../spree_social'
+```
 
+```
 bundle update
-
 rails g spree_social:install
-
 bundle exec rake db:migrate
+```
 
 Testing
 -------
 
-rake test_app inside of cloned spree_social folder
+Inside of your cloned spree_social folder, run:
 
-rspec spec
-
+```
+bundle exec rake test_app
+bundle exec rspec spec
+```
 
 Adding your own Auth Source
 ---------------------------
 
 > Most auth sources supported by the Omniauth gem can be added. I attempt to keep the popular ones included and tested.
-
 
 Copyright (c) 2012 John Brien Dilts, released under the New BSD License
