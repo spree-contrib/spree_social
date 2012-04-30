@@ -6,6 +6,7 @@ describe Spree::OmniauthCallbacksController do
   let(:order) { mock_model(Spree::Order, :associate_user => nil) }
 
   before(:each) do
+    default_url_options[:host] = 'test.host'
     request.env["omniauth.auth"] = omni_params
     controller.stub :sign_in_and_redirect
     controller.stub :redirect_back_or_default
@@ -123,21 +124,28 @@ describe Spree::OmniauthCallbacksController do
         let(:user) { Spree::User.new }
         before do
           Spree::UserAuthentication.stub :find_by_provider_and_uid => nil
-          Spree::User.stub(:new).and_return(user)
-          #controller.auth_hash.should_receive :except
+          controller.stub(:auth_hash).and_return('provider' => 'facebook', 'info' => {'email' => "spree@gmail.com"}, 'uid' => '123')
         end
 
-        it "should create a new user" do
-          pending "Need to resolve routes issue"
-          Spree::User.should_receive(:new)
-          controller.twitter
+        context "email doesn't belongs to anyone" do
+          it "should create a new user" do
+            controller.should_receive(:sign_in_and_redirect)
+            expect { controller.twitter }.to change(Spree::User, :count).by(1)
+          end
         end
 
-        it "should apply_omniauth params to the new user" do
-          pending "Need to resolve routes issue"
-          #user.should_receive(:apply_omniauth).with(controller.auth_hash)
-          #controller.twitter
+        context 'email belongs to existing user' do
+          before { @user = Factory(:user, :email => "spree@gmail.com") }
+
+          it "should not create new user" do
+            expect { controller.twitter }.to_not change(Spree::User, :count)
+          end
+
+          it "assigns authentication to existing user" do
+            expect { controller.twitter }.to change(@user.user_authentications, :count).by(1)
+          end
         end
+
       end
     end
   end
