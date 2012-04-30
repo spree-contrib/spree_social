@@ -10,3 +10,4 @@ nbproject
 spec/dummy
 .rvmrc
 .bundle
+Gemfile.lock
