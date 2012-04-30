@@ -3,8 +3,12 @@ SpreeSocial
 
 **NOTE: If you were contributing to the 0.70.x version of this extension, please make sure you are using the 0_70_stable branch, as this branch has recently been forced push to in order to release the 1.0.x extension rewrite.**
 
-
-Core for all Social media related functionality for Spree. The Spree Social gem handles authorization, account creation and association through social media sources such as, Twitter and Facebook. This requires the edge source of [Spree](https://github.com/railsdog/spree). This gem is beta at best and should be treated as such. Features and code base will change rapidly as this is under active development. Use with caution.
+Core for all social media related functionality for Spree. 
+The Spree Social gem handles authorization, account creation and association through social media sources such as Twitter and Facebook. 
+This requires the edge source of [Spree](https://github.com/spree/spree). 
+This gem is beta at best and should be treated as such. 
+Features and code base will change rapidly as this is under active development. 
+Use with caution.
 
 Setup for Production
 --------------------
@@ -94,6 +98,8 @@ add this to sandbox/Gemfile:
 ```ruby
 gem 'spree_social', :path => '../spree_social'
 ```
+
+Then run:
 
 ```
 bundle update
