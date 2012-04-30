@@ -16,11 +16,11 @@ Gem::Specification.new do |s|
 
   s.add_dependency 'spree_core', '~> 1.0.0'
   s.add_dependency 'spree_auth', '~> 1.0.0'
-  s.add_dependency 'omniauth'
-  s.add_dependency 'oa-core'
-  s.add_dependency 'omniauth-twitter'
-  s.add_dependency 'omniauth-facebook'
-  s.add_dependency 'omniauth-github'
+  s.add_dependency 'omniauth', '1.1'
+  s.add_dependency 'oa-core', '~> 0.3.2'
+  s.add_dependency 'omniauth-twitter', '~> 0.0.11'
+  s.add_dependency 'omniauth-facebook', '~> 1.2.0'
+  s.add_dependency 'omniauth-github', '~> 1.0.1'
 
   s.add_development_dependency 'capybara', '1.0.1'
   s.add_development_dependency 'factory_girl'
