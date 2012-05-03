@@ -22,7 +22,7 @@ Then run:
 
 ```
 bundle update
-bundle exec rake spree_social:install
+bundle exec rails g spree_social:install
 rake db:migrate
 ```
 
