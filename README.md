@@ -36,7 +36,7 @@ Click on the New Authentication Method button to enter the key obtained from the
 
 Multiple key entries can now be entered based on the rails environment. This allows for portability and the lack of need to check in your key to your repository. You also have the ability to enable and disable sources. These setting will be reflected on the client UI as well.
 
-**You do not need to restart your application after configuring or
+**You MUST restart your application after configuring or
 updating an authentication method.**
 
 Setup the Applications at the Respective Sources
