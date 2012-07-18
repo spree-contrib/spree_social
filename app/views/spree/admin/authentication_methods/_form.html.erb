@@ -1,7 +1,7 @@
 <p data-hook="environment">
   <td><%= label_tag nil, t(:environment) %></td>
   <td>
-    <%= collection_select(:authentication_method, :environment, Spree::Configuration.configurations.keys, :to_s, :titleize, {}) %>
+    <%= collection_select(:authentication_method, :environment, Rails.configuration.database_configuration.keys, :to_s, :titleize, {}) %>
   </td>
 </p>
 
