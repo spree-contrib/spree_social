@@ -7,7 +7,7 @@ Gem::Specification.new do |s|
   s.required_ruby_version = '>= 1.8.7'
 
   s.author            = 'John Dyer'
-  s.email             = 'john@spreecommerce.com'
+  s.email             = 'jdyer@spreecommerce.com'
   s.homepage          = 'http://www.spreecommerce.com'
 
   s.files         = `git ls-files`.split("\n")
