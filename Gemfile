@@ -10,4 +10,7 @@ else
   gem "debugger"
 end
 
+# TODO: Remove from Gemfile  add to gemspec once gem is released
+gem 'spree_auth_devise', :git => 'git://github.com/spree/spree_auth_devise.git'
+
 gemspec
