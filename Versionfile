@@ -1,3 +1,4 @@
+"1.2.x" => { :branch => 'master' }
 "1.1.x" => { :branch => 'master' }
 "1.0.x" => { :branch => '1-0-stable' }
 "0.70.x" => { :branch => "0_70_stable" }

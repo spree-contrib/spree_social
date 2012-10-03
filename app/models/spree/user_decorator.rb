@@ -1,4 +1,4 @@
-Spree::User.class_eval do
+Spree.user_class.class_eval do
   has_many :user_authentications, :dependent => :destroy
 
   devise :omniauthable
