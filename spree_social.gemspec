@@ -20,6 +20,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'omniauth-twitter'
   s.add_dependency 'omniauth-facebook'
   s.add_dependency 'omniauth-github'
+  s.add_dependency 'omniauth-google-oauth2'
 
   s.add_development_dependency 'capybara', '1.0.1'
   s.add_development_dependency 'factory_girl'
