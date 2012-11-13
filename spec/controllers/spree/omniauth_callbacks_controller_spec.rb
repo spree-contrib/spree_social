@@ -6,7 +6,7 @@ describe Spree::OmniauthCallbacksController do
   let(:order) { mock_model(Spree::Order, :associate_user => nil) }
 
   before(:each) do
-    default_url_options[:host] = 'test.host'
+    Rails.application.routes.default_url_options[:host] = 'test.host'
     request.env["omniauth.auth"] = omni_params
     controller.stub :sign_in_and_redirect
     controller.stub :redirect_back_or_default
