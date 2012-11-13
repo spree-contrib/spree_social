@@ -1,0 +1,15 @@
+de:
+  add_another_service: "Füge einen weiteren Dienst zum einloggen hinzu:"
+  edit_social_method: "Social Provider zum einloggen bearbeiten"
+  new_social_method: "Neue Loginmethode"
+  one_more_step: 'Ein letzter Schritt um deine Anmeldung über %{kind} abzuschließen'
+  remove_authentication_option_confirmation: "Bist du sicher, dass du diesen Dienst zum einloggen entfernen möchtest?"
+  sign_into_account: "Oder manuell einloggen"
+  sign_in_through_service: "Mit einem Klick einloggen"
+  social_api_key: "Öffentliche APP-ID"
+  social_api_secret: "Geheimer API-Schlüssel"
+  social_authentication_methods: "Social Login Dienste"
+  social_authentication_methods_description: "OAuth-Einstellugnen"
+  social_provider: "Social Provider"
+  please_confirm_your_email: "Bitte bestätige deine Emailadresse um fortzufahren"
+  sign_in_with: "Mit %{provider} einloggen"
