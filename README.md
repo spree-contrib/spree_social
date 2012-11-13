@@ -1,5 +1,7 @@
 SpreeSocial
 ===========
+[![Build Status](https://travis-ci.org/spree/spree_social.png)](https://travis-ci.org/spree/spree_social)
+
 
 **NOTE: If you were contributing to the 0.70.x version of this extension, please make sure you are using the 0_70_stable branch, as this branch has recently been forced push to in order to release the 1.0.x extension rewrite.**
 
