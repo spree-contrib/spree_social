@@ -21,4 +21,12 @@ Gem::Specification.new do |s|
   s.add_dependency 'omniauth-facebook'
   s.add_dependency 'omniauth-github'
   s.add_dependency 'omniauth-google-oauth2'
+
+  s.add_development_dependency 'capybara', '~> 1.1'
+  s.add_development_dependency 'ffaker'
+  s.add_development_dependency 'rspec-rails', '~> 2.11.0'
+  s.add_development_dependency 'factory_girl_rails', '~> 1.7.0'
+  s.add_development_dependency 'pry'
+  s.add_development_dependency 'shoulda-matchers', '~> 1.1'
+  s.add_development_dependency 'sqlite3'
 end
