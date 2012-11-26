@@ -8,9 +8,8 @@ Spree::UserRegistrationsController.class_eval do
     super
     if session[:omniauth]
       @user.apply_omniauth(session[:omniauth])
-      @user.valid?
-      @user
     end
+    @user
   end
 
   def clear_omniauth

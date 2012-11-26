@@ -24,8 +24,8 @@ Then run:
 
 ```
 bundle update
-bundle exec rails g spree_social:install
-rake db:migrate
+rails g spree_social:install
+bundle exec rake db:migrate
 ```
 
 Spree Setup to Utilize OAuth Sources
