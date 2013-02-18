@@ -1,5 +1,5 @@
 Spree::Core::Engine.routes.append do
-  devise_for :users,
+  devise_for :user,
              :class_name => Spree::User,
              :skip => [:unlocks],
              :controllers => { :sessions => 'spree/user_sessions', :omniauth_callbacks => "spree/omniauth_callbacks", :registrations => 'spree/user_registrations' } do 
