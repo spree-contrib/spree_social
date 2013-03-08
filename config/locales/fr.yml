@@ -1,0 +1,16 @@
+# encoding: utf-8
+fr:
+  add_another_service: "Ajouter un autre service d'identification:"
+  edit_social_method: "Modifier le  service d'identification"
+  new_social_method: "Nouveau service d'identification"
+  one_more_step: "Encore une étape avant de terminer l'identification %{kind}"
+  remove_authentication_option_confirmation: "Etes-vous sûr(e) de vouloir supprimer ce service d'identification?"
+  sign_into_account: "Vous pouvez vous connecter à ce compte en utilisant:"
+  sign_in_through_service: "Identifiez-vous avec l'un de ces services:"
+  social_api_key: "API Key"
+  social_api_secret: "API Secret"
+  social_authentication_methods: "Services d'identification via Réseau Sociaux"
+  social_authentication_methods_description: "Paramétrage Identification OAuth"
+  social_provider: "Réseau Social"
+  please_confirm_your_email: "Confirmez votre adresse courriel avant de continuer"
+  sign_in_with: "Identification via %{provider}"
