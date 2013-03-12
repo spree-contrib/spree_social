@@ -15,8 +15,10 @@
       <div class="authentications">
         <% for user_authentication in @user.user_authentications %>
           <div class="authentication">
-            <%= image_tag "store/#{user_authentication.provider}_32.png", :size => "32x32", :class => "columns" %>
-            <div class="provider columns two"><%= user_authentication.provider %></div>
+            <div class="provider columns two">
+              <%= image_tag "store/#{user_authentication.provider}_32.png", :size => "32x32", :class => "columns" %>
+              <%= user_authentication.provider %>
+            </div>
             <div class="uid columns two"><%= user_authentication.uid %></div>
             <%= link_to "X", user_authentication, :confirm => "#{t(:remove_authentication_option_confirmation)}", :method => :delete, :class => "remove" %>
           </div>

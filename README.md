@@ -50,7 +50,7 @@ OAuth Applications @ Facebook, Twitter and / or Github are supported out of the 
 
 ### Facebook
 
-[Facebook](http://www.facebook.com/developers/createapp.php): [http://www.facebook.com/developers/createapp.php](http://www.facebook.com/developers/createapp.php)
+[Facebook](https://developers.facebook.com/apps/?action=create): [https://developers.facebook.com/apps/?action=create](http://www.facebook.com/developers/createapp.php)
 
 1. Name the app what you will and agree to the terms.
 2. Fill out the capcha
