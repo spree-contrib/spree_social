@@ -20,7 +20,8 @@ class Spree::OmniauthCallbacksController < Devise::OmniauthCallbacksController
             flash[:notice] = "Signed in successfully"
             sign_in_and_redirect :user, authentication.user
           elsif current_user
-            current_user.user_authentications.create!(:provider => auth_hash['provider'], :uid => auth_hash['uid'])
+            current_user.apply_omniauth(auth_hash)
+            current_user.save!
             flash[:notice] = "Authentication successful."
             redirect_back_or_default(account_url)
           else
