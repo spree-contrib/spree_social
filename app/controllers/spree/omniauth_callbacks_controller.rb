@@ -22,7 +22,7 @@ class Spree::OmniauthCallbacksController < Devise::OmniauthCallbacksController
           elsif current_user
             current_user.apply_omniauth(auth_hash)
             current_user.save!
-           flash[:notice] = "Authentication successful."
+            flash[:notice] = "Authentication successful."
             redirect_back_or_default(account_url)
           else
             user = Spree::User.find_by_email(auth_hash['info']['email']) || Spree::User.new
