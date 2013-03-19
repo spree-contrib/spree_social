@@ -1,7 +1,7 @@
 require 'spec_helper'
 
 describe Spree::OmniauthCallbacksController do
-  let(:user) { Factory(:user) }
+  let(:user) { FactoryGirl.create(:user) }
   let(:omni_params) { mock("omni", :[] => nil).as_null_object }
   let(:order) { mock_model(Spree::Order, :associate_user => nil) }
 
@@ -77,7 +77,8 @@ describe Spree::OmniauthCallbacksController do
         before { Spree::UserAuthentication.stub :find_by_provider_and_uid => nil }
 
         it "should create a new user_authentication" do
-          user.user_authentications.should_receive(:create!)
+          user.should_receive(:apply_omniauth)
+          user.should_receive(:save!)
           controller.twitter
         end
 
@@ -135,7 +136,7 @@ describe Spree::OmniauthCallbacksController do
         end
 
         context 'email belongs to existing user' do
-          before { @user = Factory(:user, :email => "spree@gmail.com") }
+          before { @user = FactoryGirl.create(:user, :email => "spree@gmail.com") }
 
           it "should not create new user" do
             expect { controller.twitter }.to_not change(Spree::User, :count)

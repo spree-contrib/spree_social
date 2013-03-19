@@ -3,7 +3,14 @@ require 'rake/testtask'
 require 'rake/packagetask'
 require 'rubygems/package_task'
 require 'rspec/core/rake_task'
-require 'spree/core/testing_support/common_rake'
+
+begin
+  require 'spree/testing_support/common_rake'
+rescue LoadError
+  raise "Could not find spree/testing_support/common_rake. You need to run this command using Bundler."
+  exit
+end
+
 
 RSpec::Core::RakeTask.new
 
