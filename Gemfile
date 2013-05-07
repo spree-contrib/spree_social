@@ -1,7 +1,7 @@
-source 'http://rubygems.org'
+source 'https://rubygems.org'
 
 # TODO: Remove from Gemfile  add to gemspec once gem is released
-gem 'spree', :git => 'git://github.com/spree/spree'
-gem 'spree_auth_devise', :git => 'git://github.com/spree/spree_auth_devise.git', :branch => 'edge'
+gem 'spree', github: 'spree/spree'
+gem 'spree_auth_devise', github: 'spree/spree_auth_devise'
 
 gemspec
