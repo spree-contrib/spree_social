@@ -7,9 +7,9 @@ Spree::UserRegistrationsController.class_eval do
   def build_resource(*args)
     super
     if session[:omniauth]
-      @user.apply_omniauth(session[:omniauth])
+      resource.apply_omniauth(session[:omniauth])
     end
-    @user
+    resource
   end
 
   def clear_omniauth
