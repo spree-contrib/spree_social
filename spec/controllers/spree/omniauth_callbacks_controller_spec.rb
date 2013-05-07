@@ -49,7 +49,7 @@ describe Spree::OmniauthCallbacksController do
 
   context "#callback" do
     context "when user is authenticated" do
-      before { controller.stub :current_user => user }
+      before { controller.stub :spree_current_user => user }
 
       it_should_behave_like "denied_permissions"
 
@@ -97,7 +97,7 @@ describe Spree::OmniauthCallbacksController do
     end
 
     context "when user is not authenticated" do
-      before { controller.stub :current_user => nil }
+      before { controller.stub :spree_current_user => nil }
 
       it_should_behave_like "denied_permissions"
 

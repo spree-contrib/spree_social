@@ -2,7 +2,6 @@ class Spree::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   include Spree::Core::ControllerHelpers::Common
   include Spree::Core::ControllerHelpers::Order
   include Spree::Core::ControllerHelpers::Auth
-  
 
   def self.provides_callback_for(*providers)
     providers.each do |provider|
@@ -19,9 +18,9 @@ class Spree::OmniauthCallbacksController < Devise::OmniauthCallbacksController
           if authentication.present?
             flash[:notice] = "Signed in successfully"
             sign_in_and_redirect :user, authentication.user
-          elsif current_user
-            current_user.apply_omniauth(auth_hash)
-            current_user.save!
+          elsif spree_current_user
+            spree_current_user.apply_omniauth(auth_hash)
+            spree_current_user.save!
             flash[:notice] = "Authentication successful."
             redirect_back_or_default(account_url)
           else
@@ -38,7 +37,7 @@ class Spree::OmniauthCallbacksController < Devise::OmniauthCallbacksController
           end
 
           if current_order
-            user = current_user if current_user
+            user = spree_current_user if spree_current_user
             current_order.associate_user!(user)
             session[:guest_token] = nil
           end
