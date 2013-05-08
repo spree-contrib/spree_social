@@ -116,7 +116,7 @@ describe Spree::OmniauthCallbacksController do
         end
 
         it "should authenticate as that user" do
-          controller.should_receive(:sign_in_and_redirect).with(:user, user)
+          controller.should_receive(:sign_in_and_redirect).with(:spree_user, user)
           controller.twitter
         end
       end
