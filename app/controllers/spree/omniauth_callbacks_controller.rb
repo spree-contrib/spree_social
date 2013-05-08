@@ -17,7 +17,7 @@ class Spree::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
           if authentication.present?
             flash[:notice] = "Signed in successfully"
-            sign_in_and_redirect :user, authentication.user
+            sign_in_and_redirect :spree_user, authentication.user
           elsif spree_current_user
             spree_current_user.apply_omniauth(auth_hash)
             spree_current_user.save!
@@ -28,7 +28,7 @@ class Spree::OmniauthCallbacksController < Devise::OmniauthCallbacksController
             user.apply_omniauth(auth_hash)
             if user.save
               flash[:notice] = "Signed in successfully."
-              sign_in_and_redirect :user, user
+              sign_in_and_redirect :spree_user, user
             else
               session[:omniauth] = auth_hash.except('extra')
               flash[:notice] = t(:one_more_step, :kind => auth_hash['provider'].capitalize)
