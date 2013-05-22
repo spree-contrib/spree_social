@@ -15,3 +15,6 @@ pl:
   sign_in_with: "Zaloguj przez %{provider}"
   removed_authentication_option: 'Usunąłeś logowanie na swoje konto przez %{kind}'
   user_was_not_valid: 'Niepoprawny użytkownik'
+  sign_in_through_one_of_these_services: 'Zaloguj się przez jedną z nastepujących usług'
+  add_another_service_to_sign_in_with: 'Połącz konto z'
+  you_have_signed_in_with_these_services: 'Zalogowałeś się przez następujące usługi'
