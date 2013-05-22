@@ -13,3 +13,8 @@ en:
   social_provider: "Social Provider"
   please_confirm_your_email: "Please confirm your email address to continue"
   sign_in_with: "Login with %{provider}"
+  removed_authentication_option: 'You have removed authentication by %{kind}'
+  user_was_not_valid: 'Wrong user'
+  sign_in_through_one_of_these_services: 'Log in through one of these services'
+  add_another_service_to_sign_in_with: 'Connect account with'
+  you_have_signed_in_with_these_services: 'You have logged in through following services'

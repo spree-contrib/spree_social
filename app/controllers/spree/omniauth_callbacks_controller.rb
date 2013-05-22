@@ -8,7 +8,7 @@ class Spree::OmniauthCallbacksController < Devise::OmniauthCallbacksController
       class_eval %Q{
         def #{provider}
           if request.env["omniauth.error"].present?
-            flash[:error] = t("devise.oauth_callbacks.failure", :kind => auth_hash['provider'], :reason => t(:user_was_not_valid))
+            flash[:error] = t("devise.omniauth_callbacks.failure", :kind => auth_hash['provider'], :reason => t(:user_was_not_valid))
             redirect_back_or_default(root_url)
             return
           end
