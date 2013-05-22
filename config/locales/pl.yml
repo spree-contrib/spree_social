@@ -1,0 +1,17 @@
+pl:
+  add_another_service: "Dodaj inną usługę za pomocą której chcesz się zalogować:"
+  edit_social_method: "Dodaj Logowanie Przez Portale Społecznościowe"
+  new_social_method: "Nowa Metoda Autentykacji"
+  one_more_step: 'Jeszcze jeden krok aby ukończyć dodawanie metody logowania przez %{kind}'
+  remove_authentication_option_confirmation: "Czy jesteś pewien, że chcesz usunąć tę metodę autentykacji?"
+  sign_into_account: "Możesz zalogować się na to konto przy pomocy:"
+  sign_in_through_service: "Zaloguj się przez jedną z nastepujących usług:"
+  social_api_key: "API Key"
+  social_api_secret: "API Secret"
+  social_authentication_methods: "Metody Logowania Przez Portale Społecznościowe"
+  social_authentication_methods_description: "Skonfiguruj metody logowania OAuth"
+  social_provider: "Dostawca Usługi"
+  please_confirm_your_email: "Potwierdź swój adres email aby kontynuować"
+  sign_in_with: "Zaloguj przez %{provider}"
+  removed_authentication_option: 'Usunąłeś logowanie na swoje konto przez %{kind}'
+  user_was_not_valid: 'Niepoprawny użytkownik'

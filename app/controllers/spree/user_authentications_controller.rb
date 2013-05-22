@@ -6,7 +6,7 @@ class Spree::UserAuthenticationsController < ApplicationController
   def destroy
     @authentication = spree_current_user.user_authentications.find(params[:id])
     @authentication.destroy
-    flash[:notice] = "Successfully destroyed authentication method."
+    flash[:notice] = t('removed_authentication_option', kind: @authentication.provider.capitalize)
     redirect_to spree.account_path
   end
 end
