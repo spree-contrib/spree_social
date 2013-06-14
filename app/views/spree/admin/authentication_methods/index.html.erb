@@ -2,11 +2,11 @@
 
 <% content_for :page_actions do %>
   <li>
-    <%= button_link_to t('new_social_method'), new_object_url, :icon => 'icon-plus', :id => 'admin_new_slide_link' %>
+    <%= button_link_to Spree.t('new_social_method'), new_object_url, :icon => 'icon-plus', :id => 'admin_new_slide_link' %>
   </li>
 <% end %>
 
-<h1><%= t("social_authentication_methods") %></h1>
+<h1><%= Spree.t("social_authentication_methods") %></h1>
 
 <table class="index">
   <thead data-hook="admin_social_methods_index_headers">
@@ -24,10 +24,10 @@
         <td><%= truncate method.api_key, :length => 20 %></td>
         <td><%= truncate method.api_secret, :length => 20 %></td>
         <td><%= method.environment.to_s.titleize %></td>
-        <td><%= method.active ? t(:yes) : t(:no) %></td>
+        <td><%= method.active ? Spree.t(:yes) : Spree.t(:no) %></td>
         <td>
-        	<%= link_to_edit method %> &nbsp;
-        	<%= link_to_delete method %>
+          <%= link_to_edit method %> &nbsp;
+          <%= link_to_delete method %>
         </td>
       </tr>
     <% end %>

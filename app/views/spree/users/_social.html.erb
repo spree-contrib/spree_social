@@ -11,7 +11,7 @@
 
   <% if @spree_user.user_authentications %>
     <% unless @spree_user.user_authentications.empty? %>
-      <p><strong><%= t(:you_have_signed_in_with_these_services) %>:</strong></p>
+      <p><strong><%= Spree.t(:you_have_signed_in_with_these_services) %>:</strong></p>
       <div class="authentications">
         <% for user_authentication in @spree_user.user_authentications %>
           <div class="authentication">
