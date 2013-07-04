@@ -16,7 +16,7 @@ group :development, :test do
 end
 
 group :test do
-  gem 'rspec-rails', '~> 2.9.0'
+  gem 'rspec-rails', '~> 2.13.0'
   gem 'factory_girl_rails', '~> 1.7.0'
   gem 'ffaker'
   gem 'shoulda-matchers', '~> 1.0.0'
