@@ -6,6 +6,7 @@ require 'rspec/rails'
 require 'spree/testing_support/url_helpers'
 require 'database_cleaner'
 require 'ffaker'
+require 'capybara/rspec'
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.
@@ -15,6 +16,7 @@ require 'spree/testing_support/factories'
 require 'spree/testing_support/controller_requests'
 
 RSpec.configure do |config|
+  config.include Capybara::DSL
   # == Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
