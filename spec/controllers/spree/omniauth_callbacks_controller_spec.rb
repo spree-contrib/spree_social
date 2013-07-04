@@ -77,7 +77,8 @@ describe Spree::OmniauthCallbacksController do
         before { Spree::UserAuthentication.stub :find_by_provider_and_uid => nil }
 
         it "should create a new user_authentication" do
-          user.user_authentications.should_receive(:create!)
+          user.should_receive(:apply_omniauth)
+          user.should_receive(:save!)
           controller.twitter
         end
 
