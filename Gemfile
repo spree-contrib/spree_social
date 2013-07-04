@@ -23,7 +23,6 @@ group :test do
   gem 'capybara'
 end
 
-# TODO: Remove from Gemfile  add to gemspec once gem is released
-gem 'spree_auth_devise', :git => 'git://github.com/spree/spree_auth_devise.git'
+gem 'spree_auth_devise', :git => 'git://github.com/spree/spree_auth_devise.git', :branch => '1-2-stable'
 
 gemspec
