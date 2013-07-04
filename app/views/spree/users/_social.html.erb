@@ -3,17 +3,17 @@
 <div id="existing-customer">
   <table>
     <tr>
-      <% if @spree_user.anonymous? %>
-        <%= render :partial => 'spree/shared/social_registrations', :locals => {:user => @spree_user, :omniauth => @omniauth} %>
+      <% if spree_current_user.anonymous? %>
+        <%= render :partial => 'spree/shared/social_registrations', :locals => {:user => spree_current_user, :omniauth => @omniauth} %>
       <% end %>
     </tr>
   </table>
 
-  <% if @spree_user.user_authentications %>
-    <% unless @spree_user.user_authentications.empty? %>
+  <% if spree_current_user.user_authentications %>
+    <% unless spree_current_user.user_authentications.empty? %>
       <p><strong><%= t(:you_have_signed_in_with_these_services) %>:</strong></p>
       <div class="authentications">
-        <% for user_authentication in @spree_user.user_authentications %>
+        <% for user_authentication in spree_current_user.user_authentications %>
           <div class="authentication">
             <%= image_tag "store/#{user_authentication.provider}_32.png", :size => "32x32", :class => "columns" %>
             <div class="provider columns two"><%= user_authentication.provider %></div>
@@ -26,7 +26,7 @@
     <% end %>
 
   <% end %>
-  <%= content_tag(:p, content_tag(:strong, t(:add_another_service_to_sign_in_with))) if Spree::AuthenticationMethod.available_for(@spree_user).exists? %>
+  <%= content_tag(:p, content_tag(:strong, t(:add_another_service_to_sign_in_with))) if Spree::AuthenticationMethod.available_for(spree_current_user).exists? %>
   <%= render :partial => "spree/shared/social" %>
 </div>
 
