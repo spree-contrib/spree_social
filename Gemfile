@@ -20,7 +20,7 @@ group :test do
   gem 'factory_girl_rails', '~> 1.7.0'
   gem 'ffaker'
   gem 'shoulda-matchers', '~> 1.0.0'
-  gem 'capybara'
+  gem 'capybara', '~> 1.1'
 end
 
 gem 'spree_auth_devise', :git => 'git://github.com/spree/spree_auth_devise.git', :branch => '1-2-stable'
