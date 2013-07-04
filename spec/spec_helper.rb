@@ -5,6 +5,7 @@ require File.expand_path('../dummy/config/environment', __FILE__)
 require 'rspec/rails'
 require 'spree/core/url_helpers'
 require 'ffaker'
+require 'capybara/rspec'
 
 # Requires supporting files with custom matchers and macros, etc,
 # in ./support/ and its subdirectories.
@@ -14,6 +15,7 @@ require 'spree/core/testing_support/factories'
 require 'spree/core/testing_support/controller_requests'
 
 RSpec.configure do |config|
+  config.include Capybara::DSL
   # == Mock Framework
   #
   # If you prefer to use mocha, flexmock or RR, uncomment the appropriate line:
