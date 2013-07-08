@@ -28,6 +28,14 @@ rails g spree_social:install
 bundle exec rake db:migrate
 ```
 
+Preference(optional): By default url will be: 'spree_user/auth/:provider'. If you wish to modify the url to: 'member/auth/:provider', 'user/auth/:provider', or 'auth/:provider' then you can do the following accordingly -
+
+```ruby
+Spree::SocialConfig[:path_prefix] = 'member' # for /member/auth/:provider
+Spree::SocialConfig[:path_prefix] = 'user' # for /user/auth/:provider
+Spree::SocialConfig[:path_prefix] = '' # for /auth/:provider
+```
+
 Spree Setup to Utilize OAuth Sources
 ------------------------------------
 
