@@ -20,7 +20,7 @@
               <%= user_authentication.provider %>
             </div>
             <div class="uid columns two"><%= user_authentication.uid %></div>
-            <%= link_to "X", user_authentication, :confirm => "#{t(:remove_authentication_option_confirmation)}", :method => :delete, :class => "remove" %>
+            <%= link_to "X", user_authentication, :confirm => "#{Spree.t(:remove_authentication_option_confirmation)}", :method => :delete, :class => "remove" %>
           </div>
         <% end %>
         <div class="clear"></div>
@@ -28,7 +28,7 @@
     <% end %>
 
   <% end %>
-  <%= content_tag(:p, content_tag(:strong, t(:add_another_service_to_sign_in_with))) if Spree::AuthenticationMethod.available_for(spree_current_user).exists? %>
+  <%= content_tag(:p, content_tag(:strong, Spree.t(:add_another_service))) if Spree::AuthenticationMethod.available_for(spree_current_user).exists? %>
   <%= render :partial => "spree/shared/social" %>
 </div>
 
