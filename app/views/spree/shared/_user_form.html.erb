@@ -2,7 +2,7 @@
   <%= f.label :email, t(:email) %><br />
   <%= f.email_field :email, :class => 'title' %>
 </p>
-<% if @user.password_required? %>
+<% if f.object.password_required? %>
   <div id="password-credentials">
     <p>
       <%= f.label :password, t(:password) %><br />
