@@ -37,8 +37,6 @@ class Spree::OmniauthCallbacksController < Devise::OmniauthCallbacksController
           end
 
           if current_order
-            user = spree_current_user || authentication.user
-            current_order.associate_user!(user)
             session[:guest_token] = nil
           end
         end
