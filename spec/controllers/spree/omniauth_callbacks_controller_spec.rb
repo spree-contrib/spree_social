@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Spree::OmniauthCallbacksController do
   let(:user) { Factory(:user) }
   let(:omni_params) { mock("omni", :[] => nil).as_null_object }
-  let(:order) { mock_model(Spree::Order, :associate_user => nil) }
+  let(:order) { mock_model(Spree::Order) }
 
   before(:each) do
     Rails.application.routes.default_url_options[:host] = 'test.host'
@@ -28,15 +28,6 @@ describe Spree::OmniauthCallbacksController do
 
     it "should not attempt authentication" do
       controller.should_not_receive(:sign_in_and_redirect)
-      controller.twitter
-    end
-  end
-
-  shared_examples_for "associate_order" do
-    before { controller.stub :current_order => order }
-
-    it "should associate the order with the user" do
-      order.should_receive(:associate_user!).with(user)
       controller.twitter
     end
   end
@@ -91,8 +82,6 @@ describe Spree::OmniauthCallbacksController do
           controller.should_receive(:redirect_back_or_default)
           controller.twitter
         end
-
-        it_should_behave_like "associate_order"
       end
     end
 
