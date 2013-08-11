@@ -20,6 +20,19 @@ module SpreeSocial
       Spree::SocialConfig = Spree::SocialConfiguration.new
     end
 
+    initializer "spree_soclial_oauth_reconfigure", :after => :finisher_hook do |app|
+      # Engines mounted at anything other than "/" cause the oath middleware to miss intercepting the request
+      SpreeSocial::OAUTH_PROVIDERS.each do |provider|
+        # Don't fail on non-existent strategies
+        if OmniAuth::Strategies.const_defined?(provider.first)
+          (OmniAuth::Strategies.const_get(provider.first)).configure do |config|
+            # Reconfigure the OAuth request path to match where the engine was mounted
+            config.request_path = Spree::Core::Engine.routes.url_helpers.spree_user_omniauth_authorize_path(:provider => provider.second)
+          end
+        end
+      end
+    end
+
     def self.activate
       Dir.glob(File.join(File.dirname(__FILE__), "../../app/**/*_decorator*.rb")) do |c|
         Rails.configuration.cache_classes ? require(c) : load(c)
