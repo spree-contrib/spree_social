@@ -27,7 +27,9 @@ module SpreeSocial
         if OmniAuth::Strategies.const_defined?(provider.first)
           (OmniAuth::Strategies.const_get(provider.first)).configure do |config|
             # Reconfigure the OAuth request path to match where the engine was mounted
-            config.request_path = Spree::Core::Engine.routes.url_helpers.spree_user_omniauth_authorize_path(:provider => provider.second)
+            if Spree::Core::Engine.routes.url_helpers.respond_to?(:spree_user_omniauth_authorize_path) # Rake tasks don't seem to have this available
+              config.request_path = Spree::Core::Engine.routes.url_helpers.spree_user_omniauth_authorize_path(:provider => provider.second)
+            end
           end
         end
       end
