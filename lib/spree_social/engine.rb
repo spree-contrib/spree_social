@@ -24,8 +24,8 @@ module SpreeSocial
       # Engines mounted at anything other than "/" cause the oath middleware to miss intercepting the request
       SpreeSocial::OAUTH_PROVIDERS.each do |provider|
         # Don't fail on non-existent strategies
-        if OmniAuth::Strategies.const_defined?(provider.first)
-          (OmniAuth::Strategies.const_get(provider.first)).configure do |config|
+        if OmniAuth::Strategies.const_defined?(provider.second.camelize)
+          (OmniAuth::Strategies.const_get(provider.second.camelize)).configure do |config|
             # Reconfigure the OAuth request path to match where the engine was mounted
             if Spree::Core::Engine.routes.url_helpers.respond_to?(:spree_user_omniauth_authorize_path) # Rake tasks don't seem to have this available
               config.request_path = Spree::Core::Engine.routes.url_helpers.spree_user_omniauth_authorize_path(:provider => provider.second)
