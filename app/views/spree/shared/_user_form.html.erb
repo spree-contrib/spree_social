@@ -2,7 +2,7 @@
   <%= f.label :email, Spree.t(:email) %><br />
   <%= f.email_field :email, :class => 'title' %>
 </p>
-<% if spree_current_user && spree_current_user.password_required? %>
+<% if spree_current_user.nil? || spree_current_user.password_required? %>
   <div id="password-credentials">
     <p>
       <%= f.label :password, Spree.t(:password) %><br />
