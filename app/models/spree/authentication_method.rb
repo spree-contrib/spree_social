@@ -1,5 +1,4 @@
 class Spree::AuthenticationMethod < ActiveRecord::Base
-  attr_accessible :provider, :api_key, :api_secret, :environment, :active
 
   def self.active_authentication_methods?
     where(:environment => ::Rails.env, :active => true).exists?
