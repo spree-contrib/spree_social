@@ -1,6 +1,8 @@
 en:
   spree:
     add_another_service: "Add another service to sign in with:"
+    authentications:
+      destroy: 'Successfully destroyed authentication method.'
     edit_social_method: "Editing Social Authentication Method"
     new_social_method: "New Authentication Method"
     one_more_step: 'One more step to complete your registration from %{kind}'
