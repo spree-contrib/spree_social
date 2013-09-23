@@ -1,0 +1,18 @@
+es-MX:
+  spree:
+    add_another_service: 'Añadir otro servicio para inicio de sesión:'
+    authentications:
+      destroy: 'Método de autenticación destruido exitosamente.'
+    edit_social_method: 'Editando metodo de autenticación'
+    new_social_method: 'Nuevo método de autenticación'
+    one_more_step: 'Un paso más para completar tu registro desde %{kind}'
+    remove_authentication_option_confirmation: '¿Está seguro que quiere eliminar este método de autenticación?'
+    sign_into_account: 'Puedes iniciar sesión usando:'
+    sign_in_through_service: 'Iniciar sesión a través de uno de estos servicios:'
+    social_api_key: 'API Key'
+    social_api_secret: 'API Secret'
+    social_authentication_methods: 'Métodos de autenticación'
+    social_authentication_methods_description: 'Configurar métodos de autenticación de OAuth'
+    social_provider: 'Proveedor social'
+    please_confirm_your_email: 'Por favor confirme su email para continuar'
+    sign_in_with: 'Autententicado con %{provider}'
