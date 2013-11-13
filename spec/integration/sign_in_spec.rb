@@ -36,7 +36,7 @@ feature "signing in using Omniauth" do
       visit spree.root_path
       click_link "Login"
       find('a[title="Login with facebook"]').click
-      page.should have_content("Welcome! You have signed up successfully.")
+      page.should have_content("You are now signed in with your facebook account.")
       click_link 'My Account'
       page.should have_content("My Account")
     end
