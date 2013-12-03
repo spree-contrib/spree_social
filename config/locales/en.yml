@@ -6,8 +6,10 @@ en:
     add_another_service: "Add another service to sign in with:"
     authentications:
       destroy: 'Successfully destroyed authentication method.'
+    back_to_authentication_methods_list: "Back To Authentication Methods List"
     edit_social_method: "Editing Social Authentication Method"
     new_social_method: "New Authentication Method"
+    no_authentication_methods_found: "No Authentication Methods Found"
     one_more_step: 'One more step to complete your registration from %{kind}'
     remove_authentication_option_confirmation: "Are you sure you would like to remove this authentication method?"
     sign_into_account: "You can sign into this account using:"
