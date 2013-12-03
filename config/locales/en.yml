@@ -6,12 +6,14 @@ en:
     add_another_service: "Add another service to sign in with:"
     authentications:
       destroy: 'Successfully destroyed authentication method.'
+    back_to_authentication_methods_list: "Back To Authentication Methods List"
     edit_social_method: "Editing Social Authentication Method"
     new_social_method: "New Authentication Method"
+    no_authentication_methods_found: "No Authentication Methods Found"
     one_more_step: 'One more step to complete your registration from %{kind}'
     remove_authentication_option_confirmation: "Are you sure you would like to remove this authentication method?"
     sign_into_account: "You can sign into this account using:"
-    sign_in_through_service: "Sign in through one of these services:"
+    sign_in_through_one_of_these_services: "Sign in through one of these services:"
     social_api_key: "API Key"
     social_api_secret: "API Secret"
     social_authentication_methods: "Social Authentication Methods"
@@ -19,3 +21,4 @@ en:
     social_provider: "Social Provider"
     please_confirm_your_email: "Please confirm your email address to continue"
     sign_in_with: "Login with %{provider}"
+    you_have_signed_in_with_these_services: "You Have Signed In With These Services"
