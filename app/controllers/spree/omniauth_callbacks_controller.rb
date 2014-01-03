@@ -6,7 +6,7 @@ class Spree::OmniauthCallbacksController < Devise::OmniauthCallbacksController
 
   def self.provides_callback_for(*providers)
     providers.each do |provider|
-      class_eval %Q{
+      class_eval <<-FUNCTION_DEFS, __FILE__, __LINE__ + 1
         ssl_allowed :#{provider}
         def #{provider}
           if request.env["omniauth.error"].present?
@@ -44,7 +44,7 @@ class Spree::OmniauthCallbacksController < Devise::OmniauthCallbacksController
             session[:guest_token] = nil
           end
         end
-      }
+      FUNCTION_DEFS
     end
   end
 
