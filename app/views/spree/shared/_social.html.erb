@@ -1,6 +1,6 @@
 <div id="social-signin-links">
   <% if (!spree_current_user || !spree_current_user.user_authentications) && Spree::AuthenticationMethod.active_authentication_methods? %>
-    <h2><%= Spree.t(:sign_in_through_one_of_these_services) %>:</h2>
+    <h2><%= Spree.t(:sign_in_through_one_of_these_services) %></h2>
   <% end %>
 
   <% Spree::AuthenticationMethod.available_for(@spree_user).each do |method| %>

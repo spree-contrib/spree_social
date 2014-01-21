@@ -1,14 +1,6 @@
 <% if Spree::AuthenticationMethod.active_authentication_methods? %>
 <% @body_id = 'login' %>
 <div id="existing-customer">
-  <table>
-    <tr>
-      <% if spree_current_user.anonymous? %>
-        <%= render :partial => 'spree/shared/social_registrations', :locals => {:user => spree_current_user, :omniauth => @omniauth} %>
-      <% end %>
-    </tr>
-  </table>
-
   <% if spree_current_user.user_authentications %>
     <% unless spree_current_user.user_authentications.empty? %>
       <p><strong><%= Spree.t(:you_have_signed_in_with_these_services) %>:</strong></p>
