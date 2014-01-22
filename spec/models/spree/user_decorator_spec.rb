@@ -3,7 +3,7 @@ require 'spec_helper'
 describe Spree::User do
   let(:user) { FactoryGirl.create(:user) }
   let(:omni_params) { {"provider" => "twitter", "uid" => 12345} }
-  let(:auths) { mock "auths" }
+  let(:auths) { double "auths" }
 
   context "#apply_omniauth" do
     before { user.stub :user_authentications => auths }

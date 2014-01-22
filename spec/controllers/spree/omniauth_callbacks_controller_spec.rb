@@ -2,8 +2,8 @@ require 'spec_helper'
 
 describe Spree::OmniauthCallbacksController do
   let(:user) { FactoryGirl.create(:user) }
-  let(:omni_params) { mock("omni", :[] => nil).as_null_object }
-  let(:order) { mock_model(Spree::Order, :associate_user => nil) }
+  let(:omni_params) { double("omni", :[] => nil).as_null_object }
+  let(:order) { stub_model(Spree::Order, :associate_user => nil) }
 
   before(:each) do
     Rails.application.routes.default_url_options[:host] = 'test.host'
@@ -54,7 +54,7 @@ describe Spree::OmniauthCallbacksController do
       it_should_behave_like "denied_permissions"
 
       context "when existing user_authentication" do
-        let(:user_authentication) { mock("user_authentication", :user => user) }
+        let(:user_authentication) { double("user_authentication", :user => user) }
         before { Spree::UserAuthentication.stub :find_by_provider_and_uid => user_authentication }
 
         it "should not need to create the user_authentication" do
@@ -102,7 +102,7 @@ describe Spree::OmniauthCallbacksController do
       it_should_behave_like "denied_permissions"
 
       context "when existing user_authentication" do
-        let(:user_authentication) { mock("user_authentication", :user => user) }
+        let(:user_authentication) { double("user_authentication", :user => user) }
         before { Spree::UserAuthentication.stub :find_by_provider_and_uid => user_authentication }
 
         it "should not need to create the user_authentication" do
