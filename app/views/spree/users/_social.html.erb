@@ -12,7 +12,7 @@
               <%= user_authentication.provider %>
             </div>
             <div class="uid columns two"><%= user_authentication.uid %></div>
-            <%= link_to "X", user_authentication, :confirm => "#{Spree.t(:remove_authentication_option_confirmation)}", :method => :delete, :class => "remove" %>
+            <%= link_to "X", user_authentication, data: { :confirm => "#{Spree.t(:remove_authentication_option_confirmation)}" }, :method => :delete, :class => "remove" %>
           </div>
         <% end %>
         <div class="clear"></div>
