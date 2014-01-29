@@ -1,0 +1,24 @@
+pt-BR:
+  devise:
+    omniauth_callbacks:
+      success: "Você está logado agora com a sua conta do %{kind}."
+  spree:
+    add_another_service: "Adicione outro serviço para se logar:"
+    authentications:
+      destroy: 'Método de autenticação destruído com sucesso.'
+    back_to_authentication_methods_list: "Voltar Para Lista de Métodos de Autenticação"
+    edit_social_method: "Editando Método de Autenticação Social"
+    new_social_method: "Novo Método de Autenticação"
+    no_authentication_methods_found: "Métodos de Autenticação Não Encontrados"
+    one_more_step: 'Um passo apenas para completar sua registração pelo %{kind}'
+    remove_authentication_option_confirmation: "Você tem certeza que deseja remover este método de autenticação ?"
+    sign_into_account: "Você pode acessar esta conta usando:"
+    sign_in_through_one_of_these_services: "Acesse através de um destes serviços:"
+    social_api_key: "Chave API"
+    social_api_secret: "Segredo API"
+    social_authentication_methods: "Métodos de Autenticação Social"
+    social_authentication_methods_description: "Configure Métodos de Autenticação OAuth"
+    social_provider: "Provedor Social"
+    please_confirm_your_email: "Por favor confirme seu endereço de e-mail para continuar"
+    sign_in_with: "Login com %{provider}"
+    you_have_signed_in_with_these_services: "Você se cadastrou com estes serviços"
