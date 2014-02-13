@@ -4,7 +4,7 @@ Spree.user_class.class_eval do
   devise :omniauthable
 
   def apply_omniauth(omniauth)
-    if omniauth['provider'] == "facebook"
+    if ["facebook", 'google_oauth2'].include? omniauth['provider']
       self.email = omniauth['info']['email'] if email.blank?
     end
     user_authentications.build(:provider => omniauth['provider'], :uid => omniauth['uid'])
