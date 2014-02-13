@@ -12,6 +12,17 @@ describe Spree::User do
       auths.should_receive(:build)
       user.apply_omniauth(omni_params)
     end
+    
+    context "omniauth params contains email" do
+      let(:user) { FactoryGirl.create(:user) {|user| user.email = nil} }
+      let(:omni_params) { {"provider" => "google_oauth2", "uid" => 12345, 'info' => {'email' => 'test@example.com'}} }
+      
+      it "should set email from omniauth params" do
+        auths.should_receive(:build)
+        user.apply_omniauth(omni_params)
+        user.email.should == 'test@example.com'
+      end
+    end
   end
 
   context "#password_required?" do
