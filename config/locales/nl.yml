@@ -1,12 +1,21 @@
+---
 nl:
+  devise:
+    omniauth_callbacks:
+      success: "U bent nu aangemeld met uw %{kind}-account."
   spree:
+    user_was_not_valid: Gebruiker was niet geldig.
     add_another_service: 'Nog een log-in dienst toevoegen:'
+    authentications:
+      destroy: "Met succes vernietigd authenticatiemethode."
+    back_to_authentication_methods_list: "Terug naar de lijst verificatiemethoden"
     edit_social_method: 'Bewerk Social Authenticatie Methodes'
     new_social_method: 'Nieuwe Authenticatie Methode'
+    no_authentication_methods_found: "Geen verificatiemethoden gevonden"
     one_more_step: 'Laatste stap om registratie met %{kind} te voltooien'
     remove_authentication_option_confirmation: 'Weet je zeker dat je deze authenticatie methode wilt verwijderen?'
     sign_into_account: 'Je kunt bij deze account inlogen met:'
-    sign_in_through_service: 'Log in met een van de volgende diensten:'
+    sign_in_through_one_of_these_services: 'Log in met een van de volgende diensten:'
     social_api_key: 'API Key'
     social_api_secret: 'API Secret'
     social_authentication_methods: 'Social Authenticatie Methodes'
@@ -14,3 +23,4 @@ nl:
     social_provider: 'Social Provider'
     please_confirm_your_email: 'Bevestig je email adres om verder te gaan'
     sign_in_with: 'Login met %{provider}'
+    you_have_signed_in_with_these_services: "Je hebt in deze diensten ondertekend"

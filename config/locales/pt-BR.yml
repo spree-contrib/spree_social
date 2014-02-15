@@ -1,8 +1,10 @@
+---
 pt-BR:
   devise:
     omniauth_callbacks:
       success: "Você está logado agora com a sua conta do %{kind}."
   spree:
+    user_was_not_valid: "Usuário não era válido."
     add_another_service: "Adicione outro serviço para se logar:"
     authentications:
       destroy: 'Método de autenticação destruído com sucesso.'

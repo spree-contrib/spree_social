@@ -1,16 +1,26 @@
+---
 de:
+  devise:
+    omniauth_callbacks:
+      success: "Sie sind jetzt mit Ihrem %{kind}-Konto angemeldet."
   spree:
+    user_was_not_valid: Benutzer ist nicht gültig.
     add_another_service: "Füge einen weiteren Dienst zum einloggen hinzu:"
+    authentications:
+      destroy: "Erfolgreich Authentifizierungsmethode zerstört."
+    back_to_authentication_methods_list: "Zurück zur Liste Authentifizierungsmethoden"
     edit_social_method: "Social Provider zum einloggen bearbeiten"
     new_social_method: "Neue Loginmethode"
+    no_authentication_methods_found: "Keine Authentifizierungsmethoden gefunden"
     one_more_step: 'Ein letzter Schritt um deine Anmeldung über %{kind} abzuschließen'
     remove_authentication_option_confirmation: "Bist du sicher, dass du diesen Dienst zum einloggen entfernen möchtest?"
     sign_into_account: "Oder manuell einloggen"
-    sign_in_through_service: "Mit einem Klick einloggen"
+    sign_in_through_one_of_these_services: "Mit einem Klick einloggen"
     social_api_key: "Öffentliche APP-ID"
     social_api_secret: "Geheimer API-Schlüssel"
     social_authentication_methods: "Social Login Dienste"
     social_authentication_methods_description: "OAuth-Einstellugnen"
-    social_provider: "Social Provider"
+    social_provider: "Social Anbieter"
     please_confirm_your_email: "Bitte bestätige deine Emailadresse um fortzufahren"
     sign_in_with: "Mit %{provider} einloggen"
+    you_have_signed_in_with_these_services: "Sie haben mit diesen Diensten unterzeichnet"

@@ -11,3 +11,4 @@ spec/dummy
 .rvmrc
 .bundle
 Gemfile.lock
+coverage
