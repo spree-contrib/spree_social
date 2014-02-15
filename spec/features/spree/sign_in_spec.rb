@@ -1,8 +1,8 @@
 require 'spec_helper'
 
-feature "signing in using Omniauth" do
+feature "signing in using Omniauth", js: true do
   context "facebook" do
-    before do
+    background do
       Spree::AuthenticationMethod.create!(:provider => 'facebook', :environment => Rails.env, :active => true)
       OmniAuth.config.test_mode = true
       OmniAuth.config.mock_auth[:facebook] = {
@@ -43,7 +43,7 @@ feature "signing in using Omniauth" do
   end
 
   context "twitter" do
-    before do
+    background do
       Spree::AuthenticationMethod.create!(:provider => 'twitter', :environment => Rails.env, :active => true)
       OmniAuth.config.test_mode = true
       OmniAuth.config.mock_auth[:twitter] = {
@@ -64,7 +64,7 @@ feature "signing in using Omniauth" do
       visit spree.root_path
       click_link "Login"
       find('a[title="Login with twitter"]').click
-      page.should have_content("Please confirm your email address to continue")
+      page.should have_content("Please confirm your email address to continue".upcase)
       fill_in "Email", :with => "user@example.com"
       click_button "Create"
       page.should have_content("Welcome! You have signed up successfully.")

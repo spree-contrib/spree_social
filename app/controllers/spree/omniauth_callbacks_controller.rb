@@ -10,7 +10,7 @@ class Spree::OmniauthCallbacksController < Devise::OmniauthCallbacksController
         ssl_allowed :#{provider}
         def #{provider}
           if request.env["omniauth.error"].present?
-            flash[:error] = t("devise.omniauth_callbacks.failure", :kind => auth_hash['provider'], :reason => t(:user_was_not_valid))
+            flash[:error] = I18n.t("devise.omniauth_callbacks.failure", :kind => auth_hash['provider'], :reason => Spree.t(:user_was_not_valid))
             redirect_back_or_default(root_url)
             return
           end
@@ -29,7 +29,7 @@ class Spree::OmniauthCallbacksController < Devise::OmniauthCallbacksController
             user = Spree::User.find_by_email(auth_hash['info']['email']) || Spree::User.new
             user.apply_omniauth(auth_hash)
             if user.save
-              flash[:notice] = t("devise.omniauth_callbacks.success", :kind => auth_hash['provider'])
+              flash[:notice] = I18n.t("devise.omniauth_callbacks.success", :kind => auth_hash['provider'])
               sign_in_and_redirect :spree_user, user
             else
               session[:omniauth] = auth_hash.except('extra')

@@ -11,11 +11,6 @@ module SpreeSocial
 
     config.autoload_paths += %W(#{config.root}/lib)
 
-    # use rspec for tests
-    config.generators do |g|
-      g.test_framework :rspec
-    end
-
     initializer "spree_social.environment", :before => "spree.environment" do |app|
       Spree::SocialConfig = Spree::SocialConfiguration.new
     end

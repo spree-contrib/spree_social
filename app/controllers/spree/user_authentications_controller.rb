@@ -6,7 +6,7 @@ class Spree::UserAuthenticationsController < Spree::StoreController
   def destroy
     @authentication = spree_current_user.user_authentications.find(params[:id])
     @authentication.destroy
-    flash[:notice] = t('spree.authentications.destroy')
+    flash[:notice] = Spree.t(:destroy, scope: :authentications)
     redirect_to spree.account_path
   end
 end

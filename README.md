@@ -1,29 +1,28 @@
 SpreeSocial
 ===========
-[![Build Status](https://travis-ci.org/spree/spree_social.png)](https://travis-ci.org/spree/spree_social)
 
+[![Build Status](https://api.travis-ci.org/spree/spree_social.png)](https://travis-ci.org/spree/spree_social)
 
-Core for all social media related functionality for Spree. 
-The Spree Social gem handles authorization, account creation and association through social media sources such as Twitter and Facebook. 
-This requires the edge source of [Spree](https://github.com/spree/spree). 
-This gem is beta at best and should be treated as such. 
-Features and code base will change rapidly as this is under active development. 
+Core for all social media related functionality for Spree.
+The Spree Social gem handles authorization, account creation and association through social media sources such as Twitter and Facebook.
+This requires the edge source of [Spree][1].
+This gem is beta at best and should be treated as such.
+Features and code base will change rapidly as this is under active development.
 Use with caution.
 
 Setup for Production
 --------------------
-Add this extension to your Gemfile:
 
+Add this extension to your `Gemfile`:
 ```ruby
-gem "spree_social", :git => "git://github.com/spree/spree_social.git"
+gem 'spree_social', github: 'spree/spree_social', branch: 'master'
 ```
 
 Then run:
-
-```
-bundle update
-rails g spree_social:install
-bundle exec rake db:migrate
+```sh
+$ bundle update
+$ rails g spree_social:install
+$ bundle exec rake db:migrate
 ```
 
 Preference(optional): By default url will be '/users/auth/:provider'. If you wish to modify the url to: '/member/auth/:provider', '/profile/auth/:provider', or '/auth/:provider' then you can do this accordingly in your **config/initializers/spree.rb** file as described below -
@@ -56,7 +55,7 @@ OAuth Applications @ Facebook, Twitter and / or Github are supported out of the 
 
 ### Facebook
 
-[Facebook](https://developers.facebook.com/apps/?action=create): [https://developers.facebook.com/apps/?action=create](http://www.facebook.com/developers/createapp.php)
+[Facebook / Developers / Apps][2]
 
 1. Name the app what you will and agree to the terms.
 2. Fill out the capcha
@@ -66,7 +65,7 @@ OAuth Applications @ Facebook, Twitter and / or Github are supported out of the 
 
 ### Twitter
 
-[Twitter](http://dev.twitter.com/apps/new): [http://dev.twitter.com/apps/new](http://dev.twitter.com/apps/new)
+[Twitter / Application Management / Create an application][3]
 
 1. Name and Description must be filled in with something
 2. Application Website: http://your_computer.local:3000 for development / http://your-site.com for production
@@ -77,57 +76,56 @@ OAuth Applications @ Facebook, Twitter and / or Github are supported out of the 
 
 ### Github
 
-[Github](http://github.com/account/applications/new): [http://github.com/account/applications/new](http://github.com/account/applications/new)
+[Github / Applications / Register a new OAuth application][4]
 
 1. Name The Application
 2. Main URL: http://your_computer.local:3000 for development / http://your-site.com for production
 3. Callback URL: http://your_computer.local:3000 for development / http://your-site.com for production
 4. Click Create
 
-> This does not seem to be a listed Github item right now. To View and / or edit your applications goto [http://github.com/account/applications/]([http://github.com/account/applications/])
+> This does not seem to be a listed Github item right now. To View and / or edit your applications goto [http://github.com/account/applications](http://github.com/account/applications)
 
 ### Other OAuth sources that a currently supported
 
 * Google (OAuth)
 
-Setup for Development
----------------------
+---
 
-```
-git clone git://github.com/spree/spree
-git clone git://github.com/spree/spree_social
-cd spree
-bundle install
-bundle exec rake sandbox
-```
+## Contributing
 
-add this to sandbox/Gemfile:
+In the spirit of [free software][5], **everyone** is encouraged to help improve this project.
 
-```ruby
-gem 'spree_social', :path => '../spree_social'
-```
+Here are some ways *you* can contribute:
 
-Then run:
+* by using prerelease versions
+* by reporting [bugs][6]
+* by suggesting new features
+* by writing translations
+* by writing or editing documentation
+* by writing specifications
+* by writing code (*no patch is too small*: fix typos, add comments, clean up inconsistent whitespace)
+* by refactoring code
+* by resolving [issues][6]
+* by reviewing patches
 
-```
-bundle update
-rails g spree_social:install
-bundle exec rake db:migrate
-```
+Starting point:
 
-Testing
--------
+* Fork the repo
+* Clone your repo
+* Run `bundle install`
+* Run `bundle exec rake test_app` to create the test application in `spec/test_app`
+* Make your changes
+* Ensure specs pass by running `bundle exec rspec spec`
+* Submit your pull request
 
-Inside of your cloned spree_social folder, run:
+Copyright (c) 2014 [John Dyer][7] and [contributors][8], released under the [New BSD License][9]
 
-```
-bundle exec rake test_app
-bundle exec rspec spec
-```
-
-Adding your own Auth Source
----------------------------
-
-> Most auth sources supported by the Omniauth gem can be added. I attempt to keep the popular ones included and tested.
-
-Copyright (c) 2012 John Brien Dilts, released under the New BSD License
+[1]: https://github.com/spree/spree
+[2]: https://developers.facebook.com/apps/?action=create
+[3]: https://apps.twitter.com/app/new
+[4]: https://github.com/settings/applications/new
+[5]: http://www.fsf.org/licensing/essays/free-sw.html
+[6]: https://github.com/spree/spree_social/issues
+[7]: https://github.com/LBRapid
+[8]: https://github.com/spree/spree_social/graphs/contributors
+[9]: https://github.com/spree/spree_social/blob/master/LICENSE.md

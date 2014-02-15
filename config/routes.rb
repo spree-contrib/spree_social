@@ -1,4 +1,4 @@
-Spree::Core::Engine.routes.draw do
+Spree::Core::Engine.add_routes do
   devise_for :spree_user,
              :class_name => Spree::User,
              :skip => [:unlocks, :sessions, :registrations, :passwords],
@@ -11,5 +11,4 @@ Spree::Core::Engine.routes.draw do
   namespace :admin do
     resources :authentication_methods
   end
-
 end

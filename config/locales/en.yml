@@ -1,8 +1,10 @@
+---
 en:
   devise:
     omniauth_callbacks:
       success: "You are now signed in with your %{kind} account."
   spree:
+    user_was_not_valid: User was not valid.
     add_another_service: "Add another service to sign in with:"
     authentications:
       destroy: 'Successfully destroyed authentication method.'
