@@ -1,0 +1,26 @@
+---
+sv:
+  devise:
+    omniauth_callbacks:
+      success: "Du är nu inloggad med ditt %{kind} konto."
+  spree:
+    user_was_not_valid: "Användaren var inte giltigt."
+    add_another_service: "Lägg en annan tjänst för att logga in med:"
+    authentications:
+      destroy: "Autentiseringsmetoden har nu blivit borttagen."
+    back_to_authentication_methods_list: "Tillbaka till listan med autentiseringsmetoder"
+    edit_social_method: "Redigera social autentiseringsmetod"
+    new_social_method: "Ny autentiseringsmetod"
+    no_authentication_methods_found: "Inga autentiseringsmetoder funna"
+    one_more_step: "Ett steg från att slutföra din registrering från %{kind}"
+    remove_authentication_option_confirmation: "Är du säker på att du vill ta bort denna autentiseringsmetod?"
+    sign_into_account: "Du kan logga in på detta konto med hjälp av:"
+    sign_in_through_one_of_these_services: "Logga in genom en av dessa tjänster:"
+    social_api_key: "API-nyckel"
+    social_api_secret: "API lösenord"
+    social_authentication_methods: "Sociala autentiseringsmetoder"
+    social_authentication_methods_description: "Sätt upp OAuth autentiseringsmetoder"
+    social_provider: "Social tjänst"
+    please_confirm_your_email: "Bekräfta din e-postadress för att fortsätta"
+    sign_in_with: "Logga in med %{provider}"
+    you_have_signed_in_with_these_services: "Du har loggat in via dessa tjänster"
