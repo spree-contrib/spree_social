@@ -4,7 +4,8 @@
   <% end %>
 
   <% Spree::AuthenticationMethod.available_for(@spree_user).each do |method| %>
-    <% img = "store/#{method.provider}_32.png" %>
-    <%= link_to(image_tag(img, :size => "32x32", :alt => "#{method.provider}"), spree.spree_user_omniauth_authorize_url(provider: method.provider), :title => Spree.t(:sign_in_with, :provider => method.provider)) if method.active %>
+    <%= link_to(content_tag(:i, '', class: "icon-spree-#{method.provider.to_url}-circled"),
+          spree.spree_user_omniauth_authorize_url(provider: method.provider),
+          title: Spree.t(:sign_in_with, provider: method.provider)) if method.active %>
   <% end %>
 </div>
