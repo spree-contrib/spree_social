@@ -1,4 +1,4 @@
-<%= render :partial => 'spree/admin/shared/configuration_menu' %>
+<%= render 'spree/admin/shared/configuration_menu' %>
 
 <% content_for :page_title do %>
   <%= Spree.t(:edit_social_method) %>
@@ -10,10 +10,9 @@
 
 <%= render 'spree/shared/error_messages', :target => @authentication_method %>
 
-<%= form_for(@authentication_method, :url => admin_authentication_method_path(@authentication_method), :method => :put) do |f| %>
+<%= form_for [:admin, @authentication_method] do |f| %>
   <fieldset class="no-border-top">
-    <%= render :partial => "form", :locals => { :auth_form => f } %>
-    <div class="clear"></div>
-    <%= render :partial => 'spree/admin/shared/edit_resource_links' %>
+    <%= render 'form', :f => f %>
+    <%= render 'spree/admin/shared/edit_resource_links' %>
   </fieldset>
 <% end %>

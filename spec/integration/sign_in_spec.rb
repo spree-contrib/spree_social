@@ -2,8 +2,13 @@ require 'spec_helper'
 
 feature "signing in using Omniauth" do
   context "facebook" do
-    before do
-      Spree::AuthenticationMethod.create!(:provider => 'facebook', :environment => Rails.env, :active => true)
+    background do
+      Spree::AuthenticationMethod.create!(
+        provider: 'facebook',
+        api_key: 'fake',
+        api_secret: 'fake',
+        environment: Rails.env,
+        active: true)
       OmniAuth.config.test_mode = true
       OmniAuth.config.mock_auth[:facebook] = {
         'provider' => 'facebook',
@@ -43,8 +48,13 @@ feature "signing in using Omniauth" do
   end
 
   context "twitter" do
-    before do
-      Spree::AuthenticationMethod.create!(:provider => 'twitter', :environment => Rails.env, :active => true)
+    background do
+      Spree::AuthenticationMethod.create!(
+        provider: 'twitter',
+        api_key: 'fake',
+        api_secret: 'fake',
+        environment: Rails.env,
+        active: true)
       OmniAuth.config.test_mode = true
       OmniAuth.config.mock_auth[:twitter] = {
         'provider' => 'twitter',

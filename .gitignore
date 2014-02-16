@@ -10,4 +10,5 @@ nbproject
 spec/dummy
 .rvmrc
 .bundle
+coverage
 Gemfile.lock
