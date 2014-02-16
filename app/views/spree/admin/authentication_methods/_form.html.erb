@@ -1,7 +1,7 @@
 <div data-hook="admin_social_methods_form_fields" class="row">
   <div class="alpha five columns">
     <div data-hook="environment" class="field">
-      <%= auth_form.field_container :environment do %>
+      <%= f.field_container :environment do %>
         <%= label_tag nil, Spree.t(:environment) %>
         <%= collection_select(:authentication_method, :environment, Rails.configuration.database_configuration.keys, :to_s, :titleize, {}, {:class => 'select2 fullwidth'}) %>
       <% end %>
@@ -9,35 +9,35 @@
   </div>
   <div class="alpha five columns">
     <div data-hook="environment" class="field">
-      <%= auth_form.field_container :provider do %>
-        <%= auth_form.label :provider, Spree.t(:social_provider) %>
-        <%= auth_form.select :provider, SpreeSocial::OAUTH_PROVIDERS, {}, { :include_blank => false, :class => 'select2 fullwidth' } %>
+      <%= f.field_container :provider do %>
+        <%= f.label :provider, Spree.t(:social_provider) %>
+        <%= f.select :provider, SpreeSocial::OAUTH_PROVIDERS, {}, { :include_blank => false, :class => 'select2 fullwidth' } %>
       <% end %>
     </div>
   </div>
   <div class="alpha five columns">
     <div data-hook="environment" class="field">
-      <%= auth_form.field_container :api_key do %>
-        <%= auth_form.label :api_key, Spree.t(:social_api_key) %><br />
-        <%= auth_form.text_field :api_key, :class => 'fullwidth' %>
+      <%= f.field_container :api_key do %>
+        <%= f.label :api_key, Spree.t(:social_api_key) %> <span class="required">*</span><br />
+        <%= f.text_field :api_key, :class => 'fullwidth' %>
       <% end %>
     </div>
   </div>
   <div class="alpha five columns">
     <div data-hook="environment" class="field">
-      <%= auth_form.field_container :api_secret do %>
-        <%= auth_form.label :api_secret, Spree.t(:social_api_secret) %><br />
-        <%= auth_form.text_field :api_secret, :class => 'fullwidth' %>
+      <%= f.field_container :api_secret do %>
+        <%= f.label :api_secret, Spree.t(:social_api_secret) %> <span class="required">*</span><br />
+        <%= f.text_field :api_secret, :class => 'fullwidth' %>
       <% end %>
     </div>
   </div>
   <div class="alpha five columns">
     <div data-hook="environment" class="field">
-      <%= auth_form.field_container :active do %>
-        <span style="padding:0 10px 2px;"><%= auth_form.label :active, Spree.t(:active) %></span>
-        <%= auth_form.radio_button :active, :true %>
+      <%= f.field_container :active do %>
+        <span style="padding:0 10px 2px;"><%= f.label :active, Spree.t(:active) %></span>
+        <%= f.radio_button :active, :true %>
         <span style="padding:0 2px;"><%= Spree.t(:say_yes) %></span>
-        <%= auth_form.radio_button :active, :false %>
+        <%= f.radio_button :active, :false %>
         <span style="padding:0 2px"><%= Spree.t(:say_no) %></span>
       <% end %>
     </div>
