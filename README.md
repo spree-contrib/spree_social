@@ -2,6 +2,7 @@ SpreeSocial
 ===========
 
 [![Build Status](https://api.travis-ci.org/spree/spree_social.png)](https://travis-ci.org/spree/spree_social)
+[![Code Climate](https://codeclimate.com/github/spree/spree_social.png)](https://codeclimate.com/github/spree/spree_social)
 
 Core for all social media related functionality for Spree.
 The Spree Social gem handles authorization, account creation and association through social media sources such as Twitter and Facebook.
