@@ -16,7 +16,7 @@ Gem::Specification.new do |s|
   s.require_path = 'lib'
   s.requirements << 'none'
 
-  s.add_dependency 'spree_core', '~> 2.2.0.beta'
+  s.add_dependency 'spree_core', '~> 2.2.0'
   s.add_dependency 'omniauth'
   s.add_dependency 'oa-core'
   s.add_dependency 'omniauth-twitter'
@@ -32,7 +32,7 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'pry-rails'
   s.add_development_dependency 'selenium-webdriver'
   s.add_development_dependency 'poltergeist', '~> 1.5.0'
-  s.add_development_dependency 'simplecov', '~> 0.8.2'
+  s.add_development_dependency 'simplecov', '~> 0.7.1'
   s.add_development_dependency 'sqlite3', '~> 1.3.8'
   s.add_development_dependency 'launchy'
   s.add_development_dependency 'coffee-rails', '~> 4.0.0'
