@@ -86,7 +86,7 @@ OAuth Applications @ Facebook, Twitter and / or Github are supported out of the 
 
 > This does not seem to be a listed Github item right now. To View and / or edit your applications goto [http://github.com/account/applications/]([http://github.com/account/applications/])
 
-### Other OAuth sources that a currently supported
+### Other OAuth sources that are currently supported
 
 * Google (OAuth)
 
