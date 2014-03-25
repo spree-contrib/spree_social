@@ -5,5 +5,5 @@
 
 <%= form_for(@authentication_method, :url => admin_authentication_method_path(@authentication_method), :method => :put) do |f| %>
   <%= render :partial => "form", :locals => { :auth_form => f } %>
-  <p class="form-buttons"><%= button Spree.t("edit") %></p>
+  <p class="form-buttons"><%= button Spree.t("update") %></p>
 <% end %>
