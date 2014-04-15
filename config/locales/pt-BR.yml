@@ -12,7 +12,7 @@ pt-BR:
     edit_social_method: "Editando Método de Autenticação Social"
     new_social_method: "Novo Método de Autenticação"
     no_authentication_methods_found: "Métodos de Autenticação Não Encontrados"
-    one_more_step: 'Um passo apenas para completar sua registração pelo %{kind}'
+    one_more_step: 'Um passo apenas para completar seu registro pelo %{kind}'
     remove_authentication_option_confirmation: "Você tem certeza que deseja remover este método de autenticação ?"
     sign_into_account: "Você pode acessar esta conta usando:"
     sign_in_through_one_of_these_services: "Acesse através de um destes serviços:"
