@@ -44,6 +44,21 @@ Click on the New Authentication Method button to enter the key obtained from the
 
 Multiple key entries can now be entered based on the rails environment. This allows for portability and the lack of need to check in your key to your repository. You also have the ability to enable and disable sources. These setting will be reflected on the client UI as well.
 
+Alternatively you can ship keys as environment variables and create these Authentication Method records on application boot via an initializer. Below is an example for facebook.
+
+```ruby
+# Ensure our environment is bootstrapped with a facebook connect app
+if ActiveRecord::Base.connection.table_exists? 'spree_authentication_methods'
+  Spree::AuthenticationMethod.where(environment: Rails.env, provider: 'facebook').first_or_create do |auth_method|
+    auth_method.api_key = ENV['FACEBOOK_APP_ID']
+    auth_method.api_secret = ENV['FACEBOOK_APP_SECRET']
+    auth_method.active = true
+  end
+end
+```
+
+
+
 **You MUST restart your application after configuring or
 updating an authentication method.**
 
