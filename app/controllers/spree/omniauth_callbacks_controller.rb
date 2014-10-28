@@ -3,6 +3,7 @@ class Spree::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   include Spree::Core::ControllerHelpers::Order
   include Spree::Core::ControllerHelpers::Auth
   include Spree::Core::ControllerHelpers::SSL
+  include Spree::Core::ControllerHelpers::Store
 
   def self.provides_callback_for(*providers)
     providers.each do |provider|
