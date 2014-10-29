@@ -101,6 +101,17 @@ OAuth Applications @ Facebook, Twitter and / or Github are supported out of the 
 
 > This does not seem to be a listed Github item right now. To View and / or edit your applications goto [http://github.com/account/applications](http://github.com/account/applications)
 
+### Amazon
+
+[Amazon / App Console / Register a new OAuth application][10]
+
+1. Register New Application
+2. Name the Application, provide description and URL for Privacy Policy
+3. Click Save
+4. Add Your site under Web Settings > Allowed Return URLs (example: http://localhost:3000/users/auth/amazon/callback)
+
+> The app console is available at [https://login.amazon.com/manageApps](https://login.amazon.com/manageApps)
+
 ### Other OAuth sources that are currently supported
 
 * Google (OAuth)
@@ -158,3 +169,4 @@ Copyright (c) 2014 [John Dyer][7] and [contributors][8], released under the [New
 [7]: https://github.com/LBRapid
 [8]: https://github.com/spree/spree_social/graphs/contributors
 [9]: https://github.com/spree/spree_social/blob/master/LICENSE.md
+[10]: https://login.amazon.com/manageApps
