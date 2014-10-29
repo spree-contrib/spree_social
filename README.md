@@ -4,11 +4,11 @@ SpreeSocial
 [![Build Status](https://api.travis-ci.org/spree/spree_social.png)](https://travis-ci.org/spree/spree_social)
 [![Code Climate](https://codeclimate.com/github/spree/spree_social.png)](https://codeclimate.com/github/spree/spree_social)
 
-Core for all social media related functionality for Spree. 
-The Spree Social gem handles authorization, account creation and association through social media sources such as Twitter and Facebook. 
-This requires the edge source of [Spree](https://github.com/spree/spree). 
-This gem is beta at best and should be treated as such. 
-Features and code base will change rapidly as this is under active development. 
+Core for all social media related functionality for Spree.
+The Spree Social gem handles authorization, account creation and association through social media sources such as Twitter and Facebook.
+This requires the edge source of [Spree](https://github.com/spree/spree).
+This gem is beta at best and should be treated as such.
+Features and code base will change rapidly as this is under active development.
 Use with caution.
 
 Setup for Production
@@ -86,6 +86,17 @@ OAuth Applications @ Facebook, Twitter and / or Github are supported out of the 
 4. Click Create
 
 > This does not seem to be a listed Github item right now. To View and / or edit your applications goto [http://github.com/account/applications/]([http://github.com/account/applications/])
+
+### Amazon
+
+[Amazon / App Console / Register a new OAuth application][10]
+
+1. Register New Application
+2. Name the Application, provide description and URL for Privacy Policy
+3. Click Save
+4. Add Your site under Web Settings > Allowed Return URLs (example: http://localhost:3000/users/auth/amazon/callback)
+
+> The app console is available at [https://login.amazon.com/manageApps](https://login.amazon.com/manageApps)
 
 ### Other OAuth sources that are currently supported
 

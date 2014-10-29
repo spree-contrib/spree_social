@@ -21,6 +21,7 @@ Gem::Specification.new do |s|
   s.add_dependency 'omniauth-facebook'
   s.add_dependency 'omniauth-github'
   s.add_dependency 'omniauth-google-oauth2'
+  s.add_dependency 'omniauth-amazon'
 
   s.add_development_dependency 'capybara', '~> 2.1'
   s.add_development_dependency 'database_cleaner', '1.0.1'
