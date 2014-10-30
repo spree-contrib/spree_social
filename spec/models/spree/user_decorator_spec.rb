@@ -30,7 +30,7 @@ describe Spree::User do
 
     context "user authentications is empty" do
       it "should be true" do
-        user.password_required?.should be_true
+        user.password_required?.should be true
       end
     end
 
@@ -41,7 +41,7 @@ describe Spree::User do
       end
 
       it "should be false" do
-        user.password_required?.should be_false
+        user.password_required?.should be false
       end
     end
 
@@ -49,7 +49,7 @@ describe Spree::User do
       before { user.password = "foobar" }
 
       it "should be true" do
-        user.password_required?.should be_true
+        user.password_required?.should be true
       end
     end
   end

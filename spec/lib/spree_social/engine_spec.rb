@@ -6,6 +6,7 @@ describe SpreeSocial do
 
     it 'contain all providers' do
       oauth_providers = [
+        ["Amazon", "amazon"],
         ['Facebook', 'facebook'],
         ['Twitter', 'twitter'],
         ['Github', 'github'],

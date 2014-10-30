@@ -21,6 +21,7 @@ require 'spree/testing_support/url_helpers'
 require 'spree/testing_support/capybara_ext'
 
 RSpec.configure do |config|
+  config.infer_spec_type_from_file_location!
   config.mock_with :rspec
   config.use_transactional_fixtures = false
 
@@ -30,7 +31,7 @@ RSpec.configure do |config|
   end
 
   config.before :each do
-    DatabaseCleaner.strategy = example.metadata[:js] ? :truncation : :transaction
+    DatabaseCleaner.strategy = RSpec.current_example.metadata[:js] ? :truncation : :transaction
     DatabaseCleaner.start
   end
 
