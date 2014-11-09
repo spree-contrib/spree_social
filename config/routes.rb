@@ -1,7 +1,7 @@
 Spree::Core::Engine.add_routes do
   devise_for :spree_user,
              :class_name => Spree::User,
-             :skip => [:unlocks, :sessions, :registrations, :passwords],
+             :only => [:omniauth_callbacks],
              :controllers => { :omniauth_callbacks => "spree/omniauth_callbacks" },
              :path => Spree::SocialConfig[:path_prefix]
   resources :user_authentications
