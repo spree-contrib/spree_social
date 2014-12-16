@@ -1,27 +1,13 @@
-<%= render 'spree/admin/shared/configuration_menu' %>
-
 <% content_for :page_title do %>
   <%= Spree.t(:social_authentication_methods) %>
 <% end %>
 
 <% content_for :page_actions do %>
-  <ul class="actions inline-menu">
-    <li>
-      <%= button_link_to Spree.t(:new_social_method), new_object_url, icon: 'icon-plus', id: 'admin_new_slide_link' %>
-    </li>
-  </ul>
+  <%= button_link_to Spree.t(:new_social_method), new_object_url, icon: 'add', class: 'btn-success', id: 'admin_new_slide_link' %>
 <% end %>
 
 <% if @authentication_methods.any? %>
-  <table class="index">
-    <colgroup>
-      <col style="width: 12%" />
-      <col style="width: 23%" />
-      <col style="width: 25%" />
-      <col style="width: 12%" />
-      <col style="width: 8%" />
-      <col style="width: 20%" />
-    </colgroup>
+  <table class="table" id="listing_trackers">
     <thead data-hook="admin_social_methods_index_headers">
       <th><%= Spree.t(:social_provider) %></th>
       <th><%= Spree.t(:social_api_key) %></th>
@@ -31,13 +17,13 @@
       <th data-hook="admin_social_methods_index_header_actions" class="actions"></th>
     </thead>
     <tbody>
-      <% @authentication_methods.each do |method|%>
-        <tr id="<%= dom_id method %>" data-hook="admin_trackers_index_rows">
-          <td class="align-center"><%= method.provider %></td>
-          <td class="align-center"><%= truncate method.api_key, length: 20 %></td>
-          <td class="align-center"><%= truncate method.api_secret, length: 20 %></td>
-          <td class="align-center"><%= method.environment.to_s.titleize %></td>
-          <td class="align-center"><%= method.active ? Spree.t(:yes) : Spree.t(:no) %></td>
+      <% @authentication_methods.each do |method| %>
+        <tr id="<%= dom_id method %>" data-hook="admin_trackers_index_rows" class="<%= cycle('odd', 'even') %>">
+          <td><%= method.provider %></td>
+          <td><%= truncate method.api_key, length: 20 %></td>
+          <td><%= truncate method.api_secret, length: 20 %></td>
+          <td><%= method.environment.to_s.titleize %></td>
+          <td><%= method.active ? Spree.t(:yes) : Spree.t(:no) %></td>
           <td class="actions">
             <%= link_to_edit method, no_text: true %>
             <%= link_to_delete method, no_text: true %>
@@ -47,7 +33,7 @@
     </tbody>
   </table>
 <% else %>
-  <div class="alpha twelve columns no-objects-found">
+  <div class="alert alert-warning no-objects-found">
     <%= Spree.t(:no_authentication_methods_found) %>,
     <%= Spree.t(:add_one) %>!
   </div>

@@ -5,7 +5,7 @@ RSpec.feature 'Admin Authentication Methods', :js do
     scenario 'has configuration tab' do
       visit spree.admin_path
       click_link 'Configuration'
-      expect(page).to have_text 'SOCIAL AUTHENTICATION METHODS'
+      expect(page).to have_text 'Social Authentication Methods'
     end
   end
 
@@ -17,10 +17,10 @@ RSpec.feature 'Admin Authentication Methods', :js do
     end
 
     scenario 'can create new' do
-      expect(page).to have_text 'NO AUTHENTICATION METHODS FOUND, ADD ONE!'
+      expect(page).to have_text 'No Authentication Methods Found, Add One!'
 
       click_link 'New Authentication Method'
-      expect(page).to have_text 'BACK TO AUTHENTICATION METHODS LIST'
+      expect(page).to have_text 'Back To Authentication Methods List'
 
       select2 'Test', from: 'Environment'
       select2 'Github', from: 'Social Provider'
@@ -34,7 +34,7 @@ RSpec.feature 'Admin Authentication Methods', :js do
     scenario 'does not save with empty fields' do
       click_link 'New Authentication Method'
       click_button 'Create'
-      expect(page).to have_text 'errors prohibited this record from being saved'
+      expect(page).to have_text "Api key can't be blank"
     end
   end
 
@@ -68,7 +68,7 @@ RSpec.feature 'Admin Authentication Methods', :js do
 
     scenario 'can be deleted' do
       within_row(1) do
-        click_icon :trash
+        click_icon :delete
       end
 
       page.driver.browser.switch_to.alert.accept unless Capybara.javascript_driver == :poltergeist

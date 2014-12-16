@@ -26,20 +26,17 @@ RSpec.feature 'signing in using Omniauth', :js do
     scenario 'going to sign in' do
       visit spree.root_path
       click_link 'Login'
-      find('a[title="Login with facebook"]').trigger('click')
-      expect(page).to have_text 'You are now signed in with your facebook account.'
+      click_facebook_link
       click_link 'Logout'
       click_link 'Login'
-      find('a[title="Login with facebook"]').trigger('click')
-      expect(page).to have_text 'You are now signed in with your facebook account.'
+      click_facebook_link
     end
 
     # Regression test for #91
     scenario "attempting to view 'My Account' works" do
       visit spree.root_path
       click_link 'Login'
-      find('a[title="Login with facebook"]').trigger('click')
-      expect(page).to have_text 'You are now signed in with your facebook account.'
+      click_facebook_link
       click_link 'My Account'
       expect(page).to have_text 'My Account'
     end
@@ -71,11 +68,18 @@ RSpec.feature 'signing in using Omniauth', :js do
     scenario 'going to sign in' do
       visit spree.root_path
       click_link 'Login'
-      find('a[title="Login with twitter"]').trigger('click')
-      expect(page).to have_text 'Please confirm your email address to continue'.upcase
+      find('a#twitter').trigger('click')
+      expect(page).to have_text 'One more step to complete your registration from Twitter'
       fill_in 'Email', with: 'user@example.com'
       click_button 'Create'
       expect(page).to have_text 'Welcome! You have signed up successfully.'
     end
+  end
+
+  private
+
+  def click_facebook_link
+    find('a#facebook').trigger('click')
+    expect(page).to have_text 'You are now signed in with your facebook account.'
   end
 end

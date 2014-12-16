@@ -1,18 +1,18 @@
-<p>
-  <%= f.label :email, Spree.t(:email) %><br />
-  <%= f.email_field :email, class: 'title' %>
-</p>
+<div class="form-group">
+  <%= f.label :email, Spree.t(:email) %>
+  <%= f.email_field :email, class: 'form-control' %>
+</div>
+
 <% if spree_current_user.nil? || spree_current_user.password_required? %>
   <div id="password-credentials">
-    <p>
-      <%= f.label :password, Spree.t(:password) %><br />
-      <%= f.password_field :password, class: 'title' %>
-    </p>
-
-    <p>
-      <%= f.label :password_confirmation, Spree.t(:confirm_password) %><br />
-      <%= f.password_field :password_confirmation, class: 'title' %>
-    </p>
+    <div class="form-group">
+      <%= f.label :password, Spree.t(:password) %>
+      <%= f.password_field :password, class: 'form-control' %>
+    </div>
+    <div class="form-group">
+      <%= f.label :password_confirmation, Spree.t(:confirm_password) %>
+      <%= f.password_field :password_confirmation, class: 'form-control' %>
+    </div>
   </div>
 <% end %>
 
