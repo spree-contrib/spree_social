@@ -1,4 +1,7 @@
-"2.2.x" => { :branch => 'master' }
+"3.0.x" => { :branch => 'master' }
+"2.4.x" => { :branch => '2-4-stable' }
+"2.3.x" => { :branch => '2-3-stable' }
+"2.2.x" => { :branch => '2-2-stable' }
 "2.1.x" => { :branch => '2-1-stable' }
 "2.0.x" => { :branch => '2-0-stable' }
 "1.3.x" => { :branch => '1-3-stable' }
