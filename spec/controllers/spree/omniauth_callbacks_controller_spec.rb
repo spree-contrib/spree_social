@@ -2,151 +2,160 @@ require 'spec_helper'
 
 describe Spree::OmniauthCallbacksController do
   let(:user) { create(:user) }
-  let(:omni_params) { double("omni", :[] => nil).as_null_object }
-  let(:order) { stub_model(Spree::Order, :associate_user => nil) }
+  let(:omni_params) { double('omni', :[] => nil).as_null_object }
+  let(:order) { double('Spree::Order', associate_user: nil) }
 
-  before(:each) do
+  before do
     Rails.application.routes.default_url_options[:host] = 'test.host'
-    request.env["omniauth.auth"] = omni_params
-    controller.stub :sign_in_and_redirect
-    controller.stub :redirect_back_or_default
-    Spree::User.stub :anonymous! => user
+    request.env['omniauth.auth'] = omni_params
+    allow(controller).to receive(:sign_in_and_redirect)
+    allow(controller).to receive(:redirect_back_or_default)
+    allow(Spree::User).to receive(:anonymous!).with(user)
   end
 
-  shared_examples_for "denied_permissions" do
-    before { request.env["omniauth.error"] = "FAIL" }
+  shared_examples_for 'denied_permissions' do
+    before { request.env['omniauth.error'] = 'FAIL' }
 
-    it "should redirect properly" do
-      controller.should_receive(:redirect_back_or_default)
+    it 'redirects properly' do
+      expect(controller).to receive(:redirect_back_or_default)
       controller.twitter
     end
 
-    it "should display an error message" do
+    it 'displays an error message' do
       controller.twitter
-      flash[:error].should_not be_blank
+      expect(flash[:error]).not_to be_blank
     end
 
-    it "should not attempt authentication" do
-      controller.should_not_receive(:sign_in_and_redirect)
-      controller.twitter
-    end
-  end
-
-  shared_examples_for "associate_order" do
-    before { controller.stub :current_order => order }
-
-    it "should associate the order with the user" do
-      order.should_receive(:associate_user!).with(user)
+    it 'does not attempt authentication' do
+      expect(controller).not_to receive(:sign_in_and_redirect)
       controller.twitter
     end
   end
 
-  shared_examples_for "authenticate_as_user" do
-    it "should authenticate as that user" do
-      controller.should_receive(:sign_in_and_redirect).with(user, :event => :authentication)
+  shared_examples_for 'associate_order' do
+    before { allow(controller).to receive(:current_order).and_return(order) }
+
+    it 'associates the order with the user' do
+      expect(order).to receive(:associate_user!).with(user)
+      controller.twitter
     end
   end
 
-  context "#callback" do
-    context "when user is authenticated" do
-      before { controller.stub :spree_current_user => user }
+  shared_examples_for 'authenticate_as_user' do
+    it 'authenticates as that user' do
+      expect(controller).to receive(:sign_in_and_redirect).with(user, event: :authentication)
+    end
+  end
 
-      it_should_behave_like "denied_permissions"
+  context '#callback' do
+    context 'when user is authenticated' do
+      before do
+        allow(controller).to receive(:spree_current_user).and_return(user)
+      end
 
-      context "when existing user_authentication" do
-        let(:user_authentication) { double("user_authentication", :user => user) }
-        before { Spree::UserAuthentication.stub :find_by_provider_and_uid => user_authentication }
+      it_should_behave_like 'denied_permissions'
 
-        it "should not need to create the user_authentication" do
-          user.user_authentications.should_not_receive(:create!)
+      context 'when existing user_authentication' do
+        let(:user_authentication) { double('user_authentication', user: user) }
+        before do
+          allow(Spree::UserAuthentication).to receive(:find_by_provider_and_uid).and_return(user_authentication)
+        end
+
+        it 'does not need to create the user_authentication' do
+          expect(user.user_authentications).not_to receive(:create!)
           controller.twitter
         end
 
-        it "should set the flash notice" do
+        it 'sets the flash notice' do
           controller.twitter
-          flash[:notice].should_not be_blank
+          expect(flash[:notice]).not_to be_blank
         end
 
-        it "should authenticate as that user" do
-          controller.should_receive(:sign_in_and_redirect)
+        it 'authenticates as that user' do
+          expect(controller).to receive(:sign_in_and_redirect)
           controller.twitter
         end
       end
 
-      context "when no existing user_authentication" do
-        before { Spree::UserAuthentication.stub :find_by_provider_and_uid => nil }
+      context 'when no existing user_authentication' do
+        before do
+          allow(Spree::UserAuthentication).to receive(:find_by_provider_and_uid).and_return(nil)
+        end
 
-        it "should create a new user_authentication" do
-          user.should_receive(:apply_omniauth)
-          user.should_receive(:save!)
+        it 'creates a new user_authentication' do
+          expect(user).to receive(:apply_omniauth)
+          expect(user).to receive(:save!)
           controller.twitter
         end
 
-        it "should set the flash notice" do
+        it 'sets the flash notice' do
           controller.twitter
-          flash[:notice].should_not be_blank
+          expect(flash[:notice]).not_to be_blank
         end
 
-        it "should redirect properly" do
-          controller.should_receive(:redirect_back_or_default)
+        it 'redirects properly' do
+          expect(controller).to receive(:redirect_back_or_default)
           controller.twitter
         end
 
-        it_should_behave_like "associate_order"
+        it_should_behave_like 'associate_order'
       end
     end
 
-    context "when user is not authenticated" do
-      before { controller.stub :spree_current_user => nil }
+    context 'when user is not authenticated' do
+      before do
+        allow(controller).to receive(:spree_current_user).and_return(nil)
+      end
 
-      it_should_behave_like "denied_permissions"
+      it_should_behave_like 'denied_permissions'
 
-      context "when existing user_authentication" do
-        let(:user_authentication) { double("user_authentication", :user => user) }
-        before { Spree::UserAuthentication.stub :find_by_provider_and_uid => user_authentication }
+      context 'when existing user_authentication' do
+        let(:user_authentication) { double('user_authentication', user: user) }
+        before do
+          allow(Spree::UserAuthentication).to receive(:find_by_provider_and_uid).and_return(user_authentication)
+        end
 
-        it "should not need to create the user_authentication" do
-          user.user_authentications.should_not_receive(:create!)
+        it 'does not need to create the user_authentication' do
+          expect(user.user_authentications).not_to receive(:create!)
           controller.twitter
         end
 
-        it "should not create a new user account" do
-          Spree::User.should_not_receive :new
+        it 'does not create a new user account' do
+          expect(Spree::User).not_to receive :new
           controller.twitter
         end
 
-        it "should authenticate as that user" do
-          controller.should_receive(:sign_in_and_redirect).with(:spree_user, user)
+        it 'authenticates as that user' do
+          expect(controller).to receive(:sign_in_and_redirect).with(:spree_user, user)
           controller.twitter
         end
       end
 
-      context "when no existing user_authentication" do
+      context 'when no existing user_authentication' do
         let(:user) { Spree::User.new }
         before do
-          Spree::UserAuthentication.stub :find_by_provider_and_uid => nil
-          controller.stub(:auth_hash).and_return('provider' => 'facebook', 'info' => {'email' => "spree@gmail.com"}, 'uid' => '123')
+          allow(Spree::UserAuthentication).to receive(:find_by_provider_and_uid).and_return(nil)
+          allow(controller).to receive(:auth_hash).and_return('provider' => 'facebook', 'info' => { 'email' => 'spree@gmail.com' }, 'uid' => '123')
         end
 
         context "email doesn't belongs to anyone" do
-          it "should create a new user" do
-            controller.should_receive(:sign_in_and_redirect)
+          it 'creates a new user' do
+            expect(controller).to receive(:sign_in_and_redirect)
             expect { controller.twitter }.to change(Spree::User, :count).by(1)
           end
         end
 
         context 'email belongs to existing user' do
-          before { @user = create(:user, :email => "spree@gmail.com") }
+          before { @user = create(:user, email: 'spree@gmail.com') }
 
-          it "should not create new user" do
+          it 'does not create new user' do
             expect { controller.twitter }.to_not change(Spree::User, :count)
           end
 
-          it "assigns authentication to existing user" do
+          it 'assigns authentication to existing user' do
             expect { controller.twitter }.to change(@user.user_authentications, :count).by(1)
           end
         end
-
       end
     end
   end

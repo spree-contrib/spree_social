@@ -2,11 +2,11 @@ require 'spec_helper'
 
 describe SpreeSocial do
   context 'constants' do
-    it { should be_const_defined(:OAUTH_PROVIDERS) }
+    it { is_expected.to be_const_defined(:OAUTH_PROVIDERS) }
 
     it 'contain all providers' do
       oauth_providers = [
-        ["Amazon", "amazon"],
+        ['Amazon', 'amazon'],
         ['Facebook', 'facebook'],
         ['Twitter', 'twitter'],
         ['Github', 'github'],
