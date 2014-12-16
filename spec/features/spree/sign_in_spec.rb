@@ -1,7 +1,7 @@
 require 'spec_helper'
 
-feature "signing in using Omniauth", js: true do
-  context "facebook" do
+feature 'signing in using Omniauth', js: true do
+  context 'facebook' do
     background do
       Spree::AuthenticationMethod.create!(
         provider: 'facebook',
@@ -25,29 +25,29 @@ feature "signing in using Omniauth", js: true do
       }
     end
 
-    scenario "going to sign in" do
+    scenario 'going to sign in' do
       visit spree.root_path
-      click_link "Login"
+      click_link 'Login'
       find('a[title="Login with facebook"]').trigger('click')
-      page.should have_content("You are now signed in with your facebook account.")
-      click_link "Logout"
-      click_link "Login"
+      expect(page).to have_text 'You are now signed in with your facebook account.'
+      click_link 'Logout'
+      click_link 'Login'
       find('a[title="Login with facebook"]').trigger('click')
-      page.should have_content("You are now signed in with your facebook account.")
+      expect(page).to have_text 'You are now signed in with your facebook account.'
     end
 
     # Regression test for #91
     scenario "attempting to view 'My Account' works" do
       visit spree.root_path
-      click_link "Login"
+      click_link 'Login'
       find('a[title="Login with facebook"]').trigger('click')
-      page.should have_content("You are now signed in with your facebook account.")
+      expect(page).to have_text 'You are now signed in with your facebook account.'
       click_link 'My Account'
-      page.should have_content("My Account")
+      expect(page).to have_text 'My Account'
     end
   end
 
-  context "twitter" do
+  context 'twitter' do
     background do
       Spree::AuthenticationMethod.create!(
         provider: 'twitter',
@@ -70,14 +70,14 @@ feature "signing in using Omniauth", js: true do
       }
     end
 
-    scenario "going to sign in" do
+    scenario 'going to sign in' do
       visit spree.root_path
-      click_link "Login"
+      click_link 'Login'
       find('a[title="Login with twitter"]').trigger('click')
-      page.should have_content("Please confirm your email address to continue".upcase)
-      fill_in "Email", :with => "user@example.com"
-      click_button "Create"
-      page.should have_content("Welcome! You have signed up successfully.")
+      expect(page).to have_text 'Please confirm your email address to continue'.upcase
+      fill_in 'Email', with: 'user@example.com'
+      click_button 'Create'
+      expect(page).to have_text 'Welcome! You have signed up successfully.'
     end
   end
 end
