@@ -1,6 +1,4 @@
-require 'spec_helper'
-
-feature 'Admin Authentication Methods', js: true do
+RSpec.feature 'Admin Authentication Methods', :js do
   stub_authorization!
 
   context 'elements' do
