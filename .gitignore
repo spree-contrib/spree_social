@@ -12,3 +12,5 @@ spec/dummy
 .bundle
 Gemfile.lock
 coverage
+.ruby-version
+.ruby-gemset
