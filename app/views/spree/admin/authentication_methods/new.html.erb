@@ -5,15 +5,14 @@
 <% end %>
 
 <% content_for :page_actions do %>
-  <li><%= link_to_with_icon 'icon-arrow-left', Spree.t(:back_to_authentication_methods_list), admin_authentication_methods_path, :class => 'button' %></li>
+  <li><%= link_to_with_icon 'icon-arrow-left', Spree.t(:back_to_authentication_methods_list), admin_authentication_methods_path, class: 'button' %></li>
 <% end %>
 
-<%= render 'spree/shared/error_messages', :target => @authentication_method %>
+<%= render 'spree/shared/error_messages', target: @authentication_method %>
 
 <%= form_for [:admin, @authentication_method] do |f| %>
   <fieldset class="no-border-top">
-    <%= render 'form', :f => f %>
+    <%= render 'form', f: f %>
     <%= render 'spree/admin/shared/new_resource_links' %>
   </fieldset>
 <% end %>
-
