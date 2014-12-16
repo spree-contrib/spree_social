@@ -39,8 +39,7 @@ Spree Setup to Utilize OAuth Sources
 
 Login as an admin user and navigate to Configuration > Social Authentication Methods
 
-Click on the New Authentication Method button to enter the key obtained from their respective source
-(See below for instructions on setting up the various providers)
+Click on the New Authentication Method button to enter the key obtained from their respective source, (See below for instructions on setting up the various providers).
 
 Multiple key entries can now be entered based on the rails environment. This allows for portability and the lack of need to check in your key to your repository. You also have the ability to enable and disable sources. These setting will be reflected on the client UI as well.
 
@@ -57,11 +56,9 @@ if ActiveRecord::Base.connection.table_exists? 'spree_authentication_methods'
 end
 ```
 
-**You MUST restart your application after configuring or
-updating an authentication method.**
+**You MUST restart your application after configuring or updating an authentication method.**
 
-Setup the Applications at the Respective Sources
-------------------------------------------------
+## Setup the Applications at the Respective Sources
 
 OAuth Applications @ Facebook, Twitter and / or Github are supported out of the box but you will need to setup applications are each respective site as follows for public use and for development.
 
@@ -114,8 +111,8 @@ OAuth Applications @ Facebook, Twitter and / or Github are supported out of the 
 
 * Google (OAuth)
 
-Adding other OAuth sources
---------------------------
+## Adding other OAuth sources
+
 It is easy to add any OAuth source, given there is an OmniAuth strategy gem for it (and if not, you can easily [write one by yourself](https://github.com/intridea/omniauth/wiki/Strategy-Contribution-Guide). For instance, if you want to add authorization via LinkedIn, the steps will be:
 
 1. Add `gem "omniauth-linkedin"` to your Gemfile, run `bundle install`.
@@ -131,30 +128,9 @@ It is easy to add any OAuth source, given there is an OmniAuth strategy gem for 
 
 ## Contributing
 
-In the spirit of [free software][5], **everyone** is encouraged to help improve this project.
+See corresponding [guidelines][11].
 
-Here are some ways *you* can contribute:
-
-* by using prerelease versions
-* by reporting [bugs][6]
-* by suggesting new features
-* by writing translations
-* by writing or editing documentation
-* by writing specifications
-* by writing code (*no patch is too small*: fix typos, add comments, clean up inconsistent whitespace)
-* by refactoring code
-* by resolving [issues][6]
-* by reviewing patches
-
-Starting point:
-
-* Fork the repo
-* Clone your repo
-* Run `bundle install`
-* Run `bundle exec rake test_app` to create the test application in `spec/test_app`
-* Make your changes
-* Ensure specs pass by running `bundle exec rspec spec`
-* Submit your pull request
+---
 
 Copyright (c) 2014 [John Dyer][7] and [contributors][8], released under the [New BSD License][9]
 
@@ -168,3 +144,4 @@ Copyright (c) 2014 [John Dyer][7] and [contributors][8], released under the [New
 [8]: https://github.com/spree-contrib/spree_social/graphs/contributors
 [9]: https://github.com/spree-contrib/spree_social/blob/master/LICENSE.md
 [10]: https://login.amazon.com/manageApps
+[11]: https://github.com/spree-contrib/spree_social/blob/master/CONTRIBUTING.md
