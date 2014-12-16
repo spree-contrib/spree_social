@@ -1,0 +1,26 @@
+---
+# Too picky.
+LineLength:
+  Enabled: false
+
+# This should truly be on for well documented gems.
+Documentation:
+  Enabled: false
+
+# Neatly aligned code is too swell.
+SingleSpaceBeforeFirstArg:
+  Enabled: false
+
+# Don't mess with RSpec DSL.
+Blocks:
+  Exclude:
+    - 'spec/**/*'
+
+# We really like the readability with newline in beginning of classes.
+EmptyLinesAroundBlockBody:
+  Enabled: false
+
+# Use nested module/class definitions instead of compact style.
+# Too high git impact to change this now.
+ClassAndModuleChildren:
+  Enabled: false
