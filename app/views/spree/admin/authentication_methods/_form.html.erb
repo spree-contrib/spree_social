@@ -3,7 +3,7 @@
     <div data-hook="environment" class="field">
       <%= f.field_container :environment do %>
         <%= label_tag nil, Spree.t(:environment) %>
-        <%= collection_select(:authentication_method, :environment, Rails.configuration.database_configuration.keys, :to_s, :titleize, {}, {:class => 'select2 fullwidth'}) %>
+        <%= collection_select(:authentication_method, :environment, Rails.configuration.database_configuration.keys, :to_s, :titleize, {}, { class: 'select2 fullwidth' }) %>
       <% end %>
     </div>
   </div>
@@ -11,7 +11,7 @@
     <div data-hook="environment" class="field">
       <%= f.field_container :provider do %>
         <%= f.label :provider, Spree.t(:social_provider) %>
-        <%= f.select :provider, SpreeSocial::OAUTH_PROVIDERS, {}, { :include_blank => false, :class => 'select2 fullwidth' } %>
+        <%= f.select :provider, SpreeSocial::OAUTH_PROVIDERS, {}, { include_blank: false, class: 'select2 fullwidth' } %>
       <% end %>
     </div>
   </div>
@@ -19,7 +19,7 @@
     <div data-hook="environment" class="field">
       <%= f.field_container :api_key do %>
         <%= f.label :api_key, Spree.t(:social_api_key) %> <span class="required">*</span><br />
-        <%= f.text_field :api_key, :class => 'fullwidth' %>
+        <%= f.text_field :api_key, class: 'fullwidth' %>
       <% end %>
     </div>
   </div>
@@ -27,7 +27,7 @@
     <div data-hook="environment" class="field">
       <%= f.field_container :api_secret do %>
         <%= f.label :api_secret, Spree.t(:social_api_secret) %> <span class="required">*</span><br />
-        <%= f.text_field :api_secret, :class => 'fullwidth' %>
+        <%= f.text_field :api_secret, class: 'fullwidth' %>
       <% end %>
     </div>
   </div>

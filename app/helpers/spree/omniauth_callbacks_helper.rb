@@ -3,4 +3,3 @@ module Spree
     include Spree::BaseHelper
   end
 end
-
