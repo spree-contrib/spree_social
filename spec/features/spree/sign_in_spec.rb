@@ -28,11 +28,11 @@ feature "signing in using Omniauth", js: true do
     scenario "going to sign in" do
       visit spree.root_path
       click_link "Login"
-      find('a[title="Login with facebook"]').click
+      find('a[title="Login with facebook"]').trigger('click')
       page.should have_content("You are now signed in with your facebook account.")
       click_link "Logout"
       click_link "Login"
-      find('a[title="Login with facebook"]').click
+      find('a[title="Login with facebook"]').trigger('click')
       page.should have_content("You are now signed in with your facebook account.")
     end
 
@@ -40,7 +40,7 @@ feature "signing in using Omniauth", js: true do
     scenario "attempting to view 'My Account' works" do
       visit spree.root_path
       click_link "Login"
-      find('a[title="Login with facebook"]').click
+      find('a[title="Login with facebook"]').trigger('click')
       page.should have_content("You are now signed in with your facebook account.")
       click_link 'My Account'
       page.should have_content("My Account")
@@ -73,7 +73,7 @@ feature "signing in using Omniauth", js: true do
     scenario "going to sign in" do
       visit spree.root_path
       click_link "Login"
-      find('a[title="Login with twitter"]').click
+      find('a[title="Login with twitter"]').trigger('click')
       page.should have_content("Please confirm your email address to continue".upcase)
       fill_in "Email", :with => "user@example.com"
       click_button "Create"
