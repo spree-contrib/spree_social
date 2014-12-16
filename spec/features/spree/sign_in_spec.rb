@@ -1,6 +1,4 @@
-require 'spec_helper'
-
-feature 'signing in using Omniauth', js: true do
+RSpec.feature 'signing in using Omniauth', :js do
   context 'facebook' do
     background do
       Spree::AuthenticationMethod.create!(

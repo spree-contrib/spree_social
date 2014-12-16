@@ -1,6 +1,4 @@
-require 'spec_helper'
-
-describe SpreeSocial do
+RSpec.describe SpreeSocial do
   context 'constants' do
     it { is_expected.to be_const_defined(:OAUTH_PROVIDERS) }
 

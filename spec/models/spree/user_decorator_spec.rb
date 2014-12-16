@@ -1,6 +1,4 @@
-require 'spec_helper'
-
-describe Spree::User do
+RSpec.describe Spree::User, type: :model do
   let(:user) { create(:user) }
   let(:omni_params) { { 'provider' => 'twitter', 'uid' => 12345 } }
   let(:auths) { double 'auths' }

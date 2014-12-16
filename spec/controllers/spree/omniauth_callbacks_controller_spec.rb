@@ -1,6 +1,4 @@
-require 'spec_helper'
-
-describe Spree::OmniauthCallbacksController do
+RSpec.describe Spree::OmniauthCallbacksController, type: :controller do
   let(:user) { create(:user) }
   let(:omni_params) { double('omni', :[] => nil).as_null_object }
   let(:order) { double('Spree::Order', associate_user: nil) }
