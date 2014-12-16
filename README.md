@@ -1,28 +1,28 @@
 SpreeSocial
 ===========
 
-[![Build Status](https://api.travis-ci.org/spree/spree_social.png)](https://travis-ci.org/spree/spree_social)
-[![Code Climate](https://codeclimate.com/github/spree/spree_social.png)](https://codeclimate.com/github/spree/spree_social)
+[![Build Status](https://travis-ci.org/spree-contrib/spree_social.svg?branch=master)](https://travis-ci.org/spree-contrib/spree_social)
+[![Code Climate](https://codeclimate.com/github/spree-contrib/spree_social/badges/gpa.svg)](https://codeclimate.com/github/spree-contrib/spree_social)
 
 Core for all social media related functionality for Spree.
 The Spree Social gem handles authorization, account creation and association through social media sources such as Twitter and Facebook.
-This requires the edge source of [Spree][1].
 This gem is beta at best and should be treated as such.
 Features and code base will change rapidly as this is under active development.
 Use with caution.
+
+---
 
 Setup for Production
 --------------------
 
 Add this extension to your `Gemfile`:
 ```ruby
-gem 'spree_social', github: 'spree/spree_social', branch: 'master'
+gem 'spree_social', github: 'spree-contrib/spree_social', branch: '2-4-stable'
 ```
 
 Then run:
 ```sh
-$ bundle update
-$ rails g spree_social:install
+$ bundle && bundle exec rails g spree_social:install
 $ bundle exec rake db:migrate
 ```
 
@@ -56,8 +56,6 @@ if ActiveRecord::Base.connection.table_exists? 'spree_authentication_methods'
   end
 end
 ```
-
-
 
 **You MUST restart your application after configuring or
 updating an authentication method.**
@@ -165,8 +163,8 @@ Copyright (c) 2014 [John Dyer][7] and [contributors][8], released under the [New
 [3]: https://apps.twitter.com/app/new
 [4]: https://github.com/settings/applications/new
 [5]: http://www.fsf.org/licensing/essays/free-sw.html
-[6]: https://github.com/spree/spree_social/issues
+[6]: https://github.com/spree-contrib/spree_social/issues
 [7]: https://github.com/LBRapid
-[8]: https://github.com/spree/spree_social/graphs/contributors
-[9]: https://github.com/spree/spree_social/blob/master/LICENSE.md
+[8]: https://github.com/spree-contrib/spree_social/graphs/contributors
+[9]: https://github.com/spree-contrib/spree_social/blob/master/LICENSE.md
 [10]: https://login.amazon.com/manageApps
