@@ -1,5 +1,4 @@
-SpreeSocial
-===========
+# Spree Social
 
 [![Build Status](https://travis-ci.org/spree-contrib/spree_social.svg?branch=master)](https://travis-ci.org/spree-contrib/spree_social)
 [![Code Climate](https://codeclimate.com/github/spree-contrib/spree_social/badges/gpa.svg)](https://codeclimate.com/github/spree-contrib/spree_social)
@@ -12,12 +11,11 @@ Use with caution.
 
 ---
 
-Setup for Production
---------------------
+## Setup for Production
 
 Add this extension to your `Gemfile`:
 ```ruby
-gem 'spree_social', github: 'spree-contrib/spree_social', branch: '2-4-stable'
+gem 'spree_social', github: 'spree-contrib/spree_social', branch: 'master'
 ```
 
 Then run:
@@ -34,8 +32,9 @@ Spree::SocialConfig[:path_prefix] = 'profile' # for /profile/auth/:provider
 Spree::SocialConfig[:path_prefix] = '' # for /auth/:provider
 ```
 
-Spree Setup to Utilize OAuth Sources
-------------------------------------
+---
+
+## Spree Setup to Utilize OAuth Sources
 
 Login as an admin user and navigate to Configuration > Social Authentication Methods
 
@@ -57,6 +56,8 @@ end
 ```
 
 **You MUST restart your application after configuring or updating an authentication method.**
+
+---
 
 ## Setup the Applications at the Respective Sources
 
