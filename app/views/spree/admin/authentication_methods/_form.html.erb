@@ -11,7 +11,7 @@
       <div class="col-md-6">
         <div data-hook="environment" class="form-group">
           <%= f.label :provider, Spree.t(:social_provider) %>
-          <%= f.select :provider, SpreeSocial::OAUTH_PROVIDERS, {}, { include_blank: false, class: 'select2' } %>
+          <%= f.select :provider, SpreeSocial::OAUTH_PROVIDERS.collect { |p| [ p[0], p[1] ] }, {}, { include_blank: false, class: 'select2' } %>
         </div>
       </div>
     </div>

@@ -116,16 +116,20 @@ OAuth Applications @ Facebook, Twitter and / or Github are supported out of the 
 
 It is easy to add any OAuth source, given there is an OmniAuth strategy gem for it (and if not, you can easily [write one by yourself](https://github.com/intridea/omniauth/wiki/Strategy-Contribution-Guide). For instance, if you want to add authorization via LinkedIn, the steps will be:
 
-1. Add `gem "omniauth-linkedin"` to your Gemfile, run `bundle install`.
-2. In an initializer file, e.g. `config/initializers/devise.rb`, add and init a new provider for SpreeSocial:
+1, Add `gem "omniauth-linkedin"` to your Gemfile, run `bundle install`.
+
+2, In an initializer file, e.g. `config/initializers/devise.rb`, add and init a new provider for SpreeSocial:
+
+**Optional**: If you want to skip the sign up phase where the user has to provide an email and a password, add a third parameter to the provider entry and the Spree user will be created directly using the email field in the [Auth Hash Schema](https://github.com/intridea/omniauth/wiki/Auth-Hash-Schema):
 
 ```ruby
-SpreeSocial::OAUTH_PROVIDERS << ['LinkedIn', 'linkedin']
+SpreeSocial::OAUTH_PROVIDERS << ['LinkedIn', 'linkedin', 'true']
 SpreeSocial.init_provider('linkedin')
 ```
 
-3. Activate your provider as usual (via initializer or admin interface).
-4. Override `spree/users/social` view to render OAuth links in preferred way for a new one to be displayed. Or alternatively, include to your CSS a definition for `.icon-spree-linkedin-circled` and an embedded icon font for LinkedIn from [fontello.com](http://fontello.com/) (the way existing icons for Facebook, Twitter, etc are implemented). You can also override CSS classes for other providers, `.icon-spree-<provider>-circled`, to use different font icons or classic background images, without having to override views.
+3, Activate your provider as usual (via initializer or admin interface).
+
+4, Override `spree/users/social` view to render OAuth links in preferred way for a new one to be displayed. Or alternatively, include to your CSS a definition for `.icon-spree-linkedin-circled` and an embedded icon font for LinkedIn from [fontello.com](http://fontello.com/) (the way existing icons for Facebook, Twitter, etc are implemented). You can also override CSS classes for other providers, `.icon-spree-<provider>-circled`, to use different font icons or classic background images, without having to override views.
 
 ---
 
