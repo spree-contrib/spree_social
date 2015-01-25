@@ -133,7 +133,7 @@ See corresponding [guidelines][11].
 
 ---
 
-Copyright (c) 2014 [John Dyer][7] and [contributors][8], released under the [New BSD License][9]
+Copyright (c) 2010-2015 [John Dyer][7] and [contributors][8], released under the [New BSD License][9]
 
 [1]: https://github.com/spree/spree
 [2]: https://developers.facebook.com/apps/?action=create
