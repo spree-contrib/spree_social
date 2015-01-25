@@ -2,7 +2,9 @@
 language: ruby
 rvm:
   - 2.1
+  - 2.2
 sudo: false
+cache: bundler
 before_script:
   - sh -e /etc/init.d/xvfb start
   - export DISPLAY=:99.0
