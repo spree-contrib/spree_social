@@ -16,10 +16,6 @@ Blocks:
   Exclude:
     - 'spec/**/*'
 
-# We really like the readability with newline in beginning of classes.
-EmptyLinesAroundBlockBody:
-  Enabled: false
-
 # Use nested module/class definitions instead of compact style.
 # Too high git impact to change this now.
 ClassAndModuleChildren:
