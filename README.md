@@ -24,12 +24,12 @@ $ bundle && bundle exec rails g spree_social:install
 $ bundle exec rake db:migrate
 ```
 
-Preference(optional): By default url will be '/users/auth/:provider'. If you wish to modify the url to: '/member/auth/:provider', '/profile/auth/:provider', or '/auth/:provider' then you can do this accordingly in your **config/initializers/spree.rb** file as described below -
+Preference(optional): By default url will be `/users/auth/:provider`. If you wish to modify the url to: `/member/auth/:provider`, `/profile/auth/:provider`, or `/auth/:provider` then you can do this accordingly in your **config/initializers/spree.rb** file as described below:
 
 ```ruby
-Spree::SocialConfig[:path_prefix] = 'member' # for /member/auth/:provider
+Spree::SocialConfig[:path_prefix] = 'member'  # for /member/auth/:provider
 Spree::SocialConfig[:path_prefix] = 'profile' # for /profile/auth/:provider
-Spree::SocialConfig[:path_prefix] = '' # for /auth/:provider
+Spree::SocialConfig[:path_prefix] = ''        # for /auth/:provider
 ```
 
 ---
@@ -119,8 +119,10 @@ It is easy to add any OAuth source, given there is an OmniAuth strategy gem for 
 1. Add `gem "omniauth-linkedin"` to your Gemfile, run `bundle install`.
 2. In an initializer file, e.g. `config/initializers/devise.rb`, add and init a new provider for SpreeSocial:
 
-        SpreeSocial::OAUTH_PROVIDERS << ['LinkedIn', 'linkedin']
-        SpreeSocial.init_provider('linkedin')
+```ruby
+SpreeSocial::OAUTH_PROVIDERS << ['LinkedIn', 'linkedin']
+SpreeSocial.init_provider('linkedin')
+```
 
 3. Activate your provider as usual (via initializer or admin interface).
 4. Override `spree/users/social` view to render OAuth links in preferred way for a new one to be displayed. Or alternatively, include to your CSS a definition for `.icon-spree-linkedin-circled` and an embedded icon font for LinkedIn from [fontello.com](http://fontello.com/) (the way existing icons for Facebook, Twitter, etc are implemented). You can also override CSS classes for other providers, `.icon-spree-<provider>-circled`, to use different font icons or classic background images, without having to override views.
