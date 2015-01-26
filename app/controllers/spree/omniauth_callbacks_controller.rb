@@ -2,13 +2,11 @@ class Spree::OmniauthCallbacksController < Devise::OmniauthCallbacksController
   include Spree::Core::ControllerHelpers::Common
   include Spree::Core::ControllerHelpers::Order
   include Spree::Core::ControllerHelpers::Auth
-  include Spree::Core::ControllerHelpers::SSL
   include Spree::Core::ControllerHelpers::Store
 
   def self.provides_callback_for(*providers)
     providers.each do |provider|
       class_eval <<-FUNCTION_DEFS, __FILE__, __LINE__ + 1
-        ssl_allowed :#{provider}
         def #{provider}
           if request.env['omniauth.error'].present?
             flash[:error] = I18n.t('devise.omniauth_callbacks.failure', kind: auth_hash['provider'], reason: Spree.t(:user_was_not_valid))
