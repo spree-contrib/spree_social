@@ -1,3 +1,4 @@
 --colour
 -r spec_helper
 -f documentation
+-r pry

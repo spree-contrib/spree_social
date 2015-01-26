@@ -19,7 +19,6 @@ end
 
 require 'rspec/rails'
 require 'ffaker'
-require 'pry'
 
 RSpec.configure do |config|
   config.fail_fast = false
@@ -28,6 +27,7 @@ RSpec.configure do |config|
   config.raise_errors_for_deprecations!
   config.infer_spec_type_from_file_location!
 
+  config.mock_with :rspec
   config.expect_with :rspec do |expectations|
     expectations.syntax = :expect
   end
