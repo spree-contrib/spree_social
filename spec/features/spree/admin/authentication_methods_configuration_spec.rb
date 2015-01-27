@@ -11,9 +11,7 @@ RSpec.feature 'Admin Authentication Methods', :js do
 
   context 'when no auth methods exists' do
     background do
-      visit spree.admin_path
-      click_link 'Configuration'
-      click_link 'Social Authentication Methods'
+      visit spree.admin_authentication_methods_path
     end
 
     scenario 'can create new' do
@@ -49,9 +47,7 @@ RSpec.feature 'Admin Authentication Methods', :js do
     end
 
     background do
-      visit spree.admin_path
-      click_link 'Configuration'
-      click_link 'Social Authentication Methods'
+      visit spree.admin_authentication_methods_path
     end
 
     scenario 'can be updated' do
