@@ -6,8 +6,7 @@ class CreateAuthenticationMethods < ActiveRecord::Migration
       t.string :api_key
       t.string :api_secret
       t.boolean :active
-
-      t.timestamps
+      t.timestamps null: false
     end
   end
 end
