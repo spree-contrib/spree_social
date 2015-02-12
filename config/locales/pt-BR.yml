@@ -4,6 +4,7 @@ pt-BR:
     omniauth_callbacks:
       success: "Você está logado agora com a sua conta do %{kind}."
   spree:
+    environment: Ambiente
     user_was_not_valid: "Usuário não era válido."
     add_another_service: "Adicione outro serviço para se logar:"
     authentications:

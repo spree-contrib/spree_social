@@ -4,6 +4,7 @@ de:
     omniauth_callbacks:
       success: "Sie sind jetzt mit Ihrem %{kind}-Konto angemeldet."
   spree:
+    environment: Umgebung
     user_was_not_valid: Benutzer ist nicht gültig.
     add_another_service: "Füge einen weiteren Dienst zum einloggen hinzu:"
     authentications:

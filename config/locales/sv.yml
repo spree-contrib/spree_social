@@ -4,6 +4,7 @@ sv:
     omniauth_callbacks:
       success: "Du är nu inloggad med ditt %{kind} konto."
   spree:
+    environment: Miljö
     user_was_not_valid: "Användaren var inte giltigt."
     add_another_service: "Lägg en annan tjänst för att logga in med:"
     authentications:

@@ -4,6 +4,7 @@ fr:
     omniauth_callbacks:
       success: "Vous êtes maintenant connecté à votre compte %{kind}."
   spree:
+    environment: Environnement
     user_was_not_valid: "L'utilisateur n'était pas valide."
     add_another_service: "Ajouter un autre service d'identification:"
     authentications:
