@@ -4,6 +4,7 @@ es-MX:
     omniauth_callbacks:
       success: "Estás sesión con tu cuenta de %{kind}."
   spree:
+    environment: Ambiente
     user_was_not_valid: "El usuario no fue válido."
     add_another_service: 'Añadir otro servicio para inicio de sesión:'
     authentications:

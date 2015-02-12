@@ -4,6 +4,7 @@ nl:
     omniauth_callbacks:
       success: "U bent nu aangemeld met uw %{kind}-account."
   spree:
+    environment: Milieu
     user_was_not_valid: Gebruiker was niet geldig.
     add_another_service: 'Nog een log-in dienst toevoegen:'
     authentications:
