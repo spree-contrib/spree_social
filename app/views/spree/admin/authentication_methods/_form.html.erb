@@ -2,7 +2,7 @@
   <div data-hook="admin_social_methods_form_fields">
     <div class="row">
       <div class="col-md-6">
-        <div data-hook="environment" class="form-group">
+        <div data-hook="provider" class="form-group">
           <%= f.label :provider, Spree.t(:social_provider) %>
           <%= f.select :provider, SpreeSocial::OAUTH_PROVIDERS.collect { |p| [ p[0], p[1] ] }, {}, { include_blank: false, class: 'select2' } %>
         </div>
@@ -11,13 +11,13 @@
 
     <div class="row">
       <div class="col-md-6">
-        <div data-hook="environment" class="form-group">
+        <div data-hook="api-key" class="form-group">
           <%= f.label :api_key, Spree.t(:social_api_key) %>
           <%= f.text_field :api_key, class: 'form-control' %>
         </div>
       </div>
       <div class="col-md-6">
-        <div data-hook="environment" class="form-group">
+        <div data-hook="api-secret" class="form-group">
           <%= f.label :api_secret, Spree.t(:social_api_secret) %>
           <%= f.text_field :api_secret, class: 'form-control' %>
         </div>
@@ -26,7 +26,7 @@
 
     <div class="row">
       <div class="col-md-6">
-        <div data-hook="environment" class="form-group">
+        <div data-hook="activity" class="form-group">
           <%= f.label :active, class: 'radio-inline' do %>
             <%= f.radio_button :active, :true %>
             <%= Spree.t(:active) %>
