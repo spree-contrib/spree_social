@@ -1,13 +1,6 @@
 <%= form_for [:admin, resource] do |f| %>
-
   <div data-hook="admin_social_methods_form_fields">
     <div class="row">
-      <div class="col-md-6">
-        <div data-hook="environment" class="form-group">
-          <%= label_tag nil, Spree.t(:environment) %>
-          <%= collection_select :authentication_method, :environment, Rails.configuration.database_configuration.keys, :to_s, :titleize, {}, class: 'select2' %>
-        </div>
-      </div>
       <div class="col-md-6">
         <div data-hook="environment" class="form-group">
           <%= f.label :provider, Spree.t(:social_provider) %>

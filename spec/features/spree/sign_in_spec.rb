@@ -48,7 +48,6 @@ RSpec.feature 'signing in using Omniauth', :js do
         provider: 'twitter',
         api_key: 'fake',
         api_secret: 'fake',
-        environment: Rails.env,
         active: true)
       OmniAuth.config.test_mode = true
       OmniAuth.config.mock_auth[:twitter] = {
