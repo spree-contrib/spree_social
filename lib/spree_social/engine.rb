@@ -55,7 +55,7 @@ module OmniAuth
                             'webos|amoi|novarra|cdm|alcatel|pocket|ipad|iphone|mobileexplorer|' \
                             'mobile'
       def request_phase
-        options[:scope] ||= 'email,offline_access'
+        options[:scope] ||= 'email'
         options[:display] = mobile_request? ? 'touch' : 'page'
         super
       end
