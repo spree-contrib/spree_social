@@ -1,26 +1,26 @@
 ---
 # Too picky.
-LineLength:
-  Enabled: false
+Metrics/LineLength:
+  Max: 140
 
 # This should truly be on for well documented gems.
-Documentation:
+Style/Documentation:
   Enabled: false
 
 # Neatly aligned code is too swell.
-SingleSpaceBeforeFirstArg:
+Style/SingleSpaceBeforeFirstArg:
   Enabled: false
 
 # Don't mess with RSpec DSL.
-Blocks:
+Style/BlockDelimiters:
   Exclude:
     - 'spec/**/*'
 
 # Use nested module/class definitions instead of compact style.
 # Too high git impact to change this now.
-ClassAndModuleChildren:
+Style/ClassAndModuleChildren:
   Enabled: false
 
 # Avoid contradictory style rules by enforce single quotes.
-StringLiterals:
+Style/StringLiterals:
   EnforcedStyle: single_quotes
