@@ -7,7 +7,7 @@ class Spree::AuthenticationMethod < ActiveRecord::Base
 
   scope :available_for, lambda { |user|
     sc = where(environment: ::Rails.env)
-    sc = sc.where(['provider NOT IN (?)', user.user_authentications.map(&:provider)]) if user && !user.user_authentications.empty?
+    sc = sc.where.not(provider: user.user_authentications.pluck(:provider)) if user && !user.user_authentications.empty?
     sc
   }
 end
