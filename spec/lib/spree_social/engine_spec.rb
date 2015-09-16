@@ -4,11 +4,7 @@ RSpec.describe SpreeSocial do
 
     it 'contain all providers' do
       oauth_providers = [
-        %w(Amazon amazon false),
-        %w(Facebook facebook true),
-        %w(Twitter twitter false),
-        %w(Github github false),
-        %w(Google google_oauth2 true)
+        %w(WonderfulUnion wonderful_union true),
       ]
       expect(described_class::OAUTH_PROVIDERS).to match_array oauth_providers
     end
