@@ -21,7 +21,7 @@ RSpec.feature 'Admin Authentication Methods', :js do
       expect(page).to have_text 'Back To Authentication Methods List'
 
       select2 'Test', from: 'Environment'
-      select2 'Github', from: 'Social Provider'
+      select2 'WonderfulUnion', from: 'Social Provider'
       fill_in 'API Key', with: 'KEY123'
       fill_in 'API Secret', with: 'SEC123'
 
@@ -39,7 +39,7 @@ RSpec.feature 'Admin Authentication Methods', :js do
   context 'when auth method exists' do
     given!(:authentication_method) do
       Spree::AuthenticationMethod.create!(
-        provider: 'facebook',
+        provider: 'wonderful_union',
         api_key: 'fake',
         api_secret: 'fake',
         environment: Rails.env,

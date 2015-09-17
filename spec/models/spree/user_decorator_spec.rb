@@ -1,6 +1,6 @@
 RSpec.describe Spree::User, type: :model do
   let(:user) { create(:user) }
-  let(:omni_params) { { 'provider' => 'twitter', 'uid' => 12_345 } }
+  let(:omni_params) { { 'provider' => 'wonderful_union', 'uid' => 12_345 } }
   let(:auths) { double 'auths' }
 
   context '.apply_omniauth' do
@@ -13,7 +13,7 @@ RSpec.describe Spree::User, type: :model do
 
     context 'omniauth params contains email' do
       let(:user) { create(:user) { |user| user.email = nil } }
-      let(:omni_params) { { 'provider' => 'google_oauth2', 'uid' => 12_345, 'info' => { 'email' => 'test@example.com' } } }
+      let(:omni_params) { { 'provider' => 'wonderful_union', 'uid' => 12_345, 'info' => { 'email' => 'test@example.com' } } }
 
       it 'sets email from omniauth params' do
         expect(auths).to receive(:build)

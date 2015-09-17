@@ -19,6 +19,7 @@ end
 
 require 'rspec/rails'
 require 'ffaker'
+require 'pry'
 
 RSpec.configure do |config|
   config.fail_fast = false
