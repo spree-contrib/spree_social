@@ -4,7 +4,8 @@ module SpreeSocial
     %w(Twitter twitter false),
     %w(Github github false),
     %w(Google google_oauth2 true),
-    %w(Amazon amazon true)
+    %w(Amazon amazon true),
+    %w(Paypal paypal true)
   ]
 
   class Engine < Rails::Engine
@@ -39,10 +40,21 @@ module SpreeSocial
   end
 
   def self.setup_key_for(provider, key, secret)
-    scope = (provider == :amazon) ? 'profile' : 'email'
+    scope = get_scope_for(provider)
 
     Devise.setup do |config|
-      config.omniauth provider, key, secret, setup: true, scope: scope, info_fields: 'email, name'
+      config.omniauth provider, key, secret, setup: true, scope: scope, sandbox: true, info_fields: 'email, name'
+    end
+  end
+
+  def self.get_scope_for(provider)
+    case provider
+    when :amazon
+      return 'profile'
+    when :paypal
+      return 'profile email openid'
+    else
+      return 'email'
     end
   end
 end
