@@ -7,16 +7,16 @@
         <div class="authentications">
           <% for user_authentication in spree_current_user.user_authentications %>
             <div class="authentication row">
-              <div class="provider col-md-2">
+              <div class="provider col-xs-5 col-md-2">
                 <%= content_tag(:i, '', class: "icon-spree-#{user_authentication.provider.to_url}-circled") %>
                 <%= user_authentication.provider %>
               </div>
-              <div class="uid col-md-3">
+              <div class="uid col-xs-5 col-md-3">
                 <%= user_authentication.uid %>
               </div>
-              <div class="col-md-2">
+              <div class="col-xs-2 text-center">
                 <%= link_to user_authentication, data: { confirm: "#{Spree.t(:remove_authentication_option_confirmation)}" }, method: :delete, class: 'btn btn-default' do %>
-                  <%= content_tag(:i, '', class: 'icon-delete') %>
+                  <%= content_tag(:span, '', class: 'glyphicon glyphicon-minus-sign') %>
                 <% end %>
               </div>
             </div>
@@ -24,8 +24,13 @@
         </div>
       <% end %>
     <% end %>
-    <%= content_tag(:p, content_tag(:strong, Spree.t(:add_another_service))) if Spree::AuthenticationMethod.available_for(spree_current_user).exists? %>
-    <%= render 'spree/shared/social' %>
+    <% if Spree::AuthenticationMethod.available_for(spree_current_user).exists?  %>
+      <br />
+      <p>
+        <strong><%= Spree.t(:add_another_service) %></strong>
+      </p>
+      <%= render 'spree/shared/social' %>
+    <% end %>
   </div>
   <div class="clear"></div>
 <% end %>

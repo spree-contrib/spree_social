@@ -28,6 +28,7 @@ RSpec.feature 'signing in using Omniauth', :js do
       click_link 'Login'
       click_facebook_link
       click_link 'Logout'
+      visit spree.account_path
       click_link 'Login'
       click_facebook_link
     end
