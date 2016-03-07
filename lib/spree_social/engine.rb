@@ -40,11 +40,17 @@ module SpreeSocial
   end
 
   def self.setup_key_for(provider, key, secret)
+    Devise.setup do |config|
+      config.omniauth provider, key, secret, oauth_options(provider)
+    end
+  end
+
+  def self.oauth_options(provider)
     scope = get_scope_for(provider)
 
-    Devise.setup do |config|
-      config.omniauth provider, key, secret, setup: true, scope: scope, sandbox: true, info_fields: 'email, name'
-    end
+    options = {setup: true, scope: scope, info_fields: 'email, name'}
+    options.merge!(sandbox: !Rails.env.production?) if provider == :paypal
+    options
   end
 
   def self.get_scope_for(provider)
