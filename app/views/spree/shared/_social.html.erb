@@ -4,9 +4,9 @@
   <% end %>
 
   <% Spree::AuthenticationMethod.available_for(@spree_user).each do |method| %>
-    <%= link_to(content_tag(:i, '', class: "icon-spree-#{method.provider.to_url}-circled"),
+    <%= link_to(content_tag(:i, '', class: "icon-spree-#{method.provider}-circled"),
           spree.spree_user_omniauth_authorize_url(provider: method.provider),
-          id: method.provider.to_url,
+          id: method.provider,
           title: Spree.t(:sign_in_with, provider: method.provider)) if method.active %>
   <% end %>
 </div>
