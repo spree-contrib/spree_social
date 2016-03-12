@@ -48,8 +48,8 @@ module SpreeSocial
   def self.oauth_options(provider)
     scope = get_scope_for(provider)
 
-    options = {setup: true, scope: scope, info_fields: 'email, name'}
-    options.merge!(sandbox: !Rails.env.production?) if provider == :paypal
+    options = { setup: true, scope: scope, info_fields: 'email, name' }
+    options[:sandbox] = !Rails.env.production? if provider == :paypal
     options
   end
 
