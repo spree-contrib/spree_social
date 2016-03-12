@@ -9,6 +9,7 @@ RSpec.describe SpreeSocial do
         %w(Twitter twitter false),
         %w(Github github false),
         %w(Google google_oauth2 true)
+        %w(Paypal paypal true)
       ]
       expect(described_class::OAUTH_PROVIDERS).to match_array oauth_providers
     end
