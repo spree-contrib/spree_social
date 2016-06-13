@@ -13,16 +13,29 @@ Use with caution.
 
 ## Setup for Production
 
-Add this extension to your `Gemfile`:
-```ruby
-gem 'spree_social', github: 'spree-contrib/spree_social', branch: 'master'
-```
+1. Add this extension to your Gemfile with this line:
+  ```ruby
+  gem 'spree_social', github: 'spree-contrib/spree_social', branch: 'X-X-stable'
+  ```
 
-Then run:
-```sh
-$ bundle && bundle exec rails g spree_social:install
-$ bundle exec rake db:migrate
-```
+  The `branch` option is important: it must match the version of Spree you're using.
+  For example, use `3-0-stable` if you're using Spree `3-0-stable` or any `3.0.x` version.
+
+2. Install the gem using Bundler:
+  ```ruby
+  bundle install
+  ```
+
+3. Copy & run migrations
+  ```ruby
+  bundle exec rails g spree_social:install
+  ```
+
+4. Restart your server
+
+  If your server was running, restart it so that it can find the assets properly.
+
+
 
 Preference(optional): By default url will be `/users/auth/:provider`. If you wish to modify the url to: `/member/auth/:provider`, `/profile/auth/:provider`, or `/auth/:provider` then you can do this accordingly in your **config/initializers/spree.rb** file as described below:
 
