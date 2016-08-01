@@ -11,3 +11,7 @@ OmniAuth.config.on_failure = proc do |env|
   controller_klass = ActiveSupport::Inflector.constantize("#{controller_name}Controller")
   controller_klass.action(:failure).call(env)
 end
+
+Devise.setup do |config|
+  config.router_name = :spree
+end
