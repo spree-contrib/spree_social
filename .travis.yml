@@ -1,5 +1,10 @@
 ---
 language: ruby
+
+env:
+  - DB=postgres
+  - DB=mysql
+
 rvm:
   - 2.2.4
   - 2.3.0
