@@ -44,4 +44,5 @@ Gem::Specification.new do |s|
   s.add_development_dependency 'sass-rails', '~> 4.0.0'
   s.add_development_dependency 'guard-rspec'
   s.add_development_dependency 'rubocop', '>= 0.24.1'
+  s.add_development_dependency 'ruby_dep', '~> 1.3.0'
 end
