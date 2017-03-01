@@ -14,6 +14,15 @@ Use with caution.
 ## Setup for Production
 
 1. Add this extension to your Gemfile with this line:
+
+  #### Spree >= 3.1
+
+  ```ruby
+  gem 'spree_social', github: 'spree-contrib/spree_social'
+  ```
+
+  #### Spree 3.0 and Spree 2.x
+
   ```ruby
   gem 'spree_social', github: 'spree-contrib/spree_social', branch: 'X-X-stable'
   ```
