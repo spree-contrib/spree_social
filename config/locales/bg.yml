@@ -1,0 +1,26 @@
+bg:
+  devise:
+    omniauth_callbacks:
+      success: "Успешно влизане с %{kind} профил."
+  spree:
+    environment: Среда
+    user_was_not_valid: Невалиден потребител.
+    add_another_service: "Добавете нова услуга с която да се аутентикирате:"
+    authentications:
+      destroy: 'Успешно премахнате метода за аутентикиране.'
+    back_to_authentication_methods_list: "Обратно към списъка с медоти за аутентикиране"
+    edit_social_method: "Редактиране на методите за аутентикиране чрез социални мрежи"
+    new_social_method: "Нов метот за аутентикиране"
+    no_authentication_methods_found: "Не са намерени метоти за аутентикиране"
+    one_more_step: 'Още една стъпка за завършване на регистрацията с %{kind}'
+    remove_authentication_option_confirmation: "Сигурни ли сте че желаете да премахнате този метод за аутентикиране?"
+    sign_into_account: "Вие можете да влезете в този акаунт чрез:"
+    sign_in_through_one_of_these_services: "Влезте чрез:"
+    social_api_key: "API Ключ"
+    social_api_secret: "API Парола"
+    social_authentication_methods: "Вход през социални медии"
+    social_authentication_methods_description: "Конфигуриране на OAuth аутентикация"
+    social_provider: "Социална мрежа"
+    please_confirm_your_email: "Моля потвърдете вашият email адрес за да продължите"
+    sign_in_with: "Вход през %{provider}"
+    you_have_signed_in_with_these_services: "Вие сте влизали посредством следните услуги"
