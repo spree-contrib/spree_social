@@ -16,6 +16,14 @@ module SpreeSocial
       Spree::SocialConfig = Spree::SocialConfiguration.new
     end
 
+    # Resolves omniauth_callback error on development env
+    # See https://github.com/spree-contrib/spree_social/issues/193#issuecomment-296585601
+    initializer 'spree_social.auto_load_classes_after_unload' do |app|
+      Rails.application.reloader.after_class_unload do
+        Rails.application.reloader.prepare!
+      end
+    end
+
     def self.activate
       Dir.glob(File.join(File.dirname(__FILE__), '../../app/**/*_decorator*.rb')) do |c|
         Rails.configuration.cache_classes ? require(c) : load(c)
