@@ -12,6 +12,13 @@ module SpreeSocial
 
     config.autoload_paths += %W(#{config.root}/lib)
 
+    # # Setup the autoload
+    initializer 'main_app.auto_load' do |app|
+      Rails.application.reloader.to_run(:before) do
+        Rails.application.reloader.prepare!
+      end
+    end
+
     initializer 'spree_social.environment', before: 'spree.environment' do
       Spree::SocialConfig = Spree::SocialConfiguration.new
     end
