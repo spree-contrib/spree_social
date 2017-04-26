@@ -12,6 +12,16 @@ module SpreeSocial
 
     config.autoload_paths += %W(#{config.root}/lib)
 
+    # Resolves omniauth_callback error on development env
+    # See https://github.com/spree-contrib/spree_social/issues/193#issuecomment-296585601
+    if Rails::VERSION::MAJOR == 5
+      initializer 'main_app.auto_load' do |app|
+        Rails.application.reloader.to_run(:before) do
+          Rails.application.reloader.prepare!
+        end
+      end
+    end
+
     initializer 'spree_social.environment', before: 'spree.environment' do
       Spree::SocialConfig = Spree::SocialConfiguration.new
     end
