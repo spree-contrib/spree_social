@@ -1,3 +1,5 @@
+require 'stringex'
+
 class Spree::AuthenticationMethod < ActiveRecord::Base
   validates :provider, :api_key, :api_secret, presence: true
 
