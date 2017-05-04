@@ -36,7 +36,7 @@ module SpreeSocial
   end
 
   # Setup all OAuth providers
-  def self.init_provider(provider)
+  def self.init_provider(provider, scope='email')
     return unless ActiveRecord::Base.connection.table_exists?('spree_authentication_methods')
     key, secret = nil
     Spree::AuthenticationMethod.where(environment: ::Rails.env).each do |auth_method|
@@ -45,12 +45,12 @@ module SpreeSocial
       secret = auth_method.api_secret
       Rails.logger.info("[Spree Social] Loading #{auth_method.provider.capitalize} as authentication source")
     end
-    setup_key_for(provider.to_sym, key, secret)
+    setup_key_for(provider.to_sym, key, secret, scope)
   end
 
-  def self.setup_key_for(provider, key, secret)
+  def self.setup_key_for(provider, key, secret, scope)
     Devise.setup do |config|
-      config.omniauth provider, key, secret, setup: true, scope: 'email', info_fields: 'email, name'
+      config.omniauth provider, key, secret, setup: true, scope: scope, info_fields: 'email, name'
     end
   end
 end
