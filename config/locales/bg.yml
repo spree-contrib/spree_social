@@ -22,5 +22,5 @@ bg:
     social_authentication_methods_description: "Конфигуриране на OAuth аутентикация"
     social_provider: "Социална мрежа"
     please_confirm_your_email: "Моля потвърдете вашият email адрес за да продължите"
-    sign_in_with: "Вход през %{provider}"
+    sign_in_with: "Вход %{provider}"
     you_have_signed_in_with_these_services: "Вие сте влизали посредством следните услуги"
