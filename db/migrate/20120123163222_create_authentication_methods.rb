@@ -1,4 +1,4 @@
-class CreateAuthenticationMethods < ActiveRecord::Migration
+class CreateAuthenticationMethods < SpreeExtension::Migration[4.2]
   def change
     create_table :spree_authentication_methods do |t|
       t.string :environment

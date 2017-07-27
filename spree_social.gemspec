@@ -23,6 +23,7 @@ Gem::Specification.new do |s|
 
   s.add_runtime_dependency 'spree_core', '>= 3.1.0', '< 4.0'
   s.add_runtime_dependency 'spree_auth_devise', '>= 3.2.0.beta', '< 4.0'
+  s.add_runtime_dependency 'spree_extension'
   s.add_runtime_dependency 'omniauth'
   s.add_runtime_dependency 'oa-core'
   s.add_runtime_dependency 'omniauth-twitter'
