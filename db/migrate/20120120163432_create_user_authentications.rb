@@ -1,4 +1,4 @@
-class CreateUserAuthentications < ActiveRecord::Migration
+class CreateUserAuthentications < SpreeExtension::Migration[4.2]
   def change
     create_table :spree_user_authentications do |t|
       t.integer :user_id
