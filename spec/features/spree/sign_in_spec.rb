@@ -1,12 +1,8 @@
 RSpec.feature 'signing in using Omniauth', :js do
   context 'facebook' do
     background do
-      Spree::AuthenticationMethod.create!(
-        provider: 'facebook',
-        api_key: 'fake',
-        api_secret: 'fake',
-        environment: Rails.env,
-        active: true)
+      create(:authentication_method, provider: 'facebook')
+
       OmniAuth.config.test_mode = true
       OmniAuth.config.mock_auth[:facebook] = {
         'provider' => 'facebook',
@@ -47,12 +43,8 @@ RSpec.feature 'signing in using Omniauth', :js do
 
   context 'twitter' do
     background do
-      Spree::AuthenticationMethod.create!(
-        provider: 'twitter',
-        api_key: 'fake',
-        api_secret: 'fake',
-        environment: Rails.env,
-        active: true)
+      create(:authentication_method, provider: 'twitter')
+
       OmniAuth.config.test_mode = true
       OmniAuth.config.mock_auth[:twitter] = {
         'provider' => 'twitter',
