@@ -36,7 +36,7 @@ module SpreeSocial
   end
 
   # Setup all OAuth providers
-  def self.init_provider(provider, scope='email')
+  def self.init_provider(provider)
     begin
       ActiveRecord::Base.connection_pool.with_connection(&:active?)
     rescue
@@ -54,9 +54,9 @@ module SpreeSocial
     setup_key_for(provider.to_sym, key, secret, scope)
   end
 
-  def self.setup_key_for(provider, key, secret, scope)
+  def self.setup_key_for(provider, key, secret)
     Devise.setup do |config|
-      config.omniauth provider, key, secret, setup: true, scope: scope, info_fields: 'email, name'
+      config.omniauth provider, key, secret, setup: true, info_fields: 'email, name'
     end
   end
 end
