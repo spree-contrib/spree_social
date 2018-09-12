@@ -51,7 +51,7 @@ module SpreeSocial
       secret = auth_method.api_secret
       Rails.logger.info("[Spree Social] Loading #{auth_method.provider.capitalize} as authentication source")
     end
-    setup_key_for(provider.to_sym, key, secret, scope)
+    setup_key_for(provider.to_sym, key, secret)
   end
 
   def self.setup_key_for(provider, key, secret)
