@@ -7,15 +7,18 @@
         <div class="authentications">
           <% for user_authentication in spree_current_user.user_authentications %>
             <div class="authentication row">
-              <div class="provider col-xs-5 col-md-2">
+              <div class="provider col-5 col-lg-2">
                 <%= content_tag(:i, '', class: "icon-spree-#{user_authentication.provider.to_url}-circled") %>
                 <%= user_authentication.provider %>
               </div>
-              <div class="uid col-xs-5 col-md-3">
+              <div class="uid col-5 col-lg-3">
                 <%= user_authentication.uid %>
               </div>
-              <div class="col-xs-2 text-center">
-                <%= link_to user_authentication, data: { confirm: "#{Spree.t(:remove_authentication_option_confirmation)}" }, method: :delete, class: 'btn btn-default' do %>
+              <div class="col-2 text-center">
+                <%= link_to user_authentication, data:
+                  { confirm:
+                    "#{Spree.t(:remove_authentication_option_confirmation)}"
+                  }, method: :delete, class: 'btn btn-primary' do %>
                   <%= content_tag(:span, '', class: 'glyphicon glyphicon-minus-sign') %>
                 <% end %>
               </div>
@@ -25,7 +28,6 @@
       <% end %>
     <% end %>
     <% if Spree::AuthenticationMethod.available_for(spree_current_user).exists?  %>
-      <br />
       <p>
         <strong><%= Spree.t(:add_another_service) %></strong>
       </p>
