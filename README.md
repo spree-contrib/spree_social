@@ -83,7 +83,7 @@ end
 
 ## Setup the Applications at the Respective Sources
 
-OAuth Applications @ Facebook, Twitter and / or Github are supported out of the box but you will need to setup applications are each respective site as follows for public use and for development.
+OAuth Applications @ Facebook, Twitter, Google and / or Github are supported out of the box but you will need to setup applications are each respective site as follows for public use and for development.
 
 > All URLs must be in the form of domain.tld you may add a port as well for development
 
@@ -130,9 +130,14 @@ OAuth Applications @ Facebook, Twitter and / or Github are supported out of the 
 
 > The app console is available at [https://login.amazon.com/manageApps](https://login.amazon.com/manageApps)
 
-### Other OAuth sources that are currently supported
+### Google OAuth2
+[Google / APIs / Credentials/ Create Credential][12]
 
-* Google (OAuth)
+1. In the APIs and Services dashboard, visit 'Credentials' on the side, then select 'Create Credentials' and 'Oauth client ID'.
+2. Name the Application, select "Web Application" as a type.
+3. Under "Authorized redirect URIs", add your site (example: http://localhost:3000/users/auth/google_oauth2/callback)
+
+> More info: https://developers.google.com/identity/protocols/OAuth2
 
 ## Adding other OAuth sources
 
@@ -174,3 +179,4 @@ Copyright (c) 2010-2015 [John Dyer][7] and [contributors][8], released under the
 [9]: https://github.com/spree-contrib/spree_social/blob/master/LICENSE.md
 [10]: https://login.amazon.com/manageApps
 [11]: https://github.com/spree-contrib/spree_social/blob/master/CONTRIBUTING.md
+[12]: https://console.developers.google.com
