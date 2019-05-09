@@ -31,6 +31,7 @@ Gem::Specification.new do |s|
   s.add_runtime_dependency 'omniauth-github'
   s.add_runtime_dependency 'omniauth-google-oauth2'
   s.add_runtime_dependency 'omniauth-amazon'
+  s.add_runtime_dependency 'deface', '~> 1.0'
 
   s.add_development_dependency 'capybara'
   s.add_development_dependency 'capybara-screenshot'
