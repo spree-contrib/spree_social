@@ -11,4 +11,16 @@ Spree::Core::Engine.add_routes do
   namespace :admin do
     resources :authentication_methods
   end
+
+  namespace :api do
+    namespace :v1 do
+      resources :users do
+        collection do
+          post :social_login
+          post 'social_login/:provider', to: :social_login
+          get :oauth_providers
+        end
+      end
+    end
+  end
 end
