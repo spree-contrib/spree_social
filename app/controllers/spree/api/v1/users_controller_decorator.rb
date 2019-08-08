@@ -5,11 +5,9 @@ module Spree
 
         def social_login
           authentication_method = Spree::AuthenticationMethod.find_by_provider(params[:provider])
-          render json: {exception: 'Unsupported provider'}, status: 500 and return unless authentication_method
-          omniauth_hash = authentication_method.get_social_user_info(params[:oauth_token])
-
+          render json: {exception: 'Unsupported provider'}, status: 422 and return unless authentication_method
+          omniauth_hash = authentication_method.get_omniauth_hash(params[:oauth_token])
           authentication = Spree::UserAuthentication.find_by_provider_and_uid(params[:provider], omniauth_hash['uid'])
-
 
           if authentication.present? and authentication.try(:user).present?
             render_user_login(authentication.user)

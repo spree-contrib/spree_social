@@ -17,7 +17,7 @@ class Spree::AuthenticationMethod < ActiveRecord::Base
     sc
   }
 
-  def get_social_user_info(token)
+  def get_omniauth_hash(token)
     strategy(token).auth_hash
   end
 
