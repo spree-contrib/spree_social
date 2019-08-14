@@ -30,12 +30,13 @@ module Spree
         end
 
         def oauth_providers
-          auth_methods = Spree::AuthenticationMethod.active_authentication_methods.pluck(:provider)
-          auth_methods.map! do |provider|
+          auth_methods = Spree::AuthenticationMethod.active_authentication_methods
+          auth_methods.map! do |auth_method|
             oauth_provider = SpreeSocial::OAUTH_PROVIDERS.detect {|p| p[1] == provider}
             {
                 name: oauth_provider[0],
-                provider: provider,
+                provider: auth_method.provider,
+                api_key: auth_method.api_key,
                 signup_support: oauth_provider[2]
             }
           end
