@@ -22,17 +22,13 @@ class Spree::AuthenticationMethod < ActiveRecord::Base
   end
 
   def provider_must_be_backed_by_omniauth_strategy
-    begin
-      strategy_class
-    rescue NameError => e
-      errors.add(:provider, 'must be backed by an omniauth strategy')
-    end
+    errors.add(:provider, 'must be backed by an omniauth strategy') unless strategy_class.safe_constantize
   end
 
   private
 
   def strategy_class
-    "::OmniAuth::Strategies::#{provider.classify}".constantize
+    "::OmniAuth::Strategies::#{provider.classify}".safe_constantize
   end
 
   def client
