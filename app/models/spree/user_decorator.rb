@@ -14,4 +14,13 @@ Spree.user_class.class_eval do
   def password_required?
     (user_authentications.empty? || !password.blank?) && super
   end
+
+  def oauth_providers
+    user_authentications.map do |user_authentication|
+      {
+          provider: user_authentication.provider,
+          uid: user_authentication.uid
+      }
+    end
+  end
 end
