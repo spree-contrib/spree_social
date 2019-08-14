@@ -18,6 +18,9 @@ module Spree
           else
             user = Spree::User.find_by_email(params[:email]) || Spree::User.new
             user.apply_omniauth(omniauth_hash)
+
+            user.generate_spree_api_key! if user.spree_api_key.blank?
+
             if user.save!
               render_user_login(user)
             end
