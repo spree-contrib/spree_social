@@ -7,6 +7,8 @@ class Spree::AuthenticationMethod < ActiveRecord::Base
     where(environment: ::Rails.env, active: true).exists?
   end
 
+  scope :active, -> { where(active: true) }
+
   scope :available_for, lambda { |user|
     return none unless user
 
