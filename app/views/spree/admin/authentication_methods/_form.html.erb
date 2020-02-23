@@ -2,28 +2,32 @@
 
   <div data-hook="admin_social_methods_form_fields">
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-12 col-lg-6">
         <div data-hook="environment" class="form-group">
           <%= label_tag nil, Spree.t(:environment) %>
-          <%= collection_select :authentication_method, :environment, Rails.configuration.database_configuration.keys, :to_s, :titleize, {}, class: 'select2' %>
+          <%= collection_select :authentication_method, :environment,
+            Rails.configuration.database_configuration.keys, :to_s, :titleize,
+            {}, class: 'select2' %>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-12 col-lg-6">
         <div data-hook="environment" class="form-group">
           <%= f.label :provider, Spree.t(:social_provider) %>
-          <%= f.select :provider, SpreeSocial::OAUTH_PROVIDERS.collect { |p| [ p[0], p[1] ] }, {}, { include_blank: false, class: 'select2' } %>
+          <%= f.select :provider,
+            SpreeSocial::OAUTH_PROVIDERS.collect { |p| [ p[0], p[1] ] },{},
+            { include_blank: false, class: 'select2' } %>
         </div>
       </div>
     </div>
 
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-12 col-lg-6">
         <div data-hook="environment" class="form-group">
           <%= f.label :api_key, Spree.t(:social_api_key) %>
           <%= f.text_field :api_key, class: 'form-control' %>
         </div>
       </div>
-      <div class="col-md-6">
+      <div class="col-12 col-lg-6">
         <div data-hook="environment" class="form-group">
           <%= f.label :api_secret, Spree.t(:social_api_secret) %>
           <%= f.text_field :api_secret, class: 'form-control' %>
@@ -32,7 +36,7 @@
     </div>
 
     <div class="row">
-      <div class="col-md-6">
+      <div class="col-12 col-lg-6">
         <div data-hook="environment" class="form-group">
           <%= f.label :active, class: 'radio-inline' do %>
             <%= f.radio_button :active, :true %>
