@@ -1,0 +1,27 @@
+---
+es:
+  devise:
+    omniauth_callbacks:
+      success: "Estás sesión con tu cuenta de %{kind}."
+  spree:
+    environment: Ambiente
+    user_was_not_valid: "El usuario no fue válido."
+    add_another_service: 'Añadir otro servicio para inicio de sesión:'
+    authentications:
+      destroy: 'Método de autenticación destruido exitosamente.'
+    back_to_authentication_methods_list: "Volver a la lista de métodos de autenticación"
+    edit_social_method: 'Editando metodo de autenticación'
+    new_social_method: 'Nuevo método de autenticación'
+    no_authentication_methods_found: "No se encuentran ni métodos de autenticación"
+    one_more_step: 'Un paso más para completar tu registro desde %{kind}'
+    remove_authentication_option_confirmation: '¿Está seguro que quiere eliminar este método de autenticación?'
+    sign_into_account: 'Puedes iniciar sesión usando:'
+    sign_in_through_one_of_these_services: 'Iniciar sesión a través de uno de estos servicios:'
+    social_api_key: 'API Clave'
+    social_api_secret: 'API Secreto'
+    social_authentication_methods: 'Métodos de autenticación'
+    social_authentication_methods_description: 'Configurar métodos de autenticación de OAuth'
+    social_provider: 'Proveedor social'
+    please_confirm_your_email: 'Por favor confirme su email para continuar'
+    sign_in_with: 'Autententicado con %{provider}'
+    you_have_signed_in_with_these_services: "Has iniciado sesión con estos servicios"
