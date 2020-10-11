@@ -11,4 +11,12 @@ Spree::Core::Engine.add_routes do
   namespace :admin do
     resources :authentication_methods
   end
+
+  namespace :api, defaults: { format: 'json' } do
+    namespace :v1 do
+      devise_scope :spree_user do
+        post '/spree_oauth/social_login/:provider', to: 'omniauth_callbacks#login'
+      end
+    end
+  end
 end
