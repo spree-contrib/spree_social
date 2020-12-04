@@ -41,7 +41,8 @@ RSpec.feature 'signing in using Omniauth', :js do
       visit spree.new_spree_user_session_path
       click_facebook_link
       visit spree.account_path
-      expect(page).to have_text 'My Account'
+      expect(page).to have_text 'MY ACCOUNT' if Spree.version.to_f > 4.0
+      expect(page).to have_text 'My Account' if Spree.version.to_f < 4.0
     end
   end
 
@@ -73,8 +74,13 @@ RSpec.feature 'signing in using Omniauth', :js do
       find('a#twitter').click
       expect(page).to have_text 'One more step to complete your registration from Twitter'
       fill_in 'Email', with: 'user@example.com'
-      click_button 'Create'
-      expect(page).to have_text 'Welcome! You have signed up successfully.'
+      if Spree.version.to_f < 4.0
+        click_button 'Create'
+        expect(page).to have_text 'Welcome! You have signed up successfully.'
+      elsif Spree.version.to_f > 4.0
+        click_button 'Sign Up'
+        expect(page).to have_text 'Welcome! You have signed up successfully.'
+      end
     end
   end
 
