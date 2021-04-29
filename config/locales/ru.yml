@@ -1,0 +1,26 @@
+ru:
+  devise:
+    omniauth_callbacks:
+      success: "Вы авторизовались через аккаунт в %{kind}."
+  spree:
+    environment: Окружение
+    user_was_not_valid: Пользователь невалиден.
+    add_another_service: "Добавить ещё один сервис для авторизации:"
+    authentications:
+      destroy: 'Способ аутентификации успешно удалён.'
+    back_to_authentication_methods_list: "Назад к списку способов аутентификации"
+    edit_social_method: "Редактирование способа аутентификации через социальную сеть"
+    new_social_method: "Новый способ аутентификации"
+    no_authentication_methods_found: "Способов аутентификации не найдено"
+    one_more_step: 'Ещё один шаг до завершения вашей регистрации с помощью %{kind}'
+    remove_authentication_option_confirmation: "Вы уверены, что хотите удалить этот метод аутентификации?"
+    sign_into_account: "Вы можете авторизоваться, используя один из следующих способов:"
+    sign_in_through_one_of_these_services: "Авторизоваться, используя один из следующих сервисов:"
+    social_api_key: "Ключ API"
+    social_api_secret: "Секрет API"
+    social_authentication_methods: "Способы аутентификации с помощью социальных сетей"
+    social_authentication_methods_description: "Настроить способы аутентификации OAuth"
+    social_provider: "Провайдер социальной сети"
+    please_confirm_your_email: "Пожалуйста, подтвердите адрес вашей электронной почты, чтобы продолжить"
+    sign_in_with: "Войти с помощью %{provider}"
+    you_have_signed_in_with_these_services: "Вы вошли с помощью этих сервисов"
