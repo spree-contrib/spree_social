@@ -2,8 +2,8 @@
 
 source "https://rubygems.org"
 
-gem "spree", "~> 4.1.0"
-gem "spree_auth_devise", "~> 4.1.0"
+gem "spree", "~> 4.2.0"
+gem "spree_auth_devise", "~> 4.3.4"
 gem "rails-controller-testing"
 
 gemspec path: "../"
