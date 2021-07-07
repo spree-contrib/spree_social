@@ -9,6 +9,12 @@ en:
     add_another_service: "Add another service to sign in with:"
     authentications:
       destroy: 'Successfully destroyed authentication method.'
+      name_presentation:
+        facebook: Facebook
+        google_oauth2: Google
+        github: Github
+        twitter: Twitter
+        amazon: Amazon
     back_to_authentication_methods_list: "Back To Authentication Methods List"
     edit_social_method: "Editing Social Authentication Method"
     new_social_method: "New Authentication Method"

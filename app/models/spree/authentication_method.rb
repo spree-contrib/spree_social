@@ -14,4 +14,9 @@ class Spree::AuthenticationMethod < ActiveRecord::Base
     sc = sc.where.not(provider: user.user_authentications.pluck(:provider)) unless user.user_authentications.empty?
     sc
   }
+
+  def self.name_presentation(provider)
+    return '' unless provider
+    Spree.t("authentications.name_presentation.#{provider}")
+  end
 end
