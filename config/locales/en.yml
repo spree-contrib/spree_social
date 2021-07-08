@@ -3,6 +3,7 @@ en:
   devise:
     omniauth_callbacks:
       success: "You are now signed in with your %{kind} account."
+      provider_not_found: "Could not authenticate you from %{kind} becasue the provider is invalid"
   spree:
     environment: Environment
     user_was_not_valid: User was not valid.
