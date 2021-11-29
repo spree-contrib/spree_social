@@ -11,8 +11,10 @@ class Spree::OmniauthCallbacksController < Devise::OmniauthCallbacksController
     providers.each do |provider|
       class_eval <<-FUNCTION_DEFS, __FILE__, __LINE__ + 1
         def #{provider}
+          pretty_provider_name = Spree::AuthenticationMethod.name_presentation(auth_hash['provider'])
+
           if request.env['omniauth.error'].present?
-            flash[:error] = I18n.t('devise.omniauth_callbacks.failure', kind: auth_hash['provider'], reason: Spree.t(:user_was_not_valid))
+            flash[:error] = I18n.t('devise.omniauth_callbacks.failure', kind: pretty_provider_name, reason: Spree.t(:user_was_not_valid))
             redirect_back_or_default(root_url)
             return
           end
@@ -20,7 +22,7 @@ class Spree::OmniauthCallbacksController < Devise::OmniauthCallbacksController
           authentication = Spree::UserAuthentication.find_by_provider_and_uid(auth_hash['provider'], auth_hash['uid'])
 
           if authentication.present? and authentication.try(:user).present?
-            flash[:notice] = I18n.t('devise.omniauth_callbacks.success', kind: auth_hash['provider'])
+            flash[:notice] = I18n.t('devise.omniauth_callbacks.success', kind: pretty_provider_name)
             sign_in_and_redirect :spree_user, authentication.user
           elsif spree_current_user
             spree_current_user.apply_omniauth(auth_hash)
@@ -31,11 +33,11 @@ class Spree::OmniauthCallbacksController < Devise::OmniauthCallbacksController
             user = Spree::User.find_by_email(auth_hash['info']['email']) || Spree::User.new
             user.apply_omniauth(auth_hash)
             if user.save
-              flash[:notice] = I18n.t('devise.omniauth_callbacks.success', kind: auth_hash['provider'])
+              flash[:notice] = I18n.t('devise.omniauth_callbacks.success', kind: pretty_provider_name)
               sign_in_and_redirect :spree_user, user
             else
               session[:omniauth] = auth_hash.except('extra')
-              flash[:notice] = Spree.t(:one_more_step, kind: auth_hash['provider'].capitalize)
+              flash[:notice] = Spree.t(:one_more_step, kind: pretty_provider_name)
               redirect_to new_spree_user_registration_url
               return
             end
